@@ -8,20 +8,22 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var zipTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        zipTextField.delegate = self
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text?.characters.count == 5 {
+            
+        }
     }
+    
+    
     
 
     /*
