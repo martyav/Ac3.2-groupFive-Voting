@@ -9,103 +9,42 @@
 import Foundation
 
 class VoterInfo {
-    var election: Election
-    var 
+    let election: Election
+    let locations: [PollLocation]
+    let stateID: String
+    let stateBody: StateVoteAdminBody
+    let localName: String
+    let localJurisdiction: LocalVoteAdminBody
     
-}
-
-/*
- 
- {
-  "kind": "civicinfo#voterInfoResponse",
-  "election": {
-    "id": "4269",
-    "name": "Virginia General Election",
-    "electionDay": "2017-11-07",
-    "ocdDivisionId": "ocd-division/country:us/state:va"
-  },
-  "normalizedInput": {
-    "line1": "301 Virginia Street",
-    "city": "Richmond",
-    "state": "VA",
-    "zip": "23219"
-  },
-  "pollingLocations": [
-    {
-      "address": {
-        "locationName": "MAIN LIBRARY",
-        "line1": "101 East Franklin Street",
-        "city": "Richmond",
-        "state": "VA",
-        "zip": "23219-2107"
-      },
-      "notes": "",
-      "pollingHours": "6:00 AM - 7:00 PM",
-      "sources": [
-        {
-          "name": "Voting Information Project",
-          "official": true
-        }
-      ]
+    init(election: Election, locations: [PollLocation], stateID: String, stateBody: StateVoteAdminBody, localName: String, localJurisdiction: LocalVoteAdminBody) {
+        self.election = election
+        self.locations = locations
+        self.stateID = stateID
+        self.stateBody = stateBody
+        self.localName = localName
+        self.localJurisdiction = localJurisdiction
     }
-  ],
-  "state": [
-    {
-      "name": "Va",
-      "electionAdministrationBody": {
-        "name": "Department of Elections",
-        "electionInfoUrl": "http://elections.virginia.gov/",
-        "electionRegistrationUrl": "https://vote.elections.virginia.gov/thirdparty/vip",
-        "electionRegistrationConfirmationUrl": "https://vote.elections.virginia.gov/thirdparty/vip",
-        "absenteeVotingInfoUrl": "http://elections.virginia.gov/casting-a-ballot/absentee-voting/index.html",
-        "votingLocationFinderUrl": "https://vote.elections.virginia.gov/thirdparty/vip",
-        "ballotInfoUrl": "https://vote.elections.virginia.gov/thirdparty/vip",
-        "electionRulesUrl": "http://elections.virginia.gov/",
-        "physicalAddress": {
-          "locationName": "Department of Elections",
-          "line1": "Washington Building First Floor",
-          "line2": "1100 Bank Street",
-          "city": "Richmond",
-          "state": "VA",
-          "zip": "23219"
-        }
-      },
-      "local_jurisdiction": {
-        "name": "RICHMOND CITY",
-        "electionAdministrationBody": {
-          "name": "RICHMOND CITY GENERAL REGISTRAR OFFICE",
-          "electionInfoUrl": "http://www.richmondgov.com/Registrar/index.aspx",
-          "physicalAddress": {
-            "line1": "900 E Broad St Rm 105",
-            "city": "Richmond",
-            "state": "VA",
-            "zip": "23219-1907"
-          },
-          "electionOfficials": [
-            {
-              "name": "J. Kirk de C. Showalter",
-              "title": "General Registrar",
-              "officePhoneNumber": "804-646-5950",
-              "faxNumber": "804-646-7848",
-              "emailAddress": "VoterRegistration@richmondgov.com"
+    
+    convenience init?(dict: [String: AnyObject]) {
+        guard let electionDict = dict["election"] as? [String: AnyObject],
+            let election = Election(dict: electionDict),
+            let locationsDicts = dict["pollingLocations"] as? [[String: AnyObject]],
+            let stateDictArr = dict["state"] as? [AnyObject],
+            let stateDict = stateDictArr[0] as? [String: AnyObject],
+            let stateID = stateDict["name"] as? String,
+            let stateVoteBodyDict = stateDict["electionAdministrationBody"] as? [String: AnyObject],
+            let stateBody = StateVoteAdminBody(dict: stateVoteBodyDict),
+            let localDict = stateDict["local_jurisdiction"] as? [String: AnyObject],
+            let localName = localDict["name"] as? String,
+            let localVoteBodyDict = localDict["electionAdministrationBody"] as? [String: AnyObject],
+            let localJurisdiction = LocalVoteAdminBody(dict: localVoteBodyDict) else { return nil }
+        var locations = [PollLocation]()
+        for locationDict in locationsDicts {
+            if let location = PollLocation(dict: locationDict) {
+                print("made location")
+                locations.append(location)
             }
-          ]
-        },
-        "sources": [
-          {
-            "name": "Voting Information Project",
-            "official": true
-          }
-        ]
-      },
-      "sources": [
-        {
-          "name": "Voting Information Project",
-          "official": true
         }
-      ]
+        self.init(election: election, locations: locations, stateID: stateID, stateBody: stateBody, localName: localName, localJurisdiction: localJurisdiction)
     }
-  ]
 }
- 
- */

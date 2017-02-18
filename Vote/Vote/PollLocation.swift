@@ -10,11 +10,11 @@ import Foundation
 
 
 class PollLocation {
-    var address: String
+    var address: Address
     var notes: String
     var hours: String
     
-    init(address: String, notes: String, hours: String) {
+    init(address: Address, notes: String, hours: String) {
         self.address = address
         self.notes = notes
         self.hours = hours
@@ -22,27 +22,11 @@ class PollLocation {
     
     convenience init?(dict: [String: AnyObject]) {
         guard let addressDict = dict["address"] as? [String: String],
-        let notes = dict["notes"] as? String,
-        let 
+            let address = Address(addressDict),
+            let notes = dict["notes"] as? String,
+            let hours = dict["hours"] as? String else { return nil }
+        
+        
+        self.init(address: address, notes: notes, hours: hours)
     }
 }
-
-/*
- {
-      "address": {
-        "locationName": "MAIN LIBRARY",
-        "line1": "101 East Franklin Street",
-        "city": "Richmond",
-        "state": "VA",
-        "zip": "23219-2107"
-      },
-      "notes": "",
-      "pollingHours": "6:00 AM - 7:00 PM",
-      "sources": [
-        {
-          "name": "Voting Information Project",
-          "official": true
-        }
-      ]
-    }
- */

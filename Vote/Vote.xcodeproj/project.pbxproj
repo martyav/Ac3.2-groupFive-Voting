@@ -15,6 +15,9 @@
 		819189F61E589F8E0060CFC9 /* Election.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189F51E589F8E0060CFC9 /* Election.swift */; };
 		819189F91E58A2210060CFC9 /* VoterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189F81E58A2210060CFC9 /* VoterInfo.swift */; };
 		819189FB1E58A2BB0060CFC9 /* PollLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189FA1E58A2BB0060CFC9 /* PollLocation.swift */; };
+		819189FD1E58A6770060CFC9 /* VoteAdminBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189FC1E58A6770060CFC9 /* VoteAdminBody.swift */; };
+		819189FF1E58A84F0060CFC9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189FE1E58A84F0060CFC9 /* Address.swift */; };
+		81918A011E58BB540060CFC9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81918A001E58BB540060CFC9 /* APIManager.swift */; };
 		D48CB0625C48009591C1326C /* Pods_Vote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B376F65FACDAF0CEA87FB67 /* Pods_Vote.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +34,9 @@
 		819189F51E589F8E0060CFC9 /* Election.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Election.swift; sourceTree = "<group>"; };
 		819189F81E58A2210060CFC9 /* VoterInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoterInfo.swift; sourceTree = "<group>"; };
 		819189FA1E58A2BB0060CFC9 /* PollLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollLocation.swift; sourceTree = "<group>"; };
+		819189FC1E58A6770060CFC9 /* VoteAdminBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoteAdminBody.swift; sourceTree = "<group>"; };
+		819189FE1E58A84F0060CFC9 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		81918A001E58BB540060CFC9 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		9E8D478BBA950E1869A5C8F0 /* Pods-Vote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vote/Pods-Vote.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,7 +131,9 @@
 			children = (
 				819189F51E589F8E0060CFC9 /* Election.swift */,
 				819189F81E58A2210060CFC9 /* VoterInfo.swift */,
+				819189FC1E58A6770060CFC9 /* VoteAdminBody.swift */,
 				819189FA1E58A2BB0060CFC9 /* PollLocation.swift */,
+				819189FE1E58A84F0060CFC9 /* Address.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -133,6 +141,7 @@
 		819189F71E58A1FE0060CFC9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				81918A001E58BB540060CFC9 /* APIManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -260,11 +269,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81918A011E58BB540060CFC9 /* APIManager.swift in Sources */,
 				819189E11E58906F0060CFC9 /* ViewController.swift in Sources */,
 				819189DF1E58906F0060CFC9 /* AppDelegate.swift in Sources */,
 				819189F91E58A2210060CFC9 /* VoterInfo.swift in Sources */,
 				819189FB1E58A2BB0060CFC9 /* PollLocation.swift in Sources */,
 				819189F61E589F8E0060CFC9 /* Election.swift in Sources */,
+				819189FD1E58A6770060CFC9 /* VoteAdminBody.swift in Sources */,
+				819189FF1E58A84F0060CFC9 /* Address.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

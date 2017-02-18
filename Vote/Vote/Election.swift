@@ -9,10 +9,10 @@
 import Foundation
 
 class Election  {
-    var id: String
-    var name: String
-    var date: String
-    var ocdDivisionID: String
+    let id: String
+    let name: String
+    let date: String
+    let ocdDivisionID: String
     
     init (id: String, name: String, date: String, ocdDivisionID: String) {
         self.id = id
@@ -27,6 +27,5 @@ class Election  {
         let date = dict["electionDay"] as? String,
             let ocdDivisionID = dict["ocdDivisionId"] as? String else { return nil }
         self.init(id: id, name: name, date: date, ocdDivisionID: ocdDivisionID)
-        
     }
 }
