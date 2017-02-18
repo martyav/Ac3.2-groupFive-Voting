@@ -12,6 +12,9 @@
 		819189E41E58906F0060CFC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 819189E21E58906F0060CFC9 /* Main.storyboard */; };
 		819189E61E58906F0060CFC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 819189E51E58906F0060CFC9 /* Assets.xcassets */; };
 		819189E91E58906F0060CFC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 819189E71E58906F0060CFC9 /* LaunchScreen.storyboard */; };
+		819189F61E589F8E0060CFC9 /* Election.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189F51E589F8E0060CFC9 /* Election.swift */; };
+		819189F91E58A2210060CFC9 /* VoterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189F81E58A2210060CFC9 /* VoterInfo.swift */; };
+		819189FB1E58A2BB0060CFC9 /* PollLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189FA1E58A2BB0060CFC9 /* PollLocation.swift */; };
 		D48CB0625C48009591C1326C /* Pods_Vote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B376F65FACDAF0CEA87FB67 /* Pods_Vote.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +28,9 @@
 		819189E51E58906F0060CFC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		819189E81E58906F0060CFC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		819189EA1E58906F0060CFC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		819189F51E589F8E0060CFC9 /* Election.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Election.swift; sourceTree = "<group>"; };
+		819189F81E58A2210060CFC9 /* VoterInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoterInfo.swift; sourceTree = "<group>"; };
+		819189FA1E58A2BB0060CFC9 /* PollLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollLocation.swift; sourceTree = "<group>"; };
 		9E8D478BBA950E1869A5C8F0 /* Pods-Vote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vote/Pods-Vote.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +84,7 @@
 		819189DD1E58906F0060CFC9 /* Vote */ = {
 			isa = PBXGroup;
 			children = (
+				819189F71E58A1FE0060CFC9 /* Managers */,
 				819189F41E589DE40060CFC9 /* Model */,
 				819189F01E589DBF0060CFC9 /* Supporting Files */,
 				819189F11E589DC70060CFC9 /* View Controller */,
@@ -116,8 +123,18 @@
 		819189F41E589DE40060CFC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				819189F51E589F8E0060CFC9 /* Election.swift */,
+				819189F81E58A2210060CFC9 /* VoterInfo.swift */,
+				819189FA1E58A2BB0060CFC9 /* PollLocation.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		819189F71E58A1FE0060CFC9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +262,9 @@
 			files = (
 				819189E11E58906F0060CFC9 /* ViewController.swift in Sources */,
 				819189DF1E58906F0060CFC9 /* AppDelegate.swift in Sources */,
+				819189F91E58A2210060CFC9 /* VoterInfo.swift in Sources */,
+				819189FB1E58A2BB0060CFC9 /* PollLocation.swift in Sources */,
+				819189F61E589F8E0060CFC9 /* Election.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
