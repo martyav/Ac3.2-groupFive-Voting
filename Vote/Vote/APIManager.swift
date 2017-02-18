@@ -57,4 +57,28 @@ class APIRequestManager {
             callback(voterInfo)
         }.resume()
     }
+    
+    func getRepInfo(endPoint: String, callback: @escaping (RepInfo?) -> Void) {
+        
+        guard let myURL = URL(string: endPoint) else { return }
+        let session = URLSession(configuration: .default)
+        session.dataTask(with: myURL) { (data, response, error) in
+            
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            guard let validData = data else { return }
+            var voterInfo: RepInfo? = nil
+            do {
+                let json = try JSONSerialization.jsonObject(with: validData, options: [])
+                if let jsonDict = json as? [String: AnyObject], let validVoterInfo = RepInfo(dict: jsonDict) {
+                    voterInfo = validVoterInfo
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            callback(voterInfo)
+            }.resume()
+    }
 }

@@ -5,7 +5,6 @@
 //  Created by C4Q on 2/18/17.
 //  Copyright © 2017 C4Q. All rights reserved.
 //
-
 import Foundation
 
 class VoterInfo {
