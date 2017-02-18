@@ -18,6 +18,8 @@ class ViewController: UIViewController {
         APIRequestManager.manager.getVoterInfo(endPoint: "https://www.googleapis.com/civicinfo/v2/voterinfo?key=AIzaSyBU0xkqxzxgDJfcSabEFYMXD9M-i8ugdGo&address=301%20Virginia%20St%20UNIT%20809,%20Richmond,%20VA%2023219&electionId=4269") { (info) in
             dump(info)
         }
+        APIRequestManager.manager.getRepInfo(endPoint: "https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBU0xkqxzxgDJfcSabEFYMXD9M-i8ugdGo&address=10010") { (info) in
+        }
     }
 
     override func didReceiveMemoryWarning() {

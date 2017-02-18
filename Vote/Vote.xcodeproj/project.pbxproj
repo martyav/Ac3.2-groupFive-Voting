@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		814CEBD71E58CA5500614741 /* RepInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814CEBD61E58CA5500614741 /* RepInfo.swift */; };
 		819189DF1E58906F0060CFC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189DE1E58906F0060CFC9 /* AppDelegate.swift */; };
 		819189E11E58906F0060CFC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189E01E58906F0060CFC9 /* ViewController.swift */; };
 		819189E41E58906F0060CFC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 819189E21E58906F0060CFC9 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		5A54C9E3A71C932F259EE168 /* Pods-Vote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vote.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vote/Pods-Vote.release.xcconfig"; sourceTree = "<group>"; };
 		7B376F65FACDAF0CEA87FB67 /* Pods_Vote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		814CEBD61E58CA5500614741 /* RepInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepInfo.swift; sourceTree = "<group>"; };
 		819189DB1E58906F0060CFC9 /* Vote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		819189DE1E58906F0060CFC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		819189E01E58906F0060CFC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				819189F51E589F8E0060CFC9 /* Election.swift */,
 				819189F81E58A2210060CFC9 /* VoterInfo.swift */,
+				814CEBD61E58CA5500614741 /* RepInfo.swift */,
 				819189FC1E58A6770060CFC9 /* VoteAdminBody.swift */,
 				819189FA1E58A2BB0060CFC9 /* PollLocation.swift */,
 				819189FE1E58A84F0060CFC9 /* Address.swift */,
@@ -276,6 +279,7 @@
 				819189FB1E58A2BB0060CFC9 /* PollLocation.swift in Sources */,
 				819189F61E589F8E0060CFC9 /* Election.swift in Sources */,
 				819189FD1E58A6770060CFC9 /* VoteAdminBody.swift in Sources */,
+				814CEBD71E58CA5500614741 /* RepInfo.swift in Sources */,
 				819189FF1E58A84F0060CFC9 /* Address.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
