@@ -3,7 +3,21 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
+<<<<<<< HEAD
       "filename" : "iphone-notification-20pt@2x.png",
+=======
+      "size" : "20x20",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "20x20",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "29x29",
+>>>>>>> 7629eb561df36da37258383d0c56152b0f323109
       "scale" : "2x"
     },
     {
@@ -51,7 +65,21 @@
     {
       "size" : "20x20",
       "idiom" : "ipad",
+<<<<<<< HEAD
       "filename" : "ipad-notifications-20pt@1x.png",
+=======
+      "size" : "20x20",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "20x20",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "29x29",
+>>>>>>> 7629eb561df36da37258383d0c56152b0f323109
       "scale" : "1x"
     },
     {
@@ -100,6 +128,11 @@
       "size" : "83.5x83.5",
       "idiom" : "ipad",
       "filename" : "ipad-pro-app-83.5pt@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "83.5x83.5",
       "scale" : "2x"
     }
   ],
