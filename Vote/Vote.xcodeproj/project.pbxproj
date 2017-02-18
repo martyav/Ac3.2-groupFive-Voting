@@ -78,14 +78,46 @@
 		819189DD1E58906F0060CFC9 /* Vote */ = {
 			isa = PBXGroup;
 			children = (
+				819189F41E589DE40060CFC9 /* Model */,
+				819189F01E589DBF0060CFC9 /* Supporting Files */,
+				819189F11E589DC70060CFC9 /* View Controller */,
+				819189F21E589DD00060CFC9 /* StoryBoard */,
+			);
+			path = Vote;
+			sourceTree = "<group>";
+		};
+		819189F01E589DBF0060CFC9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				819189DE1E58906F0060CFC9 /* AppDelegate.swift */,
-				819189E01E58906F0060CFC9 /* ViewController.swift */,
-				819189E21E58906F0060CFC9 /* Main.storyboard */,
 				819189E51E58906F0060CFC9 /* Assets.xcassets */,
 				819189E71E58906F0060CFC9 /* LaunchScreen.storyboard */,
 				819189EA1E58906F0060CFC9 /* Info.plist */,
 			);
-			path = Vote;
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		819189F11E589DC70060CFC9 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				819189E01E58906F0060CFC9 /* ViewController.swift */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		819189F21E589DD00060CFC9 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				819189E21E58906F0060CFC9 /* Main.storyboard */,
+			);
+			name = StoryBoard;
+			sourceTree = "<group>";
+		};
+		819189F41E589DE40060CFC9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +408,7 @@
 				819189EF1E58906F0060CFC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
