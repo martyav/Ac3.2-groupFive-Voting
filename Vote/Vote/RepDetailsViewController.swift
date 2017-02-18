@@ -10,6 +10,9 @@ import UIKit
 
 class RepDetailsViewController: UIViewController {
 
+    @IBOutlet weak var repImageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

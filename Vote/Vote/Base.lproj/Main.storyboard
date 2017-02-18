@@ -22,9 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter your zip code" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eCT-FW-8aD">
-                                <rect key="frame" x="84" y="276" width="206" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter your zip code" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eCT-FW-8aD">
+                                <rect key="frame" x="114" y="319" width="147" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.73378232758620687" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -35,6 +34,10 @@
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eCT-FW-8aD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N2F-6B-d5o"/>
+                            <constraint firstItem="eCT-FW-8aD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zzd-tl-0jT"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="zipTextField" destination="eCT-FW-8aD" id="CMB-3J-ss2"/>
@@ -102,7 +105,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QdY-n1-3pa">
-                                <rect key="frame" x="213" y="105" width="42" height="21"/>
+                                <rect key="frame" x="213" y="96" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -115,6 +118,9 @@
                             <constraint firstItem="9Th-Vl-AFx" firstAttribute="leading" secondItem="9Fd-4f-9Nm" secondAttribute="leadingMargin" constant="20" id="fn5-0q-Ah0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="repImageView" destination="9Th-Vl-AFx" id="7d4-ca-8Kq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JHz-ft-qKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
