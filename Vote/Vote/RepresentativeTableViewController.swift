@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RepresentativeTableViewController: UITableViewController, ZipDelegate{
+class RepresentativeTableViewController: UITableViewController {
     
     let cellID = "repCell"
     var representatives = [RepInfo]()
@@ -17,6 +17,7 @@ class RepresentativeTableViewController: UITableViewController, ZipDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.edgesForExtendedLayout = []
         self.tableView.register(RepresentativesTableViewCell.self, forCellReuseIdentifier: cellID)
         self.tableView.estimatedRowHeight = 100
@@ -67,9 +68,21 @@ class RepresentativeTableViewController: UITableViewController, ZipDelegate{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath) as! RepresentativesTableViewCell
-        let dvc = RepDetailsViewController()
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let dvc = storyboard.instantiateViewController(withIdentifier: "rdvc") as! RepDetailsViewController
         dvc.official = currentCell.official
         dvc.office = self.office[indexPath.section]
         self.present(dvc, animated: true, completion: nil)
     }
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+
 }

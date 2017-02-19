@@ -9,9 +9,6 @@
 import UIKit
 import SnapKit
 
-protocol ZipDelegate {
-    func getReps(from zip: String)
-}
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
 
@@ -19,13 +16,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     var zip = ""
     
-    let dvc = RepresentativeTableViewController()
-    var delegate: ZipDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         zipTextField.delegate = self
-        self.delegate = dvc
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -35,10 +29,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         if textField.text!.characters.count + string.characters.count == 5 {
             
-            
-            self.present(dvc, animated: true, completion: {
-                self.delegate.getReps(from: textField.text! + string)
-            })
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let dvc = storyboard.instantiateViewController(withIdentifier: "rtvc") as! RepresentativeTableViewController
+            dvc.getReps(from: textField.text! + string)
+            self.present(dvc, animated: true, completion: nil)
         }
         print(string)
         return true

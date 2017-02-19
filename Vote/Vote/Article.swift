@@ -8,11 +8,11 @@
 import Foundation
 
 class Article {
-    var webURL: String?
-    var snippet: String?
-    var source: String?
-    var pubDate: String?
-    let headline: String?
+    var webURL: String
+    var snippet: String
+    var source: String
+    var pubDate: String
+    let headline: String
     
     init?(from dict: [String:Any]) {
         if let webURL = dict["web_url"] as? String,
@@ -37,7 +37,7 @@ class Article {
         }
     }
     
-    static func getArticles(from arr: [[String:Any]]) -> [Article] {
+    class func getArticles(from arr: [[String:Any]]) -> [Article] {
         var articles = [Article]()
         for articleDict in arr {
             if let article = Article(from: articleDict) {
