@@ -72,11 +72,6 @@ class RepresentativeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if office[section].name == "United States House of Representatives" {
-//            return "U.S. House of Representatives"
-//        } else {
-//            return office[section].name
-//        }
         return office[section].name
     }
     
@@ -95,6 +90,8 @@ class RepresentativeTableViewController: UITableViewController {
         header.textLabel?.textColor = UIColor.hackathonCream
         header.textLabel?.lineBreakMode = .byWordWrapping
         header.textLabel?.numberOfLines = 2
+        header.textLabel?.textAlignment = .center
+        header.textLabel?.adjustsFontForContentSizeCategory = true
     }
     
     /*
