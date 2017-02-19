@@ -59,9 +59,6 @@ class ArticlesCollectionViewController: UICollectionViewController {
     
         return cell
     }
-
-
-
 }
 
 
