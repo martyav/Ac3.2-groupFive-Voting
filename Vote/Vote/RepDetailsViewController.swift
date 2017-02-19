@@ -62,6 +62,10 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         //self.repNameLabel.lineBreakMode = .byWordWrapping
         self.repNameLabel.adjustsFontForContentSizeCategory = true
         self.repImageView.image = UIImage(named: "placeholderPic")
+//        self.phoneNumberButton.layer.borderColor = UIColor.blue.cgColor
+//        self.phoneNumberButton.layer.borderWidth = 1
+//        self.emailButton.layer.borderColor = UIColor.blue.cgColor
+//        self.emailButton.layer.borderWidth = 1
         
         if let phone = official.phone {
             self.phoneNumberButton.setTitle("\(phone)", for: .normal)
@@ -155,6 +159,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
+                
                 application.open(phoneCallURL, options: [:], completionHandler: nil)
             }
         }
@@ -200,6 +205,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     @IBAction func phoneButtonPressed(_ sender: UIButton) {
+        AudioServicesPlaySystemSound(1105)
         if let number = self.official.phone {
             callNumber(number)
         } else {
@@ -208,6 +214,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     @IBAction func emailButtonPressed(_ sender: UIButton) {
+        AudioServicesPlaySystemSound(1105)
         self.emailPerson()
     }
     
