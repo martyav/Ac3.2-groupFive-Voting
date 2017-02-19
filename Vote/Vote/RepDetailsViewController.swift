@@ -45,6 +45,11 @@ class RepDetailsViewController: UIViewController {
         print(articles)
     }
     
+    override func viewDidLayoutSubviews() {
+        self.repImageView.layer.cornerRadius = 40
+        self.repImageView.clipsToBounds = true
+    }
+    
     func inputViewValues () {
         self.repNameLabel.text = official.name
         self.phoneNumberLabel.text = official.phone
@@ -59,6 +64,7 @@ class RepDetailsViewController: UIViewController {
                 }
             }
         }
+        
        
         self.iconImageView = {
             let imageView = UIImageView()
@@ -70,6 +76,12 @@ class RepDetailsViewController: UIViewController {
             default:
                 self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
             }
+            imageView.contentMode = .center
+            imageView.backgroundColor = UIColor.hackathonWhite
+            imageView.layer.cornerRadius = 20
+            imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
+            imageView.layer.borderWidth = 0.75
+
             return imageView
         }()
     }
