@@ -14,10 +14,10 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var repNameLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var briefJobDescription: UITextView!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var emailButton: UIButton!
+    @IBOutlet weak var phoneNumberButton: UIButton!
     
     var official: GovernmentOfficial!
     var office: Office!
@@ -27,8 +27,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(official.photoURL)
-        
+
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         inputViewValues()
         APIRequestManager.manager.getArticles(searchTerm: official.name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (info) in
@@ -58,13 +57,16 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     
     func inputViewValues () {
         self.repNameLabel.text = official.name
-        self.phoneNumberLabel.text = official.phone
-        self.emailLabel.text = official.email
         self.repImageView.image = UIImage(named: "placeholderPic")
         
         if let phoneNumber = official.phone {
             print(phoneNumber)
             self.callNumber(phoneNumber)
+        }
+
+        if let phone = official.phone, let email = official.email {
+        self.phoneNumberButton.setTitle("\(phone)", for: .normal)
+        self.emailButton.setTitle("\(email)", for: .normal)
         }
         
         if let photoURL = official.photoURL {
@@ -78,27 +80,27 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
                 }
             }
         }
-    }
+    
     
         
-        //        self.iconImageView = {
-        //            let imageView = UIImageView()
-        //            switch self.official.party {
-        //            case _ where self.official.party.contains("Democrat"):
-        //                self.iconImageView.image = #imageLiteral(resourceName: "democrat")
-        //            case "Republican":
-        //                self.iconImageView.image = #imageLiteral(resourceName: "republican")
-        //            default:
-        //                self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
-        //            }
-        //            imageView.contentMode = .center
-        //            imageView.backgroundColor = UIColor.hackathonWhite
-        //            imageView.layer.cornerRadius = 20
-        //            imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
-        //            imageView.layer.borderWidth = 0.75
-        //            return imageView
-        //        }()
-    
+//                self.iconImageView = {
+//                    let imageView = UIImageView()
+//                    switch self.official.party {
+//                    case _ where self.official.party.contains("Democrat"):
+//                        self.iconImageView.image = #imageLiteral(resourceName: "democrat")
+//                    case "Republican":
+//                        self.iconImageView.image = #imageLiteral(resourceName: "republican")
+//                    default:
+//                        self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
+//                    }
+//                    imageView.contentMode = .center
+//                    imageView.backgroundColor = UIColor.hackathonWhite
+//                    imageView.layer.cornerRadius = 20
+//                    imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
+//                    imageView.layer.borderWidth = 0.75
+//                    return imageView
+//                }()
+    }
     /*
      // MARK: - Navigation
      
