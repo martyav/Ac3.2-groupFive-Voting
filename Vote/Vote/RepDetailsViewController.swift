@@ -55,7 +55,7 @@ class RepDetailsViewController: UIViewController {
 //        self.officeLevel.text = office.name
 //        print(office.name)
 //        self.districtLabel.text = office.divisionId
-        self.officeLevel.text = office.levels
+        self.officeLevel.text = office.name
 //        self.briefJobDescription.text =
         self.contactLabel.text = "\(official.name)'s Contact Information"
         self.phoneNumberLabel.text = official.phone
