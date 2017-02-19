@@ -67,6 +67,6 @@ class RepresentativeTableViewController: UITableViewController, ZipDelegate{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
     }
 }
