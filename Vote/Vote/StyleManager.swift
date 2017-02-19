@@ -52,6 +52,7 @@ class StyleManager {
        
         proxyTextView.font = UIFont(name: regularFont, size: 16)
         proxyTextView.textColor = UIColor.hackathonBlack
+        proxyTextView.backgroundColor = .clear
         proxyTextField.backgroundColor = UIColor.hackathonRed
         proxyTextField.textColor = UIColor.hackathonGrey
         proxyTextField.font = UIFont(name: semiboldFont, size: 20)
