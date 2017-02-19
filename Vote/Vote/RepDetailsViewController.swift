@@ -128,6 +128,15 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let wvc = storyboard.instantiateViewController(withIdentifier: "wvc") as! WebViewController
+        let selection = articles[indexPath.row].webURL
+        wvc.address = selection
+        print(selection)
+        navigationController?.pushViewController(wvc, animated: true)
+    }
+    
     //MARK: - Helper Functions
     
     func callNumber(phoneNumber:String) {

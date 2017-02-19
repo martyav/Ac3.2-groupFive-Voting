@@ -9,31 +9,35 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController {
+class WebViewController: UIViewController, UIWebViewDelegate {
+    
+    var article: Article? {
+        didSet {
+            loadArticles()
+        }
+    }
     
     var address: String!
+    
     @IBOutlet weak var webView: UIWebView!
-    @IBOutlet weak var navTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        webView.delegate = self
         
+        loadArticles()
         title = "Articles"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-        
-        //load inital request
-        let initialURL = URL(string: "http://www.cnn.com")
-        if let url = initialURL {
-            address = "\(url)"
-        let urlRequest = URLRequest(url: url)
-            webView.loadRequest(urlRequest)
-        }
-        navTextField.backgroundColor = UIColor.lightGray
-        navTextField.text = address
     }
     
-    
-    func navigation() {
+    func loadArticles() {
+        
+        let initialURL = URL(string: address)
+        if let url = initialURL {
+            let urlRequest = URLRequest(url: url)
+            
+            webView.loadRequest(urlRequest)
+        }
         
     }
     
