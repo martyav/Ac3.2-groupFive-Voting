@@ -62,10 +62,10 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         //self.repNameLabel.lineBreakMode = .byWordWrapping
         self.repNameLabel.adjustsFontForContentSizeCategory = true
         self.repImageView.image = UIImage(named: "placeholderPic")
-//        self.phoneNumberButton.layer.borderColor = UIColor.blue.cgColor
-//        self.phoneNumberButton.layer.borderWidth = 1
-//        self.emailButton.layer.borderColor = UIColor.blue.cgColor
-//        self.emailButton.layer.borderWidth = 1
+        //        self.phoneNumberButton.layer.borderColor = UIColor.blue.cgColor
+        //        self.phoneNumberButton.layer.borderWidth = 1
+        //        self.emailButton.layer.borderColor = UIColor.blue.cgColor
+        //        self.emailButton.layer.borderWidth = 1
         
         if let phone = official.phone {
             self.phoneNumberButton.setTitle("\(phone)", for: .normal)
@@ -169,8 +169,6 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         let mailComposeViewController = configuredMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
             self.present(mailComposeViewController, animated: true, completion: nil)
-        } else {
-            self.showSendMailErrorAlert()
         }
     }
     
@@ -182,7 +180,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
-        mailComposerVC.setToRecipients([self.official.email ?? "sgrant001@gmail.com"])
+        mailComposerVC.setToRecipients([self.official.email!])
         mailComposerVC.setSubject("Letter from a Constituent")
         mailComposerVC.setMessageBody("\(official.name), \n\n ", isHTML: false)
         
@@ -190,13 +188,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func showSendMailErrorAlert() {
-        
-        //Can ya please redo this alert marty?
-        
-        showAlert("We could not send your email. Please check your email configuration settings & try again.", presentOn: self)
-        
-        //        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
-        //        sendMailErrorAlert.show()
+        showAlert("There is no contact email for \(self.official.name)", presentOn: self)
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method
@@ -215,7 +207,11 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     
     @IBAction func emailButtonPressed(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1105)
-        self.emailPerson()
+        if let _ = self.official.email {
+            self.emailPerson()
+        } else {
+            self.showSendMailErrorAlert()
+        }
     }
     
     // MARK: - Noise
