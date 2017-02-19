@@ -72,6 +72,7 @@ class RepresentativeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         let currentCell = tableView.cellForRow(at: indexPath) as! RepresentativesTableViewCell
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let dvc = storyboard.instantiateViewController(withIdentifier: "rdvc") as! RepDetailsViewController
