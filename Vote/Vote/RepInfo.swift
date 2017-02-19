@@ -26,6 +26,8 @@ class RepInfo {
             if let office = Office(dict: officeDict) {
                 print("office made")
                 offices.append(office)
+            } else {
+                print("office unaccounted for : \(officeDict)")
             }
         }
         
@@ -33,8 +35,11 @@ class RepInfo {
             if let official = GovernmentOfficial(dict: officialDict) {
                 print("official made")
                 officials.append(official)
+            } else {
+                dump(officialDict)
             }
         }
+        
         self.init(offices: offices, officials: officials)
     }
 }
@@ -67,18 +72,18 @@ class Office {
 
 class GovernmentOfficial {
     var name: String
-    var address: Address
     var party: String
-    var phone: String
-    var officeURL: String
+    var address: Address?
+    var phone: String?
+    var officeURL: String?
     var photoURL: String?
     var channels: [Channel]?
     var email: String?
     
-    init(name: String, address: Address, party: String, phone: String, officeURL: String, photoURL: String?, channels: [Channel]?, email: String?) {
+    init(name: String, address: Address?, party: String, phone: String?, officeURL: String?, photoURL: String?, channels: [Channel]?, email: String?) {
         self.name = name
-        self.address = address
         self.party = party
+        self.address = address
         self.phone = phone
         self.officeURL = officeURL
         self.photoURL = photoURL
@@ -88,15 +93,26 @@ class GovernmentOfficial {
     
     convenience init?(dict: [String: AnyObject]) {
         guard let name = dict["name"] as? String,
-            let addressDicts = dict["address"] as? [[String: String]],
-            let addressDict = addressDicts.first,
-            let address = Address(addressDict),
-            let phones = dict["phones"] as? [String],
-            let phone = phones.first,
-            let party = dict["party"] as? String,
-            let urls = dict["urls"] as? [String],
-            let officeURL = urls.first else { return nil }
+            let party = dict["party"] as? String else { return nil }
+        
+        var officeURL: String? = nil
+        if let urls = dict["urls"] as? [String] {
+            officeURL = urls.first
+        }
+        
+        var address: Address? = nil
+        if let addressDicts = dict["address"] as? [[String: String]],
+            let addressDict = addressDicts.first {
+            address = Address(addressDict)
+        }
+        
+        var phone: String? = nil
+        if let phones = dict["phones"] as? [String] {
+            phone = phones.first
+        }
+        
         var channels: [Channel]? = nil
+        
         if let channelDicts = dict["channels"] as? [[String: String]] {
             channels = []
             for channelDict in channelDicts {

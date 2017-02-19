@@ -25,6 +25,8 @@
 		819189FF1E58A84F0060CFC9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189FE1E58A84F0060CFC9 /* Address.swift */; };
 		81918A011E58BB540060CFC9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81918A001E58BB540060CFC9 /* APIManager.swift */; };
 		81AD80F51E58DBED002D45DF /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD80F41E58DBED002D45DF /* Article.swift */; };
+		D396A79C1E58F146005F14BA /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396A79B1E58F146005F14BA /* StyleManager.swift */; };
+		D396A79E1E58FDD1005F14BA /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396A79D1E58FDD1005F14BA /* Extension+UIColor.swift */; };
 		D48CB0625C48009591C1326C /* Pods_Vote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B376F65FACDAF0CEA87FB67 /* Pods_Vote.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,8 @@
 		81918A001E58BB540060CFC9 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		81AD80F41E58DBED002D45DF /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		9E8D478BBA950E1869A5C8F0 /* Pods-Vote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vote/Pods-Vote.debug.xcconfig"; sourceTree = "<group>"; };
+		D396A79B1E58F146005F14BA /* StyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
+		D396A79D1E58FDD1005F14BA /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 				819189E51E58906F0060CFC9 /* Assets.xcassets */,
 				819189E71E58906F0060CFC9 /* LaunchScreen.storyboard */,
 				819189EA1E58906F0060CFC9 /* Info.plist */,
+				D396A79D1E58FDD1005F14BA /* Extension+UIColor.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				81918A001E58BB540060CFC9 /* APIManager.swift */,
+				D396A79B1E58F146005F14BA /* StyleManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -303,8 +309,10 @@
 				819189FB1E58A2BB0060CFC9 /* PollLocation.swift in Sources */,
 				819189F61E589F8E0060CFC9 /* Election.swift in Sources */,
 				819189FD1E58A6770060CFC9 /* VoteAdminBody.swift in Sources */,
+				D396A79E1E58FDD1005F14BA /* Extension+UIColor.swift in Sources */,
 				814CEBD71E58CA5500614741 /* RepInfo.swift in Sources */,
 				819189FF1E58A84F0060CFC9 /* Address.swift in Sources */,
+				D396A79C1E58F146005F14BA /* StyleManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Vote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.liamkane.Vote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -442,6 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Vote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.liamkane.Vote;
 				PRODUCT_NAME = "$(TARGET_NAME)";
