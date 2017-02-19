@@ -16,10 +16,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     var zip = ""
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         zipTextField.delegate = self
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
     }
     
 //    override func viewDidLayoutSubviews() {

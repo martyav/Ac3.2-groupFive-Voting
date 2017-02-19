@@ -18,6 +18,7 @@ class RepresentativeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         self.edgesForExtendedLayout = .bottom
         self.tableView.register(RepresentativesTableViewCell.self, forCellReuseIdentifier: cellID)
         self.tableView.estimatedRowHeight = 100
