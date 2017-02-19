@@ -27,25 +27,26 @@ class StyleManager {
         // top bar
         let proxyNavBar = UINavigationBar.appearance()
         let proxyBarButton = UIBarButtonItem.appearance()
+        
         // details & text
         let proxyImageView = UIImageView.appearance()
         let proxyLabel = UILabel.appearance()
         let proxyTextField = UITextField.appearance()
         let proxyTextView = UITextView.appearance()
         let proxyPlaceholder = UILabel.appearance(whenContainedInInstancesOf: [UITextField.self])
+        
         // generalized info
         let proxyWebView = UIWebView.appearance()
         let proxyTableView = UITableView.appearance()
-        let proxyCell = UITableViewCell.appearance()
+        let proxySectionHeader = UITableViewHeaderFooterView.appearance()
+
         let proxyScrollView = UIScrollView.appearance()
         
         // top bar styling
         proxyNavBar.backgroundColor = UIColor.hackathonBlue
         proxyNavBar.tintColor = UIColor.hackathonCream
         
-        
         // detail & text styling
-        proxyLabel.textColor = UIColor.hackathonBlack
         proxyLabel.font = UIFont(name: semiboldFont, size: 20)
         proxyLabel.textColor = UIColor.hackathonGrey
        
@@ -57,7 +58,7 @@ class StyleManager {
         proxyTextField.layer.cornerRadius = 3.0
         proxyPlaceholder.font = UIFont(name: lightFont, size: 20)
         proxyPlaceholder.backgroundColor = proxyTextField.backgroundColor
-        proxyPlaceholder.textColor = proxyTextField.textColor
+        proxyPlaceholder.textColor = UIColor.hackathonCream
         proxyTextField.placeholder = "Enter your zipcode"
         
         // generalized info styling
@@ -67,8 +68,7 @@ class StyleManager {
         proxyWebView.layer.borderWidth = 1.0
         
         proxyTableView.backgroundColor = UIColor.hackathonCream
-        proxyTableView.tableHeaderView?.backgroundColor = UIColor.hackathonRed
-        proxyTableView.tableHeaderView?.tintColor = UIColor.hackathonCream
+        proxySectionHeader.tintColor = UIColor.hackathonRed
         
         proxyScrollView.bounces = true
         proxyScrollView.backgroundColor = UIColor.hackathonCream

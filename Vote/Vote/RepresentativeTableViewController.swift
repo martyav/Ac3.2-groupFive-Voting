@@ -18,7 +18,7 @@ class RepresentativeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.edgesForExtendedLayout = []
+        self.edgesForExtendedLayout = .bottom
         self.tableView.register(RepresentativesTableViewCell.self, forCellReuseIdentifier: cellID)
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -59,6 +59,9 @@ class RepresentativeTableViewController: UITableViewController {
 
         cell.official = official
         
+        cell.backgroundColor = UIColor.hackathonCream
+        cell.nameLabel.font = UIFont(name: "GillSans-SemiBold", size: 16)
+        
         return cell
     }
     
@@ -73,6 +76,11 @@ class RepresentativeTableViewController: UITableViewController {
         dvc.official = currentCell.official
         dvc.office = self.office[indexPath.section]
         self.present(dvc, animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.hackathonCream
     }
     
     /*

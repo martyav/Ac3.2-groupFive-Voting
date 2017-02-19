@@ -22,10 +22,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         zipTextField.delegate = self
     }
     
-    override func viewDidLayoutSubviews() {
-        let splash = SplashAnimationViewController()
-        self.present(splash, animated: true, completion: nil)
-    }
+//    override func viewDidLayoutSubviews() {
+//        let splash = SplashAnimationViewController()
+//        self.present(splash, animated: true, completion: nil)
+//    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
