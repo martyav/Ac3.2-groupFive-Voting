@@ -22,6 +22,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         zipTextField.delegate = self
     }
     
+//    override func viewDidLayoutSubviews() {
+//        let splash = SplashAnimationViewController()
+//        self.present(splash, animated: true, completion: nil)
+//    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         let numbers = Set<String>(arrayLiteral: "0", "1", "2", "3", "4", "5", "6", "7", "8", "9")

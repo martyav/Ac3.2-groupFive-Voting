@@ -2,10 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "redBubble.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "redBubble-1.png",
       "scale" : "2x"
     },
     {

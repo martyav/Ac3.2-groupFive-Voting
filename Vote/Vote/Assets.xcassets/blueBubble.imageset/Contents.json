@@ -2,10 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "blueBubble-2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "blueBubble-1.png",
       "scale" : "2x"
     },
     {

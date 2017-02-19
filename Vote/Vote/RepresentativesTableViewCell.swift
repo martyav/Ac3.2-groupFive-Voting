@@ -57,10 +57,10 @@ class RepresentativesTableViewCell: UITableViewCell {
         partyIcon.snp.makeConstraints { (view) in
             view.top.leading.equalToSuperview().offset(4)
             view.bottom.equalToSuperview().inset(4)
-            view.height.width.equalTo(50)
+            view.height.width.equalTo(40)
         }
         nameLabel.snp.makeConstraints { (view) in
-            view.leading.equalTo(partyIcon.snp.trailing).offset(4)
+            view.leading.equalTo(partyIcon.snp.trailing).offset(10)
             view.centerY.equalToSuperview()
             view.trailing.equalToSuperview().inset(4)
         }
@@ -78,6 +78,11 @@ class RepresentativesTableViewCell: UITableViewCell {
     
     var partyIcon: UIImageView = {
         let view = UIImageView()
+        view.contentMode = .center
+        view.backgroundColor = UIColor.hackathonWhite
+        view.layer.cornerRadius = 20
+        view.layer.borderColor = UIColor.hackathonBlue.cgColor
+        view.layer.borderWidth = 0.75
         return view
     }()
     
