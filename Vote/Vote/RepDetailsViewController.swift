@@ -81,27 +81,26 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
                 }
             }
         }
-    
-    
-        
-//                self.iconImageView = {
-//                    let imageView = UIImageView()
-//                    switch self.official.party {
-//                    case _ where self.official.party.contains("Democrat"):
-//                        self.iconImageView.image = #imageLiteral(resourceName: "democrat")
-//                    case "Republican":
-//                        self.iconImageView.image = #imageLiteral(resourceName: "republican")
-//                    default:
-//                        self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
-//                    }
-//                    imageView.contentMode = .center
-//                    imageView.backgroundColor = UIColor.hackathonWhite
-//                    imageView.layer.cornerRadius = 20
-//                    imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
-//                    imageView.layer.borderWidth = 0.75
-//                    return imageView
-//                }()
+
+                self.iconImageView = {
+                    let imageView = UIImageView()
+                    switch self.official.party {
+                    case _ where self.official.party.contains("Democrat"):
+                        self.iconImageView.image = #imageLiteral(resourceName: "democrat")
+                    case "Republican":
+                        self.iconImageView.image = #imageLiteral(resourceName: "republican")
+                    default:
+                        self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
+                    }
+                    imageView.contentMode = .center
+                    imageView.backgroundColor = UIColor.hackathonWhite
+                    imageView.layer.cornerRadius = 20
+                    imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
+                    imageView.layer.borderWidth = 0.75
+                    return imageView
+                }()
     }
+    
     /*
      // MARK: - Navigation
      
@@ -128,6 +127,15 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.article = articles[indexPath.row]
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let wvc = storyboard.instantiateViewController(withIdentifier: "wvc") as! WebViewController
+        let selection = articles[indexPath.row].webURL
+        wvc.address = selection
+        print(selection)
+        navigationController?.pushViewController(wvc, animated: true)
     }
     
     //MARK: - Helper Functions
