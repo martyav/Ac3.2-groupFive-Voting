@@ -44,14 +44,14 @@ class StyleManager {
         proxyNavBar.backgroundColor = UIColor.hackathonBlue
         proxyNavBar.tintColor = UIColor.hackathonCream
         
+        
         // detail & text styling
         proxyLabel.textColor = UIColor.hackathonBlack
         proxyLabel.font = UIFont(name: semiboldFont, size: 20)
         proxyLabel.textColor = UIColor.hackathonGrey
-        
+       
         proxyTextView.font = UIFont(name: regularFont, size: 16)
         proxyTextView.textColor = UIColor.hackathonBlack
-        
         proxyTextField.backgroundColor = UIColor.hackathonRed
         proxyTextField.textColor = UIColor.hackathonCream
         proxyTextField.font = UIFont(name: semiboldFont, size: 20)

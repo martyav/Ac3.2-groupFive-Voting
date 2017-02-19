@@ -116,4 +116,6 @@ class APIRequestManager {
             callback(voterInfo)
             }.resume()
     }
+    
+    func getImage () {}
 }
