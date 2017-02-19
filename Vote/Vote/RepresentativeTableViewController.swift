@@ -31,12 +31,14 @@ class RepresentativeTableViewController: UITableViewController {
             if let validInfo = info {
                 dump(validInfo.offices.count)
                 dump(validInfo.officials.count)
-                self.office = validInfo.offices
+                self.office = validInfo.offices.reversed()
                 self.repDetails = validInfo.officials
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+            } else {
+                //Display Alert
             }
         }
     }
