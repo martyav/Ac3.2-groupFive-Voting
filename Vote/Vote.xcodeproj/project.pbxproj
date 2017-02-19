@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D39AAE81E5A0BE900D8C77C /* Introduction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D39AAE71E5A0BE900D8C77C /* Introduction.swift */; };
 		7DF0F9871E5961CB003B0DE1 /* HeadlinesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF0F9861E5961CB003B0DE1 /* HeadlinesCollectionViewCell.swift */; };
 		7DFE85D01E58EA82003E3FD3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFE85CF1E58EA82003E3FD3 /* SearchViewController.swift */; };
 		7DFE85D21E58EAED003E3FD3 /* RepresentativeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFE85D11E58EAED003E3FD3 /* RepresentativeTableViewController.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		5A54C9E3A71C932F259EE168 /* Pods-Vote.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vote.release.xcconfig"; path = "Pods/Target Support Files/Pods-Vote/Pods-Vote.release.xcconfig"; sourceTree = "<group>"; };
 		7B376F65FACDAF0CEA87FB67 /* Pods_Vote.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vote.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D39AAE71E5A0BE900D8C77C /* Introduction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Introduction.swift; sourceTree = "<group>"; };
 		7DF0F9861E5961CB003B0DE1 /* HeadlinesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadlinesCollectionViewCell.swift; sourceTree = "<group>"; };
 		7DFE85CF1E58EA82003E3FD3 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7DFE85D11E58EAED003E3FD3 /* RepresentativeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepresentativeTableViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				7DFE85D71E58F163003E3FD3 /* WebViewController.swift */,
 				7DFE85D91E5906E8003E3FD3 /* ArticlesCollectionViewController.swift */,
 				7DF0F9861E5961CB003B0DE1 /* HeadlinesCollectionViewCell.swift */,
+				7D39AAE71E5A0BE900D8C77C /* Introduction.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				D396A79E1E58FDD1005F14BA /* Extension+UIColor.swift in Sources */,
 				814CEBD71E58CA5500614741 /* RepInfo.swift in Sources */,
 				819189FF1E58A84F0060CFC9 /* Address.swift in Sources */,
+				7D39AAE81E5A0BE900D8C77C /* Introduction.swift in Sources */,
 				D396A79C1E58F146005F14BA /* StyleManager.swift in Sources */,
 				D396A7A81E59FB7B005F14BA /* CustomAlert.swift in Sources */,
 			);

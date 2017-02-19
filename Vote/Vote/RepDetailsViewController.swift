@@ -27,6 +27,8 @@ class RepDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       print(official.photoURL)
+        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         inputViewValues()
         APIRequestManager.manager.getArticles(searchTerm: official.name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (info) in
@@ -49,44 +51,44 @@ class RepDetailsViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        self.repImageView.layer.cornerRadius = 40
+        self.repImageView.layer.cornerRadius = 60
         self.repImageView.clipsToBounds = true
+
     }
     
     func inputViewValues () {
         self.repNameLabel.text = official.name
         self.phoneNumberLabel.text = official.phone
         self.emailLabel.text = official.email
+
         
         APIRequestManager.manager.getImage(APIEndpoint: official.photoURL!) { (data) in
             if let validData = data,
                 let validImage = UIImage(data: validData) {
                 DispatchQueue.main.async {
                     self.repImageView.image = validImage
-                   
                 }
             }
         }
         
        
-        self.iconImageView = {
-            let imageView = UIImageView()
-            switch self.official.party {
-            case _ where self.official.party.contains("Democrat"):
-                self.iconImageView.image = #imageLiteral(resourceName: "democrat")
-            case "Republican":
-                self.iconImageView.image = #imageLiteral(resourceName: "republican")
-            default:
-                self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
-            }
-            imageView.contentMode = .center
-            imageView.backgroundColor = UIColor.hackathonWhite
-            imageView.layer.cornerRadius = 20
-            imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
-            imageView.layer.borderWidth = 0.75
-
-            return imageView
-        }()
+//        self.iconImageView = {
+//            let imageView = UIImageView()
+//            switch self.official.party {
+//            case _ where self.official.party.contains("Democrat"):
+//                self.iconImageView.image = #imageLiteral(resourceName: "democrat")
+//            case "Republican":
+//                self.iconImageView.image = #imageLiteral(resourceName: "republican")
+//            default:
+//                self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
+//            }
+//            imageView.contentMode = .center
+//            imageView.backgroundColor = UIColor.hackathonWhite
+//            imageView.layer.cornerRadius = 20
+//            imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
+//            imageView.layer.borderWidth = 0.75
+//            return imageView
+//        }()
     }
 
     /*
