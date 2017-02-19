@@ -29,6 +29,16 @@ class HeadlinesCollectionViewCell: UICollectionViewCell {
     
     private func inputArticle() {
         self.articleHeadlineLabel.text = self.article.headline
+        self.articleImageView.image = #imageLiteral(resourceName: "news")
+        if let url = self.article.thumbURL {
+        APIRequestManager.manager.getImage(APIEndpoint: "https://static01.nyt.com/\(url)") {(data) in
+            if let validData = data {
+                DispatchQueue.main.async {
+                    self.articleImageView.image = UIImage(data: validData)
+                }
+            }
+        }
+        }
         //self.articleImageView.image
     }
     
@@ -53,12 +63,14 @@ class HeadlinesCollectionViewCell: UICollectionViewCell {
     
     var articleImageView: UIImageView = {
         let view = UIImageView()
+        view.alpha = 0.4
         return view
     }()
     
     var articleHeadlineLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 0
+        view.textAlignment = .center
         return view
     }()
 }

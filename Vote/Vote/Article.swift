@@ -13,6 +13,7 @@ class Article {
     var source: String
     var pubDate: String
     let headline: String
+    let thumbURL: String?
     
     init?(from dict: [String:Any]) {
         if let webURL = dict["web_url"] as? String,
@@ -34,6 +35,13 @@ class Article {
         } else {
             print("error on headline")
             return nil
+        }
+        if let multimedia = dict["multimedia"] as? [[String: AnyObject]],
+            let thumbImageDict = multimedia.last,
+            let thumbURL = thumbImageDict["url"] as? String {
+            self.thumbURL = thumbURL
+        } else {
+            self.thumbURL = nil
         }
     }
     
