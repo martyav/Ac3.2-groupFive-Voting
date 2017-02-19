@@ -155,7 +155,7 @@
                                     <action selector="emailButtonPressed:" destination="YaJ-b3-0sq" eventType="touchUpInside" id="eTD-Rd-atN"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blueBubble" translatesAutoresizingMaskIntoConstraints="NO" id="3Hx-kk-53z">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redEmail" translatesAutoresizingMaskIntoConstraints="NO" id="3Hx-kk-53z">
                                 <rect key="frame" x="297" y="352.5" width="37" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="Wkt-Kv-LQf"/>
@@ -299,7 +299,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="blueBubble" width="37" height="37"/>
+        <image name="redEmail" width="37" height="37"/>
         <image name="redPhone" width="37" height="37"/>
     </resources>
 </document>
