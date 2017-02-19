@@ -10,21 +10,19 @@ import UIKit
 
 class RepDetailsViewController: UIViewController {
     
-    var official: GovernmentOfficial!
-    var office: Office!
-    var articles = [Article]()
-
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var officeLevel: UILabel!
     @IBOutlet weak var briefJobDescription: UITextView!
-    @IBOutlet weak var contactLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
 
+    var official: GovernmentOfficial!
+    var office: Office!
+    var articles = [Article]()
+   
     
     
     override func viewDidLoad() {
@@ -50,20 +48,46 @@ class RepDetailsViewController: UIViewController {
 
     }
     
-    func inputViewValues () {
-        self.repNameLabel.text = official.name
-//        self.officeLevel.text = office.name
-//        print(office.name)
-//        self.districtLabel.text = office.divisionId
-        self.officeLevel.text = office.name
-//        self.briefJobDescription.text =
-        self.contactLabel.text = "\(official.name)'s Contact Information"
-        self.phoneNumberLabel.text = official.phone
-        self.emailLabel.text = official.email
+    override func viewDidLayoutSubviews() {
+        self.repImageView.layer.cornerRadius = 40
+        self.repImageView.clipsToBounds = true
     }
     
-    
-    
+    func inputViewValues () {
+        self.repNameLabel.text = official.name
+        self.phoneNumberLabel.text = official.phone
+        self.emailLabel.text = official.email
+        
+        APIRequestManager.manager.getImage(APIEndpoint: official.photoURL!) { (data) in
+            if let validData = data,
+                let validImage = UIImage(data: validData) {
+                DispatchQueue.main.async {
+                    self.repImageView.image = validImage
+                   
+                }
+            }
+        }
+        
+       
+        self.iconImageView = {
+            let imageView = UIImageView()
+            switch self.official.party {
+            case _ where self.official.party.contains("Democrat"):
+                self.iconImageView.image = #imageLiteral(resourceName: "democrat")
+            case "Republican":
+                self.iconImageView.image = #imageLiteral(resourceName: "republican")
+            default:
+                self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
+            }
+            imageView.contentMode = .center
+            imageView.backgroundColor = UIColor.hackathonWhite
+            imageView.layer.cornerRadius = 20
+            imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
+            imageView.layer.borderWidth = 0.75
+
+            return imageView
+        }()
+    }
 
     /*
     // MARK: - Navigation

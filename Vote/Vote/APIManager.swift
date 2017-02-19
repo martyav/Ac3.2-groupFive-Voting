@@ -114,5 +114,15 @@ class APIRequestManager {
             }.resume()
     }
     
-    func getImage () {}
+    func getImage(APIEndpoint: String, callback: @escaping (Data?) -> Void) {
+            guard let customURL = URL(string: APIEndpoint) else { return }
+            let session: URLSession = URLSession(configuration: .default)
+            session.dataTask(with: customURL) { (data: Data?, response: URLResponse?, error: Error?) in
+                if error != nil {
+                    print("Encoutered networking error: \(error)")
+                }
+                guard let validData = data else { return }
+                callback(validData)
+                }.resume()
+    }
 }
