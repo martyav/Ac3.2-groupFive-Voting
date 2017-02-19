@@ -10,7 +10,7 @@ import Foundation
 import JSSAlertView
 import SnapKit
 
-class UploadProgressAlert: UIViewController {
+class CustomAlert: UIViewController {
     
     // refitting JSSAlert code to fit our needs
     
@@ -27,6 +27,7 @@ class UploadProgressAlert: UIViewController {
     var closeAction: (()-> Void)!
     var cancelAction: (() -> Void)!
     var isAlertOpen: Bool = false
+    var noButtons: Bool = false
     
     enum ActionType {
         case close, cancel
@@ -34,6 +35,7 @@ class UploadProgressAlert: UIViewController {
     
     let baseHeight: CGFloat = 160.0
     var alertWidth: CGFloat = 290.0
+    let buttonHeight: CGFloat = 70.0
     let padding: CGFloat = 20.0
     
     var viewWidth: CGFloat?
@@ -94,39 +96,43 @@ class UploadProgressAlert: UIViewController {
         let contentWidth:CGFloat = self.alertWidth - (self.padding*2)
         
         // position the title
-        
         let titleString = titleLabel.text! as NSString
         let titleAttr = [NSFontAttributeName: titleLabel.font!]
         let titleSize = CGSize(width: contentWidth, height: 90)
         let titleRect = titleString.boundingRect(with: titleSize, options: .usesLineFragmentOrigin, attributes: titleAttr, context: nil)
-        
-        yPos = padding
+        yPos += padding
         titleLabel.frame = CGRect(x: padding, y: yPos, width: alertWidth - (padding * 2), height: ceil(titleRect.height))
         yPos += ceil(titleRect.height)
         
-        // position the progressBar image view, if there is one
-        
-        if self.progressBar != nil {
-            yPos = (padding * 2)  + progressBar.frame.height
-            
-            let centerX = (self.alertWidth-self.progressBar.frame.width)/2
-            
-            self.progressBar.frame.origin = CGPoint(x: centerX, y: self.padding * 3)
-            yPos += padding * 2
-        }
         
         // position text
-        
         if self.textView != nil {
             let textString = textView.text! as NSString
             let textAttr = [NSFontAttributeName: textView.font!]
             let realSize = textView.sizeThatFits(CGSize(width: contentWidth, height: CGFloat.greatestFiniteMagnitude))
             let textSize = CGSize(width: contentWidth, height: CGFloat(fmaxf(Float(90.0), Float(realSize.height))))
             let textRect = textString.boundingRect(with: textSize, options: .usesLineFragmentOrigin, attributes: textAttr, context: nil)
-            
             textView.frame = CGRect(x: padding, y: yPos, width: alertWidth - (padding * 2), height: ceil(textRect.height) * 2)
-            
             yPos += ceil(textRect.height) + padding / 2
+        }
+        
+        // position the buttons
+        if !noButtons {
+            yPos += padding
+            var buttonWidth = alertWidth
+            if cancelButton != nil {
+                buttonWidth = alertWidth / 2
+                cancelButton.frame = CGRect(x: 0, y: yPos, width: buttonWidth - 0.5, height: buttonHeight)
+                if cancelButtonLabel != nil {
+                    cancelButtonLabel.frame = CGRect(x: padding, y: (buttonHeight / 2) - 15, width: buttonWidth - (padding * 2), height: 30)
+                }
+            }
+            
+            let buttonX = buttonWidth == alertWidth ? 0 : buttonWidth
+            dismissButton.frame = CGRect(x: buttonX, y: yPos, width: buttonWidth, height: buttonHeight)
+            if buttonLabel != nil {
+                buttonLabel.frame = CGRect(x: padding, y: (buttonHeight / 2) - 15, width: buttonWidth - (padding * 2), height: 30)
+            }
         }
         
         // size the background view
@@ -164,12 +170,11 @@ class UploadProgressAlert: UIViewController {
     @discardableResult
     
     public func show(_ viewController: UIViewController,
-              title: String,
-              text: String? = nil,
-              noButtons: Bool = false,
-              addProgressBar: Bool = false,
-              buttonText: String? = nil,
-              cancelButtonText: String? = nil
+                     title: String,
+                     text: String? = nil,
+                     noButtons: Bool = false,
+                     buttonText: String? = nil,
+                     cancelButtonText: String? = nil
         ) -> TotallyNotJSSResponder {
         
         rootViewController = viewController
@@ -202,17 +207,6 @@ class UploadProgressAlert: UIViewController {
         
         containerView.addSubview(alertBackgroundView!)
         
-        // Progress Bar
-        
-        self.progressBar = UIProgressView(progressViewStyle: UIProgressViewStyle.default)
-        
-        if addProgressBar {
-            progressBar?.progressTintColor = UIColor.hackathonRed
-            progressBar?.trackTintColor = UIColor.hackathonWhite
-            
-            containerView.addSubview(progressBar!)
-        }
-        
         // Title
         
         titleLabel = UILabel()
@@ -240,7 +234,7 @@ class UploadProgressAlert: UIViewController {
         
         // Button
         if !noButtons {
-            //self.noButtons = false
+            self.noButtons = false
             dismissButton = UIButton()
             let buttonColor = UIImage.with(color: adjustBrightness(baseColor, amount: 0.8))
             let buttonHighlightColor = UIImage.with(color: adjustBrightness(baseColor, amount: 0.9))
@@ -267,7 +261,7 @@ class UploadProgressAlert: UIViewController {
                 let buttonHighlightColor = UIImage.with(color: adjustBrightness(baseColor, amount: 0.9))
                 cancelButton.setBackgroundImage(buttonColor, for: .normal)
                 cancelButton.setBackgroundImage(buttonHighlightColor, for: .highlighted)
-                cancelButton.addTarget(self, action: #selector(self.cancelButtonTap), for: .touchUpInside)
+                cancelButton.addTarget(self, action: #selector(getter: self.cancelButton), for: .touchUpInside)
                 alertBackgroundView!.addSubview(cancelButton)
                 // Button text
                 cancelButtonLabel = UILabel()
@@ -312,11 +306,11 @@ class UploadProgressAlert: UIViewController {
     // Responder for user interaction
     
     class TotallyNotJSSResponder {
-        let alertview: UploadProgressAlert
+        let alertview: CustomAlert
         /// Contructor
         ///
         /// - Parameter alertview: constructs it self from JSSAlertView
-        public init(alertview: UploadProgressAlert) {
+        public init(alertview: CustomAlert) {
             self.alertview = alertview
         }
         
@@ -375,8 +369,8 @@ class UploadProgressAlert: UIViewController {
 }
 
 func showAlert(_ message: String, presentOn: UIViewController) {
-    let alertview = UploadProgressAlert().show(presentOn,
-                                        title: message.uppercased(),
-                                        buttonText: "Ok, fine".uppercased()
+    let alertview = CustomAlert().show(presentOn,
+                                       title: message.uppercased(),
+                                       buttonText: "Ok, fine".uppercased()
     )
 }

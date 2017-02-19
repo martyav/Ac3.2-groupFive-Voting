@@ -35,6 +35,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         self.time = 0.0
 
+        showAlert("Hi there", presentOn: self)
         
         if !zipTextField.text!.isEmpty {
             zipTextField.text = ""
