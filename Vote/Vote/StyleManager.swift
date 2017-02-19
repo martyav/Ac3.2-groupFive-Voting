@@ -58,7 +58,7 @@ class StyleManager {
         proxyPlaceholder.font = UIFont(name: lightFont, size: 20)
         proxyPlaceholder.backgroundColor = proxyTextField.backgroundColor
         proxyPlaceholder.textColor = proxyTextField.textColor
-        proxyTextField.text = "Enter your zipcode"
+        proxyTextField.placeholder = "Enter your zipcode"
         
         // generalized info styling
         proxyWebView.scalesPageToFit = true
