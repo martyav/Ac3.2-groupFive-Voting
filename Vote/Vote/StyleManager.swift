@@ -26,7 +26,6 @@ class StyleManager {
         
         // top bar
         let proxyNavBar = UINavigationBar.appearance()
-        let proxyBarButton = UIBarButtonItem.appearance()
         
         // details & text
         let proxyImageView = UIImageView.appearance()
@@ -39,12 +38,13 @@ class StyleManager {
         let proxyWebView = UIWebView.appearance()
         let proxyTableView = UITableView.appearance()
         let proxySectionHeader = UITableViewHeaderFooterView.appearance()
-
+        let proxyCell = UITableViewCell.appearance()
         let proxyScrollView = UIScrollView.appearance()
         
         // top bar styling
-        proxyNavBar.backgroundColor = UIColor.hackathonBlue
+        proxyNavBar.barTintColor = UIColor.hackathonBlue
         proxyNavBar.tintColor = UIColor.hackathonCream
+        proxyNavBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.hackathonCream, NSFontAttributeName: UIFont(name: boldFont, size: 21)!]
         
         // detail & text styling
         proxyLabel.font = UIFont(name: semiboldFont, size: 20)
@@ -70,6 +70,10 @@ class StyleManager {
         
         proxyTableView.backgroundColor = UIColor.hackathonCream
         proxySectionHeader.tintColor = UIColor.hackathonRed
+        
+        proxyCell.preservesSuperviewLayoutMargins = false
+        proxyCell.separatorInset = UIEdgeInsets.zero
+        proxyCell.layoutMargins = UIEdgeInsets.zero
         
         proxyScrollView.bounces = true
         proxyScrollView.backgroundColor = UIColor.hackathonCream

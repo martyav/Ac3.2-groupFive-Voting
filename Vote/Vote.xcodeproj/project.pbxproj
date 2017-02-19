@@ -29,6 +29,7 @@
 		D396A79C1E58F146005F14BA /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396A79B1E58F146005F14BA /* StyleManager.swift */; };
 		D396A79E1E58FDD1005F14BA /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396A79D1E58FDD1005F14BA /* Extension+UIColor.swift */; };
 		D396A7A41E59551D005F14BA /* SplashAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396A7A31E59551D005F14BA /* SplashAnimationViewController.swift */; };
+		D396A7A81E59FB7B005F14BA /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396A7A71E59FB7B005F14BA /* CustomAlert.swift */; };
 		D48CB0625C48009591C1326C /* Pods_Vote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B376F65FACDAF0CEA87FB67 /* Pods_Vote.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		D396A79B1E58F146005F14BA /* StyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
 		D396A79D1E58FDD1005F14BA /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D396A7A31E59551D005F14BA /* SplashAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashAnimationViewController.swift; sourceTree = "<group>"; };
+		D396A7A71E59FB7B005F14BA /* CustomAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		819189F01E589DBF0060CFC9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D396A7A71E59FB7B005F14BA /* CustomAlert.swift */,
 				819189DE1E58906F0060CFC9 /* AppDelegate.swift */,
 				D396A7A31E59551D005F14BA /* SplashAnimationViewController.swift */,
 				819189E51E58906F0060CFC9 /* Assets.xcassets */,
@@ -321,6 +324,7 @@
 				814CEBD71E58CA5500614741 /* RepInfo.swift in Sources */,
 				819189FF1E58A84F0060CFC9 /* Address.swift in Sources */,
 				D396A79C1E58F146005F14BA /* StyleManager.swift in Sources */,
+				D396A7A81E59FB7B005F14BA /* CustomAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
