@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -137,6 +138,16 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
             if (application.canOpenURL(phoneCallURL)) {
                 application.openURL(phoneCallURL)
             }
+        }
+    }
+    
+    // MARK: - Noise
+    
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (self.isMovingFromParentViewController){
+            AudioServicesPlaySystemSound(1105)
         }
     }
 }

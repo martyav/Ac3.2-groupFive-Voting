@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class RepresentativeTableViewController: UITableViewController {
     
@@ -92,6 +93,16 @@ class RepresentativeTableViewController: UITableViewController {
         header.textLabel?.numberOfLines = 2
         header.textLabel?.textAlignment = .center
         header.textLabel?.adjustsFontForContentSizeCategory = true
+    }
+    
+    // MARK: - Noise
+    
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (self.isMovingFromParentViewController){
+            AudioServicesPlaySystemSound(1105)
+        }
     }
     
     /*
