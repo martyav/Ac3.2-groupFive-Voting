@@ -64,7 +64,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
         if let phoneNumber = official.phone {
             print(phoneNumber)
-            self.callNumber(phoneNumber: "2126399675")
+            self.callNumber(phoneNumber)
         }
         
         if let photoURL = official.photoURL {
@@ -129,11 +129,15 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     
     //MARK: - Helper Functions
     
-    func callNumber(phoneNumber:String) {
+    func callNumber(_ weirdPhoneNumber: String) {
+        let numbers = Set<Character>(arrayLiteral: "0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+        let validPhoneNumber = weirdPhoneNumber.characters.filter { numbers.contains($0) }
+        let phoneNumber = String(validPhoneNumber)
+        print(phoneNumber)
         if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
-                application.openURL(phoneCallURL);
+                application.open(phoneCallURL, options: [:], completionHandler: nil)
             }
         }
     }
