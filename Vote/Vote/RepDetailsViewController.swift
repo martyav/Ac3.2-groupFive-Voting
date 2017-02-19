@@ -12,6 +12,8 @@ import AudioToolbox
 
 class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MFMailComposeViewControllerDelegate {
     
+    @IBOutlet weak var phoneIconImageView: UIImageView!
+    @IBOutlet weak var emailIconImageView: UIImageView!
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -60,9 +62,13 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         self.repNameLabel.text = official.name
         self.repImageView.image = UIImage(named: "placeholderPic")
 
-        if let phone = official.phone, let email = official.email {
-        self.phoneNumberButton.setTitle("\(phone)", for: .normal)
+        if let phone = official.phone {
+            self.phoneNumberButton.setTitle("\(phone)", for: .normal)
+            self.phoneIconImageView.image = #imageLiteral(resourceName: "greenPhone")
+        }
+        if let email = official.email {
         self.emailButton.setTitle("\(email)", for: .normal)
+            self.emailIconImageView.image = #imageLiteral(resourceName: "greenEmail")
         }
         
         if let photoURL = official.photoURL {
@@ -75,27 +81,26 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
                 }
             }
         }
-    
-    
-        
-//                self.iconImageView = {
-//                    let imageView = UIImageView()
-//                    switch self.official.party {
-//                    case _ where self.official.party.contains("Democrat"):
-//                        self.iconImageView.image = #imageLiteral(resourceName: "democrat")
-//                    case "Republican":
-//                        self.iconImageView.image = #imageLiteral(resourceName: "republican")
-//                    default:
-//                        self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
-//                    }
-//                    imageView.contentMode = .center
-//                    imageView.backgroundColor = UIColor.hackathonWhite
-//                    imageView.layer.cornerRadius = 20
-//                    imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
-//                    imageView.layer.borderWidth = 0.75
-//                    return imageView
-//                }()
+
+                self.iconImageView = {
+                    let imageView = UIImageView()
+                    switch self.official.party {
+                    case _ where self.official.party.contains("Democrat"):
+                        self.iconImageView.image = #imageLiteral(resourceName: "democrat")
+                    case "Republican":
+                        self.iconImageView.image = #imageLiteral(resourceName: "republican")
+                    default:
+                        self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
+                    }
+                    imageView.contentMode = .center
+                    imageView.backgroundColor = UIColor.hackathonWhite
+                    imageView.layer.cornerRadius = 20
+                    imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
+                    imageView.layer.borderWidth = 0.75
+                    return imageView
+                }()
     }
+    
     /*
      // MARK: - Navigation
      
@@ -128,6 +133,15 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.article = articles[indexPath.row]
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let wvc = storyboard.instantiateViewController(withIdentifier: "wvc") as! WebViewController
+        let selection = articles[indexPath.row].webURL
+        wvc.address = selection
+        print(selection)
+        navigationController?.pushViewController(wvc, animated: true)
     }
     
     //MARK: - Helper Functions
@@ -163,8 +177,8 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
         mailComposerVC.setToRecipients([self.official.email ?? "sgrant001@gmail.com"])
-        mailComposerVC.setSubject("Sending you an in-app e-mail...")
-        mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
+        mailComposerVC.setSubject("Letter from a Constituent")
+        mailComposerVC.setMessageBody("\(official.name), \n\n ", isHTML: false)
         
         return mailComposerVC
     }
