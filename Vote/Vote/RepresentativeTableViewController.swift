@@ -105,6 +105,10 @@ class RepresentativeTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        AudioServicesPlaySystemSound(1105)
+    }
+    
     /*
      // MARK: - Navigation
      

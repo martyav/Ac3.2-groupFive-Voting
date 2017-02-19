@@ -150,6 +150,10 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
             AudioServicesPlaySystemSound(1105)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        AudioServicesPlaySystemSound(1105)
+    }
 }
 
 
