@@ -17,9 +17,7 @@ class RepDetailsViewController: UIViewController {
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var officeLevel: UILabel!
     @IBOutlet weak var briefJobDescription: UITextView!
-    @IBOutlet weak var contactLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -29,6 +27,7 @@ class RepDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         inputViewValues()
         APIRequestManager.manager.getArticles(searchTerm: official.name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (info) in
 //            print(info?.count)
@@ -48,18 +47,22 @@ class RepDetailsViewController: UIViewController {
     
     func inputViewValues () {
         self.repNameLabel.text = official.name
-//        self.officeLevel.text = office.name
-//        print(office.name)
-//        self.districtLabel.text = office.divisionId
-        self.officeLevel.text = office.levels
-//        self.briefJobDescription.text =
-        self.contactLabel.text = "\(official.name)'s Contact Information"
         self.phoneNumberLabel.text = official.phone
         self.emailLabel.text = official.email
+        
+        APIRequestManager.manager.getImage(APIEndpoint: official.photoURL!) { (data) in
+            if let validData = data,
+                let validImage = UIImage(data: validData) {
+                DispatchQueue.main.async {
+                    self.repImageView.image = validImage
+                   
+                }
+            }
+        }
+         self.repImageView.layer.cornerRadius = 20
+        let rep = RepresentativesTableViewCell()
+       self.iconImageView.image = rep.partyIcon.image
     }
-    
-    
-    
 
     /*
     // MARK: - Navigation
