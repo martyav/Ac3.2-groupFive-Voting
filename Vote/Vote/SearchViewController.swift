@@ -47,7 +47,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let numbers = Set<String>(arrayLiteral: "0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
-        guard numbers.contains(string) || string.isEmpty else { return false }
+        guard (numbers.contains(string) || string.isEmpty), textField.text!.characters.count < 5 else  { return false }
         
         return true
     }
