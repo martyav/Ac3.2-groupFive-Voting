@@ -29,7 +29,12 @@ class HeadlinesCollectionViewCell: UICollectionViewCell {
     
     private func inputArticle() {
         self.articleHeadlineLabel.text = self.article.headline
+        self.articleHeadlineLabel.alpha = 0.7
+        self.articleHeadlineLabel.font = UIFont(name: "GillSans-SemiBold", size: 16)
+        self.articleHeadlineLabel.backgroundColor = UIColor.hackathonBlack
+        self.articleHeadlineLabel.textColor = UIColor.hackathonCream
         self.articleImageView.image = #imageLiteral(resourceName: "news")
+        self.articleImageView.contentMode = .scaleAspectFit
         if let url = self.article.thumbURL {
         APIRequestManager.manager.getImage(APIEndpoint: "https://static01.nyt.com/\(url)") {(data) in
             if let validData = data {
@@ -55,7 +60,8 @@ class HeadlinesCollectionViewCell: UICollectionViewCell {
         }
         
         articleHeadlineLabel.snp.makeConstraints { (view) in
-            view.leading.trailing.bottom.equalToSuperview()
+            view.leading.trailing.equalToSuperview()
+            view.centerY.equalToSuperview()
         }
     }
     
@@ -63,7 +69,6 @@ class HeadlinesCollectionViewCell: UICollectionViewCell {
     
     var articleImageView: UIImageView = {
         let view = UIImageView()
-        view.alpha = 0.4
         return view
     }()
     
@@ -71,6 +76,7 @@ class HeadlinesCollectionViewCell: UICollectionViewCell {
         let view = UILabel()
         view.numberOfLines = 0
         view.textAlignment = .center
+        view.lineBreakMode = .byWordWrapping
         return view
     }()
 }
