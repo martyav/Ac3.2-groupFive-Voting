@@ -11,14 +11,15 @@ import WebKit
 
 class WebViewController: UIViewController, WKNavigationDelegate, UIWebViewDelegate  {
     var request: URLRequest?
-
+    
     @IBOutlet weak var webView: UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
+        
+        title = "Articles"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
     }
     
     
-    }
+}

@@ -18,6 +18,8 @@ class RepresentativeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "List of Reps"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         self.edgesForExtendedLayout = .bottom
         self.tableView.register(RepresentativesTableViewCell.self, forCellReuseIdentifier: cellID)
         self.tableView.estimatedRowHeight = 100
@@ -29,7 +31,7 @@ class RepresentativeTableViewController: UITableViewController {
             if let validInfo = info {
                 dump(validInfo.offices.count)
                 dump(validInfo.officials.count)
-                self.office = validInfo.offices
+                self.office = validInfo.offices.reversed()
                 self.repDetails = validInfo.officials
                 
                 DispatchQueue.main.async {
