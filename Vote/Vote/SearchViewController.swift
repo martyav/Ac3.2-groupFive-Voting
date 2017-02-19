@@ -33,8 +33,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         
         self.time = 0.0
-
-        // uncomment to test -- showAlert("Hi there", presentOn: self)
         
         if !zipTextField.text!.isEmpty {
             zipTextField.text = ""
@@ -72,6 +70,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             self.navigationController?.pushViewController(dvc, animated: true)
             timer.invalidate()
         }
+        
         self.time += 1
     }
     
