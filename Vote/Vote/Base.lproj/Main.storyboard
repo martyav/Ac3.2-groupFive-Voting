@@ -112,7 +112,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gd-CN-a7a">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gd-CN-a7a">
                                 <rect key="frame" x="51" y="370" width="295" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -209,7 +209,7 @@
                             <constraint firstAttribute="trailing" secondItem="gHr-Og-qib" secondAttribute="trailing" constant="16" id="UXj-Sv-WOw"/>
                             <constraint firstItem="8gd-CN-a7a" firstAttribute="leading" secondItem="G56-iA-OyN" secondAttribute="leading" id="XAm-vL-eHY"/>
                             <constraint firstItem="9Th-Vl-AFx" firstAttribute="top" secondItem="Nye-mm-c6Z" secondAttribute="bottom" constant="18" id="ZPG-RJ-vg5"/>
-                            <constraint firstItem="8gd-CN-a7a" firstAttribute="top" secondItem="G56-iA-OyN" secondAttribute="bottom" constant="8" symbolic="YES" id="Zef-T0-Hv4"/>
+                            <constraint firstItem="8gd-CN-a7a" firstAttribute="top" secondItem="G56-iA-OyN" secondAttribute="bottom" constant="10" id="Zef-T0-Hv4"/>
                             <constraint firstItem="gHr-Og-qib" firstAttribute="top" secondItem="9Fd-4f-9Nm" secondAttribute="top" constant="482" id="cbA-Sy-cdx"/>
                             <constraint firstItem="XTZ-xF-YYT" firstAttribute="leading" secondItem="QdY-n1-3pa" secondAttribute="trailing" constant="-3" id="eeL-30-JlQ"/>
                             <constraint firstItem="QdY-n1-3pa" firstAttribute="top" secondItem="9Th-Vl-AFx" secondAttribute="bottom" constant="8" symbolic="YES" id="g8L-gL-HrI"/>

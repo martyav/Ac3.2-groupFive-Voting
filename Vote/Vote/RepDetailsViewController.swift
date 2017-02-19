@@ -10,10 +10,6 @@ import UIKit
 
 class RepDetailsViewController: UIViewController {
     
-    var official: GovernmentOfficial!
-    var office: Office!
-    var articles = [Article]()
-
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -23,6 +19,10 @@ class RepDetailsViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var collectionView: UICollectionView!
 
+    var official: GovernmentOfficial!
+    var office: Office!
+    var articles = [Article]()
+   
     
     
     override func viewDidLoad() {
@@ -59,9 +59,19 @@ class RepDetailsViewController: UIViewController {
                 }
             }
         }
-         self.repImageView.layer.cornerRadius = 20
-        let rep = RepresentativesTableViewCell()
-       self.iconImageView.image = rep.partyIcon.image
+       
+        self.iconImageView = {
+            let imageView = UIImageView()
+            switch self.official.party {
+            case _ where self.official.party.contains("Democrat"):
+                self.iconImageView.image = #imageLiteral(resourceName: "democrat")
+            case "Republican":
+                self.iconImageView.image = #imageLiteral(resourceName: "republican")
+            default:
+                self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
+            }
+            return imageView
+        }()
     }
 
     /*
