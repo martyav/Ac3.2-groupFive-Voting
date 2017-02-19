@@ -12,6 +12,8 @@ import AudioToolbox
 
 class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MFMailComposeViewControllerDelegate {
     
+    @IBOutlet weak var phoneIconImageView: UIImageView!
+    @IBOutlet weak var emailIconImageView: UIImageView!
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -61,9 +63,13 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         self.repNameLabel.text = official.name
         self.repImageView.image = UIImage(named: "placeholderPic")
 
-        if let phone = official.phone, let email = official.email {
-        self.phoneNumberButton.setTitle("\(phone)", for: .normal)
+        if let phone = official.phone {
+            self.phoneNumberButton.setTitle("\(phone)", for: .normal)
+            self.phoneIconImageView.image = #imageLiteral(resourceName: "greenPhone")
+        }
+        if let email = official.email {
         self.emailButton.setTitle("\(email)", for: .normal)
+            self.emailIconImageView.image = #imageLiteral(resourceName: "greenEmail")
         }
         
         if let photoURL = official.photoURL {
