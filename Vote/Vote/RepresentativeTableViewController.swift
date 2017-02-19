@@ -37,6 +37,8 @@ class RepresentativeTableViewController: UITableViewController {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+            } else {
+                //Display Alert
             }
         }
     }
