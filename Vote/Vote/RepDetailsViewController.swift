@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
@@ -58,11 +59,6 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     func inputViewValues () {
         self.repNameLabel.text = official.name
         self.repImageView.image = UIImage(named: "placeholderPic")
-        
-        if let phoneNumber = official.phone {
-            print(phoneNumber)
-            self.callNumber(phoneNumber)
-        }
 
         if let phone = official.phone, let email = official.email {
         self.phoneNumberButton.setTitle("\(phone)", for: .normal)
@@ -75,7 +71,6 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
                     let validImage = UIImage(data: validData) {
                     DispatchQueue.main.async {
                         self.repImageView.image = validImage
-                        
                     }
                 }
             }
@@ -143,6 +138,58 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
             }
         }
     }
+    
+    func emailPerson() {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    
+    //MARK: - Actions
+       
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients([self.official.email ?? "sgrant001@gmail.com"])
+        mailComposerVC.setSubject("Sending you an in-app e-mail...")
+        mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        
+        //Can ya please redo this alert marty?
+        
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+
+ 
+    
+    @IBAction func phoneButtonPressed(_ sender: UIButton) {
+        if let number = self.official.phone {
+            callNumber(number)
+        } else {
+            //ADD ALERT ABOUT LACKING PHONE NUMBER
+        }
+    }
+    
+    @IBAction func emailButtonPressed(_ sender: UIButton) {
+        self.emailPerson()
+    }
+    
 }
 
 
