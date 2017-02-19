@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -47,7 +47,7 @@
         <!--Representative Table View Controller-->
         <scene sceneID="5E3-Sy-PKw">
             <objects>
-                <tableViewController id="d90-MQ-qn9" customClass="RepresentativeTableViewController" customModule="Vote" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="rtvc" id="d90-MQ-qn9" customClass="RepresentativeTableViewController" customModule="Vote" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uIp-Dd-Yv9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,9 +57,12 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LFY-2F-lHq" id="iqz-Tj-DRh">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="YaJ-b3-0sq" kind="show" id="eA4-Yn-JPx"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -75,7 +78,7 @@
         <!--Rep Details View Controller-->
         <scene sceneID="1MU-9F-DWy">
             <objects>
-                <viewController id="YaJ-b3-0sq" customClass="RepDetailsViewController" customModule="Vote" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rdvc" id="YaJ-b3-0sq" customClass="RepDetailsViewController" customModule="Vote" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nye-mm-c6Z"/>
                         <viewControllerLayoutGuide type="bottom" id="cB2-sL-OkI"/>

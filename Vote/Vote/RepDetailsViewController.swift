@@ -9,6 +9,9 @@
 import UIKit
 
 class RepDetailsViewController: UIViewController {
+    
+    var official: GovernmentOfficial!
+    var office: Office!
 
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
@@ -24,10 +27,16 @@ class RepDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        repImageView.layer.cornerRadius = repImageView.frame.size.width/2
-        
+        inputViewValues()
+        APIRequestManager.manager.getArticles(searchTerm: official.name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (info) in
+            print(info?.count)
+        }
     }
-
+    
+    func inputViewValues () {
+        self.repNameLabel.text = official.name
+        self.officeLevel.text = office.name
+    }
     
 
     /*

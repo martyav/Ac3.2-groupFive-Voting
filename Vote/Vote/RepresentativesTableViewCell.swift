@@ -78,7 +78,6 @@ class RepresentativesTableViewCell: UITableViewCell {
     
     var partyIcon: UIImageView = {
         let view = UIImageView()
-        view.image = #imageLiteral(resourceName: "republican")
         return view
     }()
     
