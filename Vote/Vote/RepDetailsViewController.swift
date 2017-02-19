@@ -29,7 +29,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         inputViewValues()
         
@@ -53,21 +53,23 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     override func viewDidLayoutSubviews() {
-        self.repImageView.layer.cornerRadius = 30
         self.repImageView.clipsToBounds = true
         self.repImageView.contentMode = .scaleAspectFit
     }
     
     func inputViewValues () {
         self.repNameLabel.text = official.name
+        //self.repNameLabel.lineBreakMode = .byWordWrapping
+        self.repNameLabel.adjustsFontForContentSizeCategory = true
         self.repImageView.image = UIImage(named: "placeholderPic")
-
+        
         if let phone = official.phone {
             self.phoneNumberButton.setTitle("\(phone)", for: .normal)
             self.phoneIconImageView.image = #imageLiteral(resourceName: "greenPhone")
         }
+        
         if let email = official.email {
-        self.emailButton.setTitle("\(email)", for: .normal)
+            self.emailButton.setTitle("\(email)", for: .normal)
             self.emailIconImageView.image = #imageLiteral(resourceName: "greenEmail")
         }
         
@@ -81,24 +83,23 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
                 }
             }
         }
-
-                self.iconImageView = {
-                    let imageView = UIImageView()
-                    switch self.official.party {
-                    case _ where self.official.party.contains("Democrat"):
-                        self.iconImageView.image = #imageLiteral(resourceName: "democrat")
-                    case "Republican":
-                        self.iconImageView.image = #imageLiteral(resourceName: "republican")
-                    default:
-                        self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
-                    }
-                    imageView.contentMode = .center
-                    imageView.backgroundColor = UIColor.hackathonWhite
-                    imageView.layer.cornerRadius = 20
-                    imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
-                    imageView.layer.borderWidth = 0.75
-                    return imageView
-                }()
+        
+        self.iconImageView = {
+            let imageView = UIImageView()
+            switch self.official.party {
+            case _ where self.official.party.contains("Democrat"):
+                self.iconImageView.image = #imageLiteral(resourceName: "democrat")
+            case "Republican":
+                self.iconImageView.image = #imageLiteral(resourceName: "republican")
+            default:
+                self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
+            }
+            imageView.contentMode = .center
+            imageView.backgroundColor = UIColor.hackathonWhite
+            imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
+            imageView.layer.borderWidth = 0.75
+            return imageView
+        }()
     }
     
     /*
@@ -170,7 +171,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     
     
     //MARK: - Actions
-       
+    
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
@@ -189,8 +190,8 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
         showAlert("We could not send your email. Please check your email configuration settings & try again.", presentOn: self)
         
-//        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
-//        sendMailErrorAlert.show()
+        //        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        //        sendMailErrorAlert.show()
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method

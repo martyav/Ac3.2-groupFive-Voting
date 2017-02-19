@@ -69,7 +69,6 @@ class HeadlinesCollectionViewCell: UICollectionViewCell {
     
     var articleImageView: UIImageView = {
         let view = UIImageView()
-        //view.alpha = 0.2
         return view
     }()
     
