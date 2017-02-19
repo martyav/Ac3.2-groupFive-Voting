@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jdT-05-PPF">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jdT-05-PPF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -137,48 +137,7 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="169" height="118"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QdT-Mt-vxv">
-                                                    <rect key="frame" x="0.0" y="79" width="169" height="39"/>
-                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2Hm-LC-P6A">
-                                                        <rect key="frame" x="0.0" y="0.0" width="169" height="39"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4l-o0-J6a">
-                                                                <rect key="frame" x="8" y="0.0" width="153" height="39"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="l4l-o0-J6a" firstAttribute="leading" secondItem="2Hm-LC-P6A" secondAttribute="leadingMargin" id="3zc-uC-WDM"/>
-                                                            <constraint firstAttribute="bottom" secondItem="l4l-o0-J6a" secondAttribute="bottom" id="RtG-ar-u41"/>
-                                                            <constraint firstItem="l4l-o0-J6a" firstAttribute="width" secondItem="2Hm-LC-P6A" secondAttribute="width" id="cwi-0e-Chc"/>
-                                                            <constraint firstItem="l4l-o0-J6a" firstAttribute="top" secondItem="2Hm-LC-P6A" secondAttribute="top" id="mvM-5B-ivn"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <blurEffect style="light"/>
-                                                </visualEffectView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cnX-yH-VEQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="169" height="118"/>
-                                                </imageView>
-                                            </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstItem="cnX-yH-VEQ" firstAttribute="leading" secondItem="QdT-Mt-vxv" secondAttribute="leading" id="BpN-ug-HTD"/>
-                                            <constraint firstItem="cnX-yH-VEQ" firstAttribute="leading" secondItem="AUB-Pl-CC6" secondAttribute="leading" id="E9x-bo-UbK"/>
-                                            <constraint firstAttribute="bottom" secondItem="cnX-yH-VEQ" secondAttribute="bottom" id="UHy-to-Pi4"/>
-                                            <constraint firstItem="QdT-Mt-vxv" firstAttribute="bottom" secondItem="cnX-yH-VEQ" secondAttribute="bottom" id="YtC-Z9-DLa"/>
-                                            <constraint firstItem="cnX-yH-VEQ" firstAttribute="top" secondItem="AUB-Pl-CC6" secondAttribute="top" id="mNi-u0-Lxl"/>
-                                            <constraint firstItem="cnX-yH-VEQ" firstAttribute="trailing" secondItem="QdT-Mt-vxv" secondAttribute="trailing" id="pXp-gb-U2N"/>
-                                            <constraint firstItem="QdT-Mt-vxv" firstAttribute="width" secondItem="AUB-Pl-CC6" secondAttribute="width" id="rPp-2H-mIp"/>
-                                            <constraint firstItem="QdT-Mt-vxv" firstAttribute="top" secondItem="AUB-Pl-CC6" secondAttribute="topMargin" constant="71" id="rz3-qV-1NA"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="headlineImageView" destination="cnX-yH-VEQ" id="XkQ-Bt-O2F"/>
-                                            <outlet property="headlineLabel" destination="l4l-o0-J6a" id="PJU-MU-HaP"/>
-                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
