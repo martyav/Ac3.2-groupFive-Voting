@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import AudioToolbox
 
 class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MFMailComposeViewControllerDelegate {
     
@@ -190,6 +191,19 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         self.emailPerson()
     }
     
+    // MARK: - Noise
+    
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (self.isMovingFromParentViewController){
+            AudioServicesPlaySystemSound(1105)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        AudioServicesPlaySystemSound(1105)
+    }
 }
 
 
