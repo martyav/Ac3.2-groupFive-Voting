@@ -9,13 +9,18 @@
 import UIKit
 import AudioToolbox
 
+protocol ZipAlertDelegate {
+    var presentAlert: Bool {get set}
+}
+
 class RepresentativeTableViewController: UITableViewController {
     
     let cellID = "repCell"
     var representatives = [RepInfo]()
     var office = [Office]()
     var repDetails = [GovernmentOfficial]()
-
+    var delegate: ZipAlertDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +34,7 @@ class RepresentativeTableViewController: UITableViewController {
         self.tableView.separatorInset = UIEdgeInsets.zero
         self.tableView.layoutMargins = UIEdgeInsets.zero
     }
-
+    
     func getReps(from zip: String) {
         APIRequestManager.manager.getRepInfo(endPoint: "https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBU0xkqxzxgDJfcSabEFYMXD9M-i8ugdGo&address=\(zip)") { (info) in
             if let validInfo = info {
@@ -42,17 +47,18 @@ class RepresentativeTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             } else {
-                //Display Alert
+                self.delegate.presentAlert = true
+                _ = self.navigationController?.popViewController(animated: true)
             }
         }
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return office.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return office[section].indices.count
     }
@@ -63,7 +69,7 @@ class RepresentativeTableViewController: UITableViewController {
         print(officialIndex)
         print()
         let official = self.repDetails[officialIndex]
-
+        
         cell.official = official
         
         cell.backgroundColor = UIColor.hackathonCream
@@ -77,7 +83,7 @@ class RepresentativeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         let currentCell = tableView.cellForRow(at: indexPath) as! RepresentativesTableViewCell
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let dvc = storyboard.instantiateViewController(withIdentifier: "rdvc") as! RepDetailsViewController
@@ -118,6 +124,6 @@ class RepresentativeTableViewController: UITableViewController {
      // Pass the selected object to the new view controller.
      }
      */
-
-}
     
+}
+

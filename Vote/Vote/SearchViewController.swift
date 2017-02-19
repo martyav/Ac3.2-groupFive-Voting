@@ -13,12 +13,13 @@ import AudioToolbox
 let context = 0
 
 
-class SearchViewController: UIViewController, UITextFieldDelegate {
+class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDelegate {
 
     @IBOutlet weak var zipTextField: UITextField!
     
     var time = 0.0
     var timer: Timer!
+    var presentAlert: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         if !zipTextField.text!.isEmpty {
             zipTextField.text = ""
+        }
+        
+        if presentAlert {
+            showAlert("Invalid Zipcode", presentOn: self)
+            self.presentAlert = false
         }
 
     }
@@ -67,6 +73,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let dvc = storyboard.instantiateViewController(withIdentifier: "rtvc") as! RepresentativeTableViewController
             dvc.getReps(from: self.zipTextField.text!)
+            dvc.delegate = self
             self.navigationController?.pushViewController(dvc, animated: true)
             timer.invalidate()
         }
