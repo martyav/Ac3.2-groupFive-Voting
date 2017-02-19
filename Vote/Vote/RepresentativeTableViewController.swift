@@ -17,6 +17,7 @@ class RepresentativeTableViewController: UITableViewController, ZipDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.edgesForExtendedLayout = []
         self.tableView.register(RepresentativesTableViewCell.self, forCellReuseIdentifier: cellID)
         self.tableView.estimatedRowHeight = 100

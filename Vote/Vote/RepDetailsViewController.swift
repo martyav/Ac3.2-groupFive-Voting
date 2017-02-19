@@ -10,16 +10,24 @@ import UIKit
 
 class RepDetailsViewController: UIViewController {
 
+    @IBOutlet weak var repImageView: UIImageView!
+    @IBOutlet weak var repNameLabel: UILabel!
+    @IBOutlet weak var districtLabel: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var officeLevel: UILabel!
+    @IBOutlet weak var briefJobDescription: UITextView!
+    @IBOutlet weak var contactLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        repImageView.layer.cornerRadius = repImageView.frame.size.width/2
+        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
     /*
