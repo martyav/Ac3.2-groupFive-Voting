@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import AudioToolbox
 
 let context = 0
 
@@ -72,5 +73,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             timer.invalidate()
         }
         self.time += 1
+    }
+    
+    // MARK: - Noise
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        AudioServicesPlaySystemSound(1105)
     }
 }
