@@ -24,13 +24,12 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     var office: Office!
     var articles = [Article]()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         inputViewValues()
+        
         APIRequestManager.manager.getArticles(searchTerm: official.name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (info) in
             if let info = info {
                 self.articles = info
@@ -53,7 +52,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLayoutSubviews() {
         self.repImageView.layer.cornerRadius = 60
         self.repImageView.clipsToBounds = true
-        
+        self.repImageView.contentMode = .scaleAspectFit
     }
     
     func inputViewValues () {
