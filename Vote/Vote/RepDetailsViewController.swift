@@ -32,6 +32,7 @@ class RepDetailsViewController: UIViewController {
         APIRequestManager.manager.getArticles(searchTerm: official.name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (info) in
             print(info?.count)
         }
+        title = self.repNameLabel.text
     }
     
     func inputViewValues () {

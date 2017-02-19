@@ -17,6 +17,7 @@ class WebViewController: UIViewController, WKNavigationDelegate, UIWebViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Articles"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
     }
     
