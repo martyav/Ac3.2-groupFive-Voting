@@ -12,6 +12,7 @@ class RepDetailsViewController: UIViewController {
     
     var official: GovernmentOfficial!
     var office: Office!
+    var articles = [Article]()
 
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
@@ -32,21 +33,31 @@ class RepDetailsViewController: UIViewController {
         super.viewDidLoad()
         inputViewValues()
         APIRequestManager.manager.getArticles(searchTerm: official.name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (info) in
-            print(info?.count)
+//            print(info?.count)
+        
+            if let info = info {
+                self.articles = info
+                DispatchQueue.main.async {
+                     self.collectionView?.reloadData()
+                }
+            }
         }
+        
+        collectionView.register(HeadlinesCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        
+        print(articles)
     }
     
     func inputViewValues () {
         self.repNameLabel.text = official.name
-        self.officeLevel.text = office.name
-        print(office.name)
+//        self.officeLevel.text = office.name
+//        print(office.name)
         self.districtLabel.text = office.divisionId
         self.officeLevel.text = office.levels
 //        self.briefJobDescription.text =
         self.contactLabel.text = "\(official.name)'s Contact Information"
         self.phoneNumberLabel.text = official.phone
         self.emailLabel.text = official.email
-        
     }
     
     
@@ -62,4 +73,20 @@ class RepDetailsViewController: UIViewController {
     }
     */
 
+}
+
+extension RepDetailsViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return articles.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HeadlinesCollectionViewCell
+        
+        return cell
+    }
 }
