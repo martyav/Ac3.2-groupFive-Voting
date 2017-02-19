@@ -22,6 +22,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         zipTextField.delegate = self
+
         title = "Find Your Rep"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         NotificationCenter.default.addObserver(self, selector: #selector(checkTextFieldContent(_:)), name: NSNotification.Name.UITextFieldTextDidChange, object: zipTextField)
@@ -32,10 +33,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
         self.time = 0.0
 
+        showAlert("Hi there", presentOn: self)
         
         if !zipTextField.text!.isEmpty {
             zipTextField.text = ""
         }
+
     }
     
 //    override func viewDidLayoutSubviews() {
