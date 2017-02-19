@@ -76,8 +76,7 @@ class RepresentativeTableViewController: UITableViewController {
         let dvc = storyboard.instantiateViewController(withIdentifier: "rdvc") as! RepDetailsViewController
         dvc.official = currentCell.official
         dvc.office = self.office[indexPath.section]
-        self.present(dvc, animated: true, completion: nil)
-
+        self.navigationController?.pushViewController(dvc, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
