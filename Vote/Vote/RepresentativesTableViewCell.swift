@@ -11,6 +11,21 @@ import SnapKit
 
 class RepresentativesTableViewCell: UITableViewCell {
     
+    var official: GovernmentOfficial! {
+        didSet {
+            self.nameLabel.text = self.official.name
+            print(self.official.party)
+            switch self.official.party {
+            case _ where self.official.party.contains("Democrat"):
+                self.partyIcon.image = #imageLiteral(resourceName: "democrat")
+            case "Republican":
+                self.partyIcon.image = #imageLiteral(resourceName: "republican")
+            default:
+                self.partyIcon.image = #imageLiteral(resourceName: "defaultParty")
+            }
+        }
+    }
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViewHierarchy()
@@ -49,13 +64,14 @@ class RepresentativesTableViewCell: UITableViewCell {
             view.centerY.equalToSuperview()
             view.trailing.equalToSuperview().inset(4)
         }
+        //loadOfficial()
     }
 
     //MARK: Content Managing
     
-    func loadOfficial(official: GovernmentOfficial) {
-        self.nameLabel.text = official.name
-        print(official.photoURL)
+    func loadOfficial() {
+        self.nameLabel.text = self.official.name
+        //print(self.official.photoURL)
     }
     
     //MARK: - Views
