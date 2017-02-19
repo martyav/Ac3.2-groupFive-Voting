@@ -52,13 +52,14 @@ class StyleManager {
         proxyTextView.font = UIFont(name: regularFont, size: 16)
         proxyTextView.textColor = UIColor.hackathonBlack
         
-        proxyTextField.backgroundColor = UIColor.hackathonCream
-        proxyTextField.textColor = UIColor.hackathonGrey
+        proxyTextField.backgroundColor = UIColor.hackathonRed
+        proxyTextField.textColor = UIColor.hackathonCream
         proxyTextField.font = UIFont(name: semiboldFont, size: 20)
         proxyTextField.layer.cornerRadius = 3.0
         proxyPlaceholder.font = UIFont(name: lightFont, size: 20)
         proxyPlaceholder.backgroundColor = proxyTextField.backgroundColor
-        proxyTextField.text = "90210"
+        proxyPlaceholder.textColor = proxyTextField.textColor
+        proxyTextField.text = "Enter your zipcode"
         
         // generalized info styling
         proxyView.backgroundColor = UIColor.hackathonWhite
