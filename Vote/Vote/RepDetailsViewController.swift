@@ -171,8 +171,8 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
         
         mailComposerVC.setToRecipients([self.official.email ?? "sgrant001@gmail.com"])
-        mailComposerVC.setSubject("Sending you an in-app e-mail...")
-        mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
+        mailComposerVC.setSubject("Letter from a Constituent")
+        mailComposerVC.setMessageBody("\(official.name), \n\n ", isHTML: false)
         
         return mailComposerVC
     }
