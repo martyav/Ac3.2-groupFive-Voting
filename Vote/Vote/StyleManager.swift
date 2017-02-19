@@ -34,7 +34,6 @@ class StyleManager {
         let proxyTextView = UITextView.appearance()
         let proxyPlaceholder = UILabel.appearance(whenContainedInInstancesOf: [UITextField.self])
         // generalized info
-        let proxyView = UIView.appearance()
         let proxyWebView = UIWebView.appearance()
         let proxyTableView = UITableView.appearance()
         let proxyCell = UITableViewCell.appearance()
@@ -53,7 +52,7 @@ class StyleManager {
         proxyTextView.font = UIFont(name: regularFont, size: 16)
         proxyTextView.textColor = UIColor.hackathonBlack
         proxyTextField.backgroundColor = UIColor.hackathonRed
-        proxyTextField.textColor = UIColor.hackathonCream
+        proxyTextField.textColor = UIColor.hackathonGrey
         proxyTextField.font = UIFont(name: semiboldFont, size: 20)
         proxyTextField.layer.cornerRadius = 3.0
         proxyPlaceholder.font = UIFont(name: lightFont, size: 20)
@@ -62,11 +61,9 @@ class StyleManager {
         proxyTextField.text = "Enter your zipcode"
         
         // generalized info styling
-        proxyView.backgroundColor = UIColor.hackathonWhite
         proxyWebView.scalesPageToFit = true
         proxyWebView.scrollView.bounces = true
         proxyWebView.layer.cornerRadius = 3.0
-        proxyWebView.layer.borderColor = UIColor.hackathonGrey.cgColor
         proxyWebView.layer.borderWidth = 1.0
         
         proxyTableView.backgroundColor = UIColor.hackathonCream
