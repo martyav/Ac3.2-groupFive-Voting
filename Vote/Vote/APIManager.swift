@@ -42,20 +42,17 @@ class APIRequestManager {
             var articles: [Article]? = nil
             do {
                 let json = try JSONSerialization.jsonObject(with: validData, options: [])
-                if let jsonDicts = json as? [[String: AnyObject]] {
-                    articles = []
-                    for dict in jsonDicts {
-                        if let article = Article(from: dict) {
-                            articles!.append(article)
-                        }
-                    }
+                if let validJson = json as? [String: AnyObject],
+                    let responseDict = validJson["response"] as? [String: AnyObject],
+                    let jsonDicts = responseDict["docs"] as? [[String: AnyObject]] {
+                    articles = Article.getArticles(from: jsonDicts)
                 }
             } catch {
                 print(error.localizedDescription)
             }
             
             callback(articles)
-            }.resume()
+        }.resume()
     }
     
     
