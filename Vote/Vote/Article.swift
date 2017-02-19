@@ -37,7 +37,7 @@ class Article {
         }
     }
     
-    private func getArticles(from arr: [[String:Any]]) -> [Article] {
+    static func getArticles(from arr: [[String:Any]]) -> [Article] {
         var articles = [Article]()
         for articleDict in arr {
             if let article = Article(from: articleDict) {

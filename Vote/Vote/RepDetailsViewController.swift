@@ -9,9 +9,16 @@
 import UIKit
 
 class RepDetailsViewController: UIViewController {
-
+    
+    var official: GovernmentOfficial!
+    var office: Office!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        dump(self.official)
+        APIRequestManager.manager.getArticles(searchTerm: official.name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (info) in
+            print(info?.count)
+        }
 
         // Do any additional setup after loading the view.
     }

@@ -66,6 +66,10 @@ class RepresentativeTableViewController: UITableViewController, ZipDelegate{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let currentCell = tableView.cellForRow(at: indexPath) as! RepresentativesTableViewCell
+        let dvc = RepDetailsViewController()
+        dvc.official = currentCell.official
+        dvc.office = self.office[indexPath.section]
+        self.present(dvc, animated: true, completion: nil)
     }
 }
