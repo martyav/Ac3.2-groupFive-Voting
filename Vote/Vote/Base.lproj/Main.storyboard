@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jdT-05-PPF">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jdT-05-PPF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your zipcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eCT-FW-8aD">
-                                <rect key="frame" x="116" y="319" width="143" height="30"/>
+                                <rect key="frame" x="116" y="318.5" width="143" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.73378232758620687" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -129,28 +129,34 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="In the news...." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWA-GN-Zmy">
-                                <rect key="frame" x="16" y="444" width="106" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In the news...." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWA-GN-Zmy">
+                                <rect key="frame" x="8" y="444" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="redPhone" translatesAutoresizingMaskIntoConstraints="NO" id="ikb-Pd-DkQ">
-                                <rect key="frame" x="268" y="328" width="40" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redPhone" translatesAutoresizingMaskIntoConstraints="NO" id="ikb-Pd-DkQ">
+                                <rect key="frame" x="297" y="325.5" width="37" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="w05-61-A6R"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekm-YY-YoB">
-                                <rect key="frame" x="88" y="323" width="159" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekm-YY-YoB">
+                                <rect key="frame" x="88" y="323" width="199" height="30"/>
                                 <state key="normal" title="Phone"/>
+                                <connections>
+                                    <action selector="phoneButtonPressed:" destination="YaJ-b3-0sq" eventType="touchUpInside" id="21v-fD-woU"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sb-Rp-ASy">
-                                <rect key="frame" x="88" y="351" width="159" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0sb-Rp-ASy">
+                                <rect key="frame" x="88" y="351" width="199" height="30"/>
                                 <state key="normal" title="Email"/>
+                                <connections>
+                                    <action selector="emailButtonPressed:" destination="YaJ-b3-0sq" eventType="touchUpInside" id="eTD-Rd-atN"/>
+                                </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="blueBubble" translatesAutoresizingMaskIntoConstraints="NO" id="3Hx-kk-53z">
-                                <rect key="frame" x="268" y="354" width="40" height="23"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blueBubble" translatesAutoresizingMaskIntoConstraints="NO" id="3Hx-kk-53z">
+                                <rect key="frame" x="297" y="352.5" width="37" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="Wkt-Kv-LQf"/>
                                 </constraints>
@@ -192,7 +198,9 @@
                     <connections>
                         <outlet property="collectionView" destination="gHr-Og-qib" id="v74-fc-9eS"/>
                         <outlet property="emailButton" destination="0sb-Rp-ASy" id="tPC-iZ-L4m"/>
+                        <outlet property="emailIconImageView" destination="3Hx-kk-53z" id="ikX-V4-lD0"/>
                         <outlet property="iconImageView" destination="XTZ-xF-YYT" id="7zT-YO-sdI"/>
+                        <outlet property="phoneIconImageView" destination="ikb-Pd-DkQ" id="a4s-hV-1ej"/>
                         <outlet property="phoneNumberButton" destination="ekm-YY-YoB" id="hDz-s8-jHH"/>
                         <outlet property="repImageView" destination="9Th-Vl-AFx" id="7d4-ca-8Kq"/>
                         <outlet property="repNameLabel" destination="QdY-n1-3pa" id="2PN-Cz-Mhq"/>

@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import AudioToolbox
 
 class WebViewController: UIViewController, UIWebViewDelegate {
     
@@ -39,6 +40,16 @@ class WebViewController: UIViewController, UIWebViewDelegate {
             webView.loadRequest(urlRequest)
         }
         
+    }
+    
+    // MARK: - Noise
+    
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (self.isMovingFromParentViewController){
+            AudioServicesPlaySystemSound(1105)
+        }
     }
     
 }

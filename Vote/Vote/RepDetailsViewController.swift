@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import MessageUI
+import AudioToolbox
 
-class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MFMailComposeViewControllerDelegate {
     
+    @IBOutlet weak var phoneIconImageView: UIImageView!
+    @IBOutlet weak var emailIconImageView: UIImageView!
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -23,13 +27,12 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     var office: Office!
     var articles = [Article]()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         inputViewValues()
+        
         APIRequestManager.manager.getArticles(searchTerm: official.name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (info) in
             if let info = info {
                 self.articles = info
@@ -52,21 +55,20 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     override func viewDidLayoutSubviews() {
         self.repImageView.layer.cornerRadius = 60
         self.repImageView.clipsToBounds = true
-        
+        self.repImageView.contentMode = .scaleAspectFit
     }
     
     func inputViewValues () {
         self.repNameLabel.text = official.name
         self.repImageView.image = UIImage(named: "placeholderPic")
-        
-        if let phoneNumber = official.phone {
-            print(phoneNumber)
-            self.callNumber(phoneNumber: "2126399675")
-        }
 
-        if let phone = official.phone, let email = official.email {
-        self.phoneNumberButton.setTitle("\(phone)", for: .normal)
+        if let phone = official.phone {
+            self.phoneNumberButton.setTitle("\(phone)", for: .normal)
+            self.phoneIconImageView.image = #imageLiteral(resourceName: "greenPhone")
+        }
+        if let email = official.email {
         self.emailButton.setTitle("\(email)", for: .normal)
+            self.emailIconImageView.image = #imageLiteral(resourceName: "greenEmail")
         }
         
         if let photoURL = official.photoURL {
@@ -75,7 +77,6 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
                     let validImage = UIImage(data: validData) {
                     DispatchQueue.main.async {
                         self.repImageView.image = validImage
-                        
                     }
                 }
             }
@@ -139,13 +140,82 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     
     //MARK: - Helper Functions
     
-    func callNumber(phoneNumber:String) {
+    func callNumber(_ weirdPhoneNumber: String) {
+        let numbers = Set<Character>(arrayLiteral: "0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
+        let validPhoneNumber = weirdPhoneNumber.characters.filter { numbers.contains($0) }
+        let phoneNumber = String(validPhoneNumber)
+        print(phoneNumber)
         if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
             let application:UIApplication = UIApplication.shared
             if (application.canOpenURL(phoneCallURL)) {
-                application.openURL(phoneCallURL)
+                application.open(phoneCallURL, options: [:], completionHandler: nil)
             }
         }
+    }
+    
+    func emailPerson() {
+        let mailComposeViewController = configuredMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeViewController, animated: true, completion: nil)
+        } else {
+            self.showSendMailErrorAlert()
+        }
+    }
+    
+    
+    //MARK: - Actions
+       
+    
+    func configuredMailComposeViewController() -> MFMailComposeViewController {
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
+        
+        mailComposerVC.setToRecipients([self.official.email ?? "sgrant001@gmail.com"])
+        mailComposerVC.setSubject("Sending you an in-app e-mail...")
+        mailComposerVC.setMessageBody("Sending e-mail in-app is not so bad!", isHTML: false)
+        
+        return mailComposerVC
+    }
+    
+    func showSendMailErrorAlert() {
+        
+        //Can ya please redo this alert marty?
+        
+        let sendMailErrorAlert = UIAlertView(title: "Could Not Send Email", message: "Your device could not send e-mail.  Please check e-mail configuration and try again.", delegate: self, cancelButtonTitle: "OK")
+        sendMailErrorAlert.show()
+    }
+    
+    // MARK: MFMailComposeViewControllerDelegate Method
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+
+ 
+    
+    @IBAction func phoneButtonPressed(_ sender: UIButton) {
+        if let number = self.official.phone {
+            callNumber(number)
+        } else {
+            //ADD ALERT ABOUT LACKING PHONE NUMBER
+        }
+    }
+    
+    @IBAction func emailButtonPressed(_ sender: UIButton) {
+        self.emailPerson()
+    }
+    
+    // MARK: - Noise
+    
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+        
+        if (self.isMovingFromParentViewController){
+            AudioServicesPlaySystemSound(1105)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        AudioServicesPlaySystemSound(1105)
     }
 }
 
