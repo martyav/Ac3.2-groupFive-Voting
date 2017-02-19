@@ -16,12 +16,10 @@ class RepDetailsViewController: UIViewController {
 
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
-    @IBOutlet weak var districtLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var officeLevel: UILabel!
     @IBOutlet weak var briefJobDescription: UITextView!
     @IBOutlet weak var contactLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -52,7 +50,7 @@ class RepDetailsViewController: UIViewController {
         self.repNameLabel.text = official.name
 //        self.officeLevel.text = office.name
 //        print(office.name)
-        self.districtLabel.text = office.divisionId
+//        self.districtLabel.text = office.divisionId
         self.officeLevel.text = office.levels
 //        self.briefJobDescription.text =
         self.contactLabel.text = "\(official.name)'s Contact Information"
