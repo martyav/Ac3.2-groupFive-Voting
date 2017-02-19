@@ -37,7 +37,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
             let dvc = storyboard.instantiateViewController(withIdentifier: "rtvc") as! RepresentativeTableViewController
             dvc.getReps(from: textField.text! + string)
-            self.present(dvc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(dvc, animated: true)
         }
         print(string)
         return true
