@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "stock-illustration-34883938-mayor-cartoon.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "stock-illustration-34883938-mayor-cartoon-1.jpg",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "placeholderPic.png",
+      "filename" : "stock-illustration-34883938-mayor-cartoon-2.jpg",
       "scale" : "3x"
     }
   ],

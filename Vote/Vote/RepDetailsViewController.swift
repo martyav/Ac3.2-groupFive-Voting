@@ -22,6 +22,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var emailButton: UIButton!
     @IBOutlet weak var phoneNumberButton: UIButton!
+    @IBOutlet weak var stripeView: UIView!
     
     var official: GovernmentOfficial!
     var office: Office!
@@ -42,7 +43,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
             }
         }
         
-        title = self.repNameLabel.text
+        title = official.name
         
         collectionView.register(HeadlinesCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.delegate = self
@@ -58,9 +59,9 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func inputViewValues () {
-        self.repNameLabel.text = official.name
+        //self.repNameLabel.text = official.name
         //self.repNameLabel.lineBreakMode = .byWordWrapping
-        self.repNameLabel.adjustsFontForContentSizeCategory = true
+        //self.repNameLabel.adjustsFontForContentSizeCategory = true
         self.repImageView.image = UIImage(named: "placeholderPic")
         //        self.phoneNumberButton.layer.borderColor = UIColor.blue.cgColor
         //        self.phoneNumberButton.layer.borderWidth = 1
@@ -90,20 +91,27 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
         self.iconImageView = {
             let imageView = UIImageView()
+            imageView.contentMode = .center
+            
             switch self.official.party {
             case _ where self.official.party.contains("Democrat"):
-                self.iconImageView.image = #imageLiteral(resourceName: "democrat")
+                self.iconImageView?.image = #imageLiteral(resourceName: "democrat")
+                self.stripeView.backgroundColor = UIColor.hackathonBlue
+                self.repImageView.backgroundColor = UIColor.hackathonBlue
             case "Republican":
-                self.iconImageView.image = #imageLiteral(resourceName: "republican")
+                self.iconImageView?.image = #imageLiteral(resourceName: "republican")
+                self.stripeView.backgroundColor = UIColor.hackathonRed
+                self.repImageView.backgroundColor = UIColor.hackathonRed
             default:
-                self.iconImageView.image = #imageLiteral(resourceName: "defaultParty")
+                self.iconImageView?.image = #imageLiteral(resourceName: "defaultParty")
+                self.stripeView.backgroundColor = UIColor.hackathonGrey
+                self.repImageView.backgroundColor = UIColor.hackathonGrey
             }
-            imageView.contentMode = .center
+            
             imageView.backgroundColor = UIColor.hackathonWhite
-            imageView.layer.borderColor = UIColor.hackathonBlue.cgColor
-            imageView.layer.borderWidth = 0.75
             return imageView
         }()
+        
     }
     
     /*
@@ -130,9 +138,9 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HeadlinesCollectionViewCell
         
         if indexPath.row % 2 == 0 {
-            cell.backgroundColor = UIColor.hackathonRed
+            cell.backgroundColor = UIColor.hackathonRed.withAlphaComponent(0.85)
         } else {
-            cell.backgroundColor = UIColor.hackathonBlue
+            cell.backgroundColor = UIColor.hackathonBlue.withAlphaComponent(0.85)
         }
         
         cell.article = articles[indexPath.row]
