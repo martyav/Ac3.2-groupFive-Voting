@@ -13,8 +13,7 @@ import AudioToolbox
 
 class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MFMailComposeViewControllerDelegate {
     
-    @IBOutlet weak var phoneIconImageView: UIImageView!
-    @IBOutlet weak var emailIconImageView: UIImageView!
+    @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -62,6 +61,9 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
         newsCollectionLabel.textColor = UIColor.hackathonCream
         newsCollectionLabel.font = UIFont(name: "GillSans-Bold", size: 16)
+        instructionLabel.text = "Click to contact this elected official!"
+        instructionLabel.textColor = UIColor.hackathonCream
+        instructionLabel.font = UIFont(name: "GillSans-Italic", size: 16)
     }
     
     override func viewDidLayoutSubviews() {
@@ -78,14 +80,21 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     func inputViewValues () {
         self.repImageView.image = UIImage(named: "placeholderPic")
         
+        self.emailButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.emailButton.layer.borderWidth = 3
+        self.phoneNumberButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.phoneNumberButton.layer.borderWidth = 3
+        
         if let phone = official.phone {
             self.phoneNumberButton.setTitle("\(phone)", for: .normal)
-            self.phoneIconImageView.image = #imageLiteral(resourceName: "greenPhone")
+            //self.phoneIconImageView.image = #imageLiteral(resourceName: "greenPhone")
+            self.phoneNumberButton.layer.borderColor = UIColor(red:0.00, green:0.19, blue:1.00, alpha:1.0).cgColor
         }
         
         if let email = official.email {
             self.emailButton.setTitle("\(email)", for: .normal)
-            self.emailIconImageView.image = #imageLiteral(resourceName: "greenEmail")
+            //self.emailIconImageView.image = #imageLiteral(resourceName: "greenEmail")
+            self.emailButton.layer.borderColor = UIColor(red:0.00, green:0.19, blue:1.00, alpha:1.0).cgColor
         }
         
         if let photoURL = official.photoURL {
@@ -106,16 +115,10 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
             switch self.official.party {
             case _ where self.official.party.contains("Democrat"):
                 self.iconImageView?.image = #imageLiteral(resourceName: "democrat")
-                self.phoneIconImageView.layer.cornerRadius = 15
-                self.emailIconImageView.layer.cornerRadius = 15
             case "Republican":
                 self.iconImageView?.image = #imageLiteral(resourceName: "republican")
-                self.phoneIconImageView.layer.cornerRadius = 15
-                self.emailIconImageView.layer.cornerRadius = 15
             default:
                 self.iconImageView?.image = #imageLiteral(resourceName: "defaultParty")
-                self.phoneIconImageView.layer.cornerRadius = 15
-                self.emailIconImageView.layer.cornerRadius = 15
             }
             
             imageView.backgroundColor = UIColor.hackathonWhite
@@ -126,6 +129,9 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
             self.scrollView.backgroundColor = .clear
             self.scrollView.layer.borderColor = UIColor.hackathonWhite.cgColor
             self.scrollView.layer.borderWidth = 1
+            self.emailButton.layer.cornerRadius = 15
+            self.phoneNumberButton.layer.cornerRadius = 15
+            
             return imageView
         }()
         

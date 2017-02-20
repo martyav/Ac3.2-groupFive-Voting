@@ -9,6 +9,8 @@
 import UIKit
 
 extension UINavigationBar {
+    // slightly modified from http://stackoverflow.com/a/42305699
+    
     override func apply(gradient colors : [UIColor]) {
         setBackgroundImage(UINavigationBar.gradient(size: bounds.size, colors: colors), for: .default)
     }

@@ -33,6 +33,7 @@ class StyleManager {
         let proxyTextField = UITextField.appearance()
         let proxyTextView = UITextView.appearance()
         let proxyPlaceholder = UILabel.appearance(whenContainedInInstancesOf: [UITextField.self])
+        let proxyButtonLabel = UILabel.appearance(whenContainedInInstancesOf: [UIButton.self])
         let proxyButton = UIButton.appearance()
         
         // generalized info
@@ -56,7 +57,6 @@ class StyleManager {
         proxyTextView.textColor = UIColor.hackathonBlack
         proxyTextView.backgroundColor = .clear
         
-        
         proxyTextField.backgroundColor = UIColor.hackathonRed
         proxyTextField.textColor = UIColor.hackathonGrey
         proxyTextField.font = UIFont(name: semiboldFont, size: 20)
@@ -67,8 +67,8 @@ class StyleManager {
         proxyPlaceholder.backgroundColor = proxyTextField.backgroundColor
         proxyPlaceholder.textColor = UIColor.hackathonCream
         
-        proxyButton.titleLabel?.font = UIFont(name: boldFont, size: 20)
-        proxyButton.layer.cornerRadius = 15
+        proxyButtonLabel.font = UIFont(name: boldFont, size: 20)
+        proxyButton.titleEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
         
         // generalized info styling
         proxyWebView.scalesPageToFit = true
