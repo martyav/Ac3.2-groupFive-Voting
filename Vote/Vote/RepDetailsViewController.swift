@@ -70,8 +70,9 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.emailButton.layer.cornerRadius = 15
-        self.phoneNumberButton.layer.cornerRadius = 15
+        self.stripeView.backgroundColor = UIColor.hackathonBlue
+        self.repImageView.backgroundColor = UIColor.hackathonBlue
+        self.bottomGradient.apply(gradient: [UIColor.hackathonRed, UIColor.hackathonRed, UIColor.hackathonCream])
     }
     
     func inputViewValues () {
@@ -105,27 +106,16 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
             switch self.official.party {
             case _ where self.official.party.contains("Democrat"):
                 self.iconImageView?.image = #imageLiteral(resourceName: "democrat")
-                self.stripeView.backgroundColor = UIColor.hackathonBlue
-                self.repImageView.backgroundColor = UIColor.hackathonBlue
                 self.phoneIconImageView.layer.cornerRadius = 15
                 self.emailIconImageView.layer.cornerRadius = 15
-                self.bottomGradient.apply(gradient: [UIColor.hackathonBlue, UIColor.hackathonBlue, UIColor.hackathonCream])
             case "Republican":
                 self.iconImageView?.image = #imageLiteral(resourceName: "republican")
-                self.stripeView.backgroundColor = UIColor.hackathonRed
-                self.repImageView.backgroundColor = UIColor.hackathonRed
                 self.phoneIconImageView.layer.cornerRadius = 15
                 self.emailIconImageView.layer.cornerRadius = 15
-                self.phoneIconImageView.backgroundColor = UIColor.hackathonCream
-                self.emailIconImageView.backgroundColor = UIColor.hackathonCream
-                self.bottomGradient.apply(gradient: [UIColor.hackathonRed, UIColor.hackathonRed, UIColor.hackathonCream])
             default:
                 self.iconImageView?.image = #imageLiteral(resourceName: "defaultParty")
-                self.stripeView.backgroundColor = UIColor.hackathonGrey
-                self.repImageView.backgroundColor = UIColor.hackathonGrey
                 self.phoneIconImageView.layer.cornerRadius = 15
                 self.emailIconImageView.layer.cornerRadius = 15
-                self.bottomGradient.apply(gradient: [UIColor.hackathonGrey, UIColor.hackathonGrey, UIColor.hackathonCream])
             }
             
             imageView.backgroundColor = UIColor.hackathonWhite
