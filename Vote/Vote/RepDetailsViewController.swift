@@ -81,9 +81,9 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         self.repImageView.image = UIImage(named: "placeholderPic")
         
         self.emailButton.layer.borderColor = UIColor.lightGray.cgColor
-        self.emailButton.layer.borderWidth = 3
+        self.emailButton.layer.borderWidth = 2
         self.phoneNumberButton.layer.borderColor = UIColor.lightGray.cgColor
-        self.phoneNumberButton.layer.borderWidth = 3
+        self.phoneNumberButton.layer.borderWidth = 2
         
         if let phone = official.phone {
             self.phoneNumberButton.setTitle("\(phone)", for: .normal)
