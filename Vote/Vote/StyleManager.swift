@@ -68,7 +68,7 @@ class StyleManager {
         proxyPlaceholder.textColor = UIColor.hackathonCream
         
         proxyButton.titleLabel?.font = UIFont(name: boldFont, size: 20)
-        proxyButton.apply(gradient: [UIColor.hackathonCream, UIColor.hackathonWhite, UIColor.hackathonCream])
+        proxyButton.layer.cornerRadius = 15
         
         // generalized info styling
         proxyWebView.scalesPageToFit = true

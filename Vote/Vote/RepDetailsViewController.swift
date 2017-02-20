@@ -56,14 +56,22 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         self.view.addSubview(newsCollectionLabel)
         
         newsCollectionLabel.snp.makeConstraints { (view) in
-            view.bottom.equalTo(collectionView.snp.top).offset(-4)
+            view.bottom.equalTo(collectionView.snp.top)
             view.leading.equalTo(collectionView)
         }
+        
+        newsCollectionLabel.textColor = UIColor.hackathonCream
+        newsCollectionLabel.font = UIFont(name: "GillSans-Bold", size: 16)
     }
     
     override func viewDidLayoutSubviews() {
         self.repImageView.clipsToBounds = true
         self.repImageView.contentMode = .scaleAspectFit
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.emailButton.layer.cornerRadius = 15
+        self.phoneNumberButton.layer.cornerRadius = 15
     }
     
     func inputViewValues () {
@@ -99,6 +107,8 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
                 self.iconImageView?.image = #imageLiteral(resourceName: "democrat")
                 self.stripeView.backgroundColor = UIColor.hackathonBlue
                 self.repImageView.backgroundColor = UIColor.hackathonBlue
+                self.phoneIconImageView.layer.cornerRadius = 15
+                self.emailIconImageView.layer.cornerRadius = 15
                 self.bottomGradient.apply(gradient: [UIColor.hackathonBlue, UIColor.hackathonBlue, UIColor.hackathonCream])
             case "Republican":
                 self.iconImageView?.image = #imageLiteral(resourceName: "republican")
@@ -113,15 +123,19 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
                 self.iconImageView?.image = #imageLiteral(resourceName: "defaultParty")
                 self.stripeView.backgroundColor = UIColor.hackathonGrey
                 self.repImageView.backgroundColor = UIColor.hackathonGrey
+                self.phoneIconImageView.layer.cornerRadius = 15
+                self.emailIconImageView.layer.cornerRadius = 15
                 self.bottomGradient.apply(gradient: [UIColor.hackathonGrey, UIColor.hackathonGrey, UIColor.hackathonCream])
             }
-            self.emailButton.layer.cornerRadius = 15
-            self.phoneNumberButton.layer.cornerRadius = 15
+            
             imageView.backgroundColor = UIColor.hackathonWhite
             self.iconImageView?.layer.cornerRadius = 20
             self.iconImageView?.backgroundColor = UIColor.hackathonCream
             self.iconImageView?.layer.borderColor = UIColor.hackathonGrey.cgColor
             self.iconImageView.layer.borderWidth = 0.75
+            self.scrollView.backgroundColor = .clear
+            self.scrollView.layer.borderColor = UIColor.hackathonWhite.cgColor
+            self.scrollView.layer.borderWidth = 1
             return imageView
         }()
         
@@ -130,7 +144,6 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     var newsCollectionLabel: UIOutlinedLabel! = {
         let label = UIOutlinedLabel()
         label.text = "In the news..."
-        label.textColor = UIColor.hackathonCream
         return label
     }()
 

@@ -97,17 +97,17 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gni-qk-fw7">
-                                <rect key="frame" x="0.0" y="101" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="237"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Th-Vl-AFx">
-                                        <rect key="frame" x="77" y="0.0" width="220" height="200"/>
+                                        <rect key="frame" x="77" y="18" width="220" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="9vW-nT-rKD"/>
                                             <constraint firstAttribute="width" constant="220" id="VQZ-gT-Ygb"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XTZ-xF-YYT">
-                                        <rect key="frame" x="77" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="77" y="18" width="40" height="40"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="CDA-Aj-oc1"/>
@@ -120,8 +120,8 @@
                                     <constraint firstItem="XTZ-xF-YYT" firstAttribute="top" secondItem="9Th-Vl-AFx" secondAttribute="top" id="7BE-64-iNp"/>
                                     <constraint firstItem="XTZ-xF-YYT" firstAttribute="leading" secondItem="9Th-Vl-AFx" secondAttribute="leading" id="HLW-R9-QYS"/>
                                     <constraint firstItem="9Th-Vl-AFx" firstAttribute="centerX" secondItem="Gni-qk-fw7" secondAttribute="centerX" constant="-0.5" id="Vhm-aQ-Row"/>
-                                    <constraint firstAttribute="height" secondItem="9Th-Vl-AFx" secondAttribute="height" id="XLH-Gz-0d0"/>
-                                    <constraint firstItem="9Th-Vl-AFx" firstAttribute="top" secondItem="Gni-qk-fw7" secondAttribute="top" id="iQt-eB-EZU"/>
+                                    <constraint firstAttribute="height" secondItem="9Th-Vl-AFx" secondAttribute="height" constant="37" id="XLH-Gz-0d0"/>
+                                    <constraint firstItem="9Th-Vl-AFx" firstAttribute="top" secondItem="Gni-qk-fw7" secondAttribute="top" constant="18" id="iQt-eB-EZU"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekm-YY-YoB">
@@ -195,7 +195,7 @@
                             <constraint firstItem="0sb-Rp-ASy" firstAttribute="top" secondItem="3Hx-kk-53z" secondAttribute="top" id="3SU-AT-hXK"/>
                             <constraint firstItem="ekm-YY-YoB" firstAttribute="centerY" secondItem="ikb-Pd-DkQ" secondAttribute="centerY" id="AIh-mB-AM7"/>
                             <constraint firstAttribute="trailing" secondItem="Gni-qk-fw7" secondAttribute="trailing" id="AT4-sH-CGS"/>
-                            <constraint firstItem="Gni-qk-fw7" firstAttribute="top" secondItem="Nye-mm-c6Z" secondAttribute="bottom" constant="37" id="Cp1-yg-Fpu"/>
+                            <constraint firstItem="Gni-qk-fw7" firstAttribute="top" secondItem="Nye-mm-c6Z" secondAttribute="bottom" id="Cp1-yg-Fpu"/>
                             <constraint firstItem="vdQ-5N-wbV" firstAttribute="top" secondItem="Nye-mm-c6Z" secondAttribute="bottom" constant="233" id="Db5-05-bm7"/>
                             <constraint firstAttribute="bottom" secondItem="gHr-Og-qib" secondAttribute="bottom" constant="20" id="EJU-nF-A7I"/>
                             <constraint firstItem="0sb-Rp-ASy" firstAttribute="centerX" secondItem="vdQ-5N-wbV" secondAttribute="centerX" id="Gwi-VG-1u9"/>

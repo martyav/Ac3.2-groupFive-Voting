@@ -134,11 +134,11 @@
 			children = (
 				D396A7A71E59FB7B005F14BA /* CustomAlert.swift */,
 				819189DE1E58906F0060CFC9 /* AppDelegate.swift */,
-				D35B2E461E5B669B00AFC932 /* OutlinedText.swift */,
 				D396A7A31E59551D005F14BA /* SplashAnimationViewController.swift */,
 				819189E51E58906F0060CFC9 /* Assets.xcassets */,
 				819189E71E58906F0060CFC9 /* LaunchScreen.storyboard */,
 				819189EA1E58906F0060CFC9 /* Info.plist */,
+				D35B2E461E5B669B00AFC932 /* OutlinedText.swift */,
 				D396A79D1E58FDD1005F14BA /* Extension+UIColor.swift */,
 				D35B2E481E5B6ACC00AFC932 /* Extension+NavBar.swift */,
 				D35B2E4A1E5B75F800AFC932 /* Extension+UIView.swift */,
