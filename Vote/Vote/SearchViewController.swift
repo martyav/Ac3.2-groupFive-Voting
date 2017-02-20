@@ -43,6 +43,17 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        createAndConstrainImages()
+        
+        _ = [
+            blueBubbleViewLeft,
+            redBubbleViewLeft,
+            redBubbleViewRight,
+            blueBubbleViewRight
+            ].map { $0?.alpha = 0 }
+        
+        phoneView?.transform = CGAffineTransform(rotationAngle: (3 * CGFloat.pi)/4)
+        
         self.time = 0.0
         
         if !zipTextField.text!.isEmpty {
@@ -53,35 +64,17 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
             showAlert("Invalid Zipcode", presentOn: self)
             self.presentAlert = false
         }
-        
-        createAndConstrainImages()
-        
-        _ = [
-            blueBubbleViewLeft,
-            redBubbleViewLeft,
-            redBubbleViewRight,
-            blueBubbleViewRight
-            //phoneView
-            ].map { $0?.alpha = 0 }
-        
-        phoneView?.transform = CGAffineTransform(rotationAngle: (3 * CGFloat.pi)/4)
-        
-        propertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear, animations: nil)
-        
-        UIView.animate(withDuration: 2, animations: {
-                self.phoneView?.transform = CGAffineTransform(translationX: 0, y: -10)
-                self.phoneView?.transform = CGAffineTransform.identity
-        })
-        
-        self.phoneView?.transform = CGAffineTransform(translationX: 0, y: 5)
-        
-        //UIView.animate(withDuration: .infinity, delay: 0.7, options: .repeat, animations: <#T##() -> Void#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
-        
-        //self.animatePhone()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.resetViews()
+        self.removeConstraints()
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
         let numbers = Set<String>(arrayLiteral: "0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
         guard (numbers.contains(string) || string.isEmpty), textField.text!.characters.count < 5 else  { return false }
         
@@ -90,6 +83,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
     
     func checkTextFieldContent (_ notification: Notification) {
         if let textField = notification.object as? UITextField {
+            if textField.text!.characters.count == 1 {
+                startTalking()
+            }
+            
             if textField.text!.characters.count == 5 {
                 self.timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(checkTime), userInfo: nil, repeats: true)
                 
@@ -111,13 +108,12 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
         self.time += 1
     }
     
-    // MARK: - Noise
+    // MARK: - Noise & Animation
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         AudioServicesPlaySystemSound(1105)
+        pickUpPhone()
     }
-    
-    // Animation stuff
     
     func createAndConstrainImages() {
         self.buildingView = UIImageView(frame: .zero)
@@ -182,14 +178,59 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
         blueBubbleViewLeft?.transform = CGAffineTransform(scaleX: -1, y: 1)
     }
     
-//    func animatePhone() {
-//        propertyAnimator?.addAnimations {
-//            self.view.layoutIfNeeded()
-//            self.buildingView?.transform = CGAffineTransform.identity
-//            self.phoneView?.transform = CGAffineTransform.identity
-//        }
-//        
-//        propertyAnimator?.startAnimation()
-//    }
+    func pickUpPhone() {
+        UIView.animate(withDuration: 2, animations: {
+            self.phoneView?.transform = CGAffineTransform(translationX: 0, y: -10)
+            self.phoneView?.transform = CGAffineTransform.identity
+        })
+        
+        self.phoneView?.transform = CGAffineTransform(translationX: 0, y: 5)
+        
+    }
+    
+    func startTalking() {
+        UIView.animateKeyframes(withDuration: 4, delay: 0, options: .repeat, animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/4, animations: {
+                self.redBubbleViewRight?.alpha = 1
+                self.blueBubbleViewLeft?.alpha = 0
+                self.blueBubbleViewRight?.alpha = 0
+                self.redBubbleViewLeft?.alpha = 0
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 1/4, relativeDuration: 1/4, animations: {
+                self.redBubbleViewRight?.alpha = 0
+                self.blueBubbleViewLeft?.alpha = 1
+                self.blueBubbleViewRight?.alpha = 0
+                self.redBubbleViewLeft?.alpha = 0
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 2/4, relativeDuration: 1/4, animations: {
+                self.redBubbleViewRight?.alpha = 0
+                self.blueBubbleViewLeft?.alpha = 0
+                self.blueBubbleViewRight?.alpha = 1
+                self.redBubbleViewLeft?.alpha = 0
+            })
+            
+            UIView.addKeyframe(withRelativeStartTime: 3/4, relativeDuration: 1/4, animations: {
+                self.redBubbleViewRight?.alpha = 0
+                self.blueBubbleViewLeft?.alpha = 0
+                self.blueBubbleViewRight?.alpha = 0
+                self.redBubbleViewLeft?.alpha = 1
+            })
+            
+        }, completion: nil
+        )
+    }
+    
+    
+    internal func resetViews() {
+        self.phoneView?.transform = CGAffineTransform(rotationAngle: (3 * CGFloat.pi)/4)
+        UIView.setAnimationsEnabled(false)
+        _ = [redBubbleViewLeft, redBubbleViewRight, blueBubbleViewRight, blueBubbleViewLeft].map{ $0?.alpha = 0.0 }
+    }
+    
+    private func removeConstraints() {
+        self.phoneView?.snp.removeConstraints()
+    }
 }
 
