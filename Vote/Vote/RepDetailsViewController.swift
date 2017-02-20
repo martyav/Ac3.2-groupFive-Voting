@@ -52,15 +52,15 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
         print(articles)
         
-        self.view.addSubview(newsCollectionLabel)
+        //self.view.addSubview(newsCollectionLabel)
         
-        newsCollectionLabel.snp.makeConstraints { (view) in
-            view.bottom.equalTo(collectionView.snp.top)
-            view.leading.equalTo(collectionView)
-        }
+//        newsCollectionLabel.snp.makeConstraints { (view) in
+//            view.bottom.equalTo(collectionView.snp.top)
+//            view.leading.equalTo(collectionView)
+//        }
         
-        newsCollectionLabel.textColor = UIColor.hackathonCream
-        newsCollectionLabel.font = UIFont(name: "GillSans-Bold", size: 16)
+//        newsCollectionLabel.textColor = UIColor.hackathonCream
+//        newsCollectionLabel.font = UIFont(name: "GillSans-Bold", size: 16)
         instructionLabel.text = "Click to contact this elected official!"
         instructionLabel.textColor = UIColor.hackathonCream
         instructionLabel.font = UIFont(name: "GillSans-Italic", size: 16)
@@ -137,11 +137,11 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
-    var newsCollectionLabel: UIOutlinedLabel! = {
-        let label = UIOutlinedLabel()
-        label.text = "In the news..."
-        return label
-    }()
+//    var newsCollectionLabel: UIOutlinedLabel! = {
+//        let label = UIOutlinedLabel()
+//        label.text = "In the news..."
+//        return label
+//    }()
 
     /*
      // MARK: - Navigation
@@ -224,7 +224,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func showSendMailErrorAlert() {
-        showAlert("There is no contact email for \(self.official.name)", presentOn: self)
+        showAlert("A contact email for \(self.official.name) isn't available.", presentOn: self)
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method
