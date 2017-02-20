@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 import MessageUI
 import AudioToolbox
 
@@ -23,6 +24,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBOutlet weak var emailButton: UIButton!
     @IBOutlet weak var phoneNumberButton: UIButton!
     @IBOutlet weak var stripeView: UIView!
+    @IBOutlet weak var bottomGradient: UIView!
     
     var official: GovernmentOfficial!
     var office: Office!
@@ -51,6 +53,12 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
         print(articles)
         
+        self.view.addSubview(newsCollectionLabel)
+        
+        newsCollectionLabel.snp.makeConstraints { (view) in
+            view.bottom.equalTo(collectionView.snp.top).offset(-4)
+            view.leading.equalTo(collectionView)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -59,14 +67,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func inputViewValues () {
-        //self.repNameLabel.text = official.name
-        //self.repNameLabel.lineBreakMode = .byWordWrapping
-        //self.repNameLabel.adjustsFontForContentSizeCategory = true
         self.repImageView.image = UIImage(named: "placeholderPic")
-        //        self.phoneNumberButton.layer.borderColor = UIColor.blue.cgColor
-        //        self.phoneNumberButton.layer.borderWidth = 1
-        //        self.emailButton.layer.borderColor = UIColor.blue.cgColor
-        //        self.emailButton.layer.borderWidth = 1
         
         if let phone = official.phone {
             self.phoneNumberButton.setTitle("\(phone)", for: .normal)
@@ -91,29 +92,48 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
         self.iconImageView = {
             let imageView = UIImageView()
-            imageView.contentMode = .center
+            self.iconImageView.contentMode = .center
             
             switch self.official.party {
             case _ where self.official.party.contains("Democrat"):
                 self.iconImageView?.image = #imageLiteral(resourceName: "democrat")
                 self.stripeView.backgroundColor = UIColor.hackathonBlue
                 self.repImageView.backgroundColor = UIColor.hackathonBlue
+                self.bottomGradient.apply(gradient: [UIColor.hackathonBlue, UIColor.hackathonBlue, UIColor.hackathonCream])
             case "Republican":
                 self.iconImageView?.image = #imageLiteral(resourceName: "republican")
                 self.stripeView.backgroundColor = UIColor.hackathonRed
                 self.repImageView.backgroundColor = UIColor.hackathonRed
+                self.phoneIconImageView.layer.cornerRadius = 15
+                self.emailIconImageView.layer.cornerRadius = 15
+                self.phoneIconImageView.backgroundColor = UIColor.hackathonCream
+                self.emailIconImageView.backgroundColor = UIColor.hackathonCream
+                self.bottomGradient.apply(gradient: [UIColor.hackathonRed, UIColor.hackathonRed, UIColor.hackathonCream])
             default:
                 self.iconImageView?.image = #imageLiteral(resourceName: "defaultParty")
                 self.stripeView.backgroundColor = UIColor.hackathonGrey
                 self.repImageView.backgroundColor = UIColor.hackathonGrey
+                self.bottomGradient.apply(gradient: [UIColor.hackathonGrey, UIColor.hackathonGrey, UIColor.hackathonCream])
             }
-            
+            self.emailButton.layer.cornerRadius = 15
+            self.phoneNumberButton.layer.cornerRadius = 15
             imageView.backgroundColor = UIColor.hackathonWhite
+            self.iconImageView?.layer.cornerRadius = 20
+            self.iconImageView?.backgroundColor = UIColor.hackathonCream
+            self.iconImageView?.layer.borderColor = UIColor.hackathonGrey.cgColor
+            self.iconImageView.layer.borderWidth = 0.75
             return imageView
         }()
         
     }
     
+    var newsCollectionLabel: UIOutlinedLabel! = {
+        let label = UIOutlinedLabel()
+        label.text = "In the news..."
+        label.textColor = UIColor.hackathonCream
+        return label
+    }()
+
     /*
      // MARK: - Navigation
      
@@ -183,7 +203,6 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     
     //MARK: - Actions
     
-    
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self // Extremely important to set the --mailComposeDelegate-- property, NOT the --delegate-- property
@@ -200,6 +219,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     // MARK: MFMailComposeViewControllerDelegate Method
+    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
@@ -209,7 +229,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         if let number = self.official.phone {
             callNumber(number)
         } else {
-            showAlert("Sorry! We don't have a valid phone number for this rep!", presentOn: self)
+            showAlert("Sorry! We don't have a valid phone number for \(official.name)!", presentOn: self)
         }
     }
     
