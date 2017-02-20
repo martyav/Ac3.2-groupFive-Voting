@@ -179,7 +179,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
     }
     
     func pickUpPhone() {
-        UIView.animate(withDuration: 2, animations: {
+        UIView.animate(withDuration: 1.25, animations: {
             self.phoneView?.transform = CGAffineTransform(translationX: 0, y: -10)
             self.phoneView?.transform = CGAffineTransform.identity
         })
