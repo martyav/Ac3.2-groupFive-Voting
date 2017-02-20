@@ -45,6 +45,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
         
         createAndConstrainImages()
         
+        UIView.setAnimationsEnabled(true)
+        
         _ = [
             blueBubbleViewLeft,
             redBubbleViewLeft,
