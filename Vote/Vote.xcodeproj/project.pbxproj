@@ -49,7 +49,7 @@
 		7DFE85D51E58EB58003E3FD3 /* RepDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepDetailsViewController.swift; sourceTree = "<group>"; };
 		7DFE85D71E58F163003E3FD3 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		814CEBD61E58CA5500614741 /* RepInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepInfo.swift; sourceTree = "<group>"; };
-		819189DB1E58906F0060CFC9 /* Vote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		819189DB1E58906F0060CFC9 /* call.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = call.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		819189DE1E58906F0060CFC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		819189E31E58906F0060CFC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		819189E51E58906F0060CFC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		819189DC1E58906F0060CFC9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				819189DB1E58906F0060CFC9 /* Vote.app */,
+				819189DB1E58906F0060CFC9 /* call.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,7 +214,7 @@
 			);
 			name = Vote;
 			productName = Vote;
-			productReference = 819189DB1E58906F0060CFC9 /* Vote.app */;
+			productReference = 819189DB1E58906F0060CFC9 /* call.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -472,7 +472,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.liamkane.Vote;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = call;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -487,7 +487,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nyc.c4q.liamkane.Vote;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = call;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -10,9 +10,6 @@ import UIKit
 import SnapKit
 import AudioToolbox
 
-let context = 0
-
-
 class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDelegate {
     
     @IBOutlet weak var zipTextField: UITextField!
@@ -66,6 +63,20 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
             showAlert("Invalid Zipcode", presentOn: self)
             self.presentAlert = false
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let userDefault = UserDefaults.standard
+        if let shown = userDefault.value(forKey: "walkthrough") as? Bool {
+            print("shown: ", shown)
+        } else {
+            let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+            let wtvc = storyBoard.instantiateViewController(withIdentifier: "PageViewController")
+            navigationController?.pushViewController(wtvc, animated: true)
+            
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
