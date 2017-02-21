@@ -88,8 +88,6 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         self.repImageView.backgroundColor = UIColor.hackathonBlue
         self.bottomGradient.apply(gradient: [UIColor.hackathonRed, UIColor.hackathonRed, UIColor.hackathonCream])
         
-        
-        
         self.activityIndicator.startAnimating()
         
         if collectionView.visibleCells != [] {
@@ -194,6 +192,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        AudioServicesPlaySystemSound(1105)
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -286,20 +285,14 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     
     // MARK: - Noise & Animations
     
-    override func viewWillDisappear(_ animated : Bool) {
-        super.viewWillDisappear(animated)
-        
-        if (self.isMovingFromParentViewController){
-            AudioServicesPlaySystemSound(1105)
-        }
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        AudioServicesPlaySystemSound(1105)
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        AudioServicesPlaySystemSound(1105)
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.transform = CGAffineTransform.identity
     }
