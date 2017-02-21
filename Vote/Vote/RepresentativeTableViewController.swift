@@ -8,9 +8,10 @@
 
 import UIKit
 import AudioToolbox
+import CoreLocation
 
 protocol ZipAlertDelegate {
-    var presentAlert: Bool {get set}
+    var presentAlert: Bool { get set }
 }
 
 class RepresentativeTableViewController: UITableViewController {
@@ -24,7 +25,6 @@ class RepresentativeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "List of Reps"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style: .plain, target:nil, action:nil)
         self.edgesForExtendedLayout = .bottom
         self.tableView.register(RepresentativesTableViewCell.self, forCellReuseIdentifier: cellID)
@@ -33,6 +33,22 @@ class RepresentativeTableViewController: UITableViewController {
         self.tableView.preservesSuperviewLayoutMargins = false
         self.tableView.separatorInset = UIEdgeInsets.zero
         self.tableView.layoutMargins = UIEdgeInsets.zero
+    }
+    
+    func getLocationName(from zip: String) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(zip) { (placemark, error) in
+            if let validPlacemark = placemark?.first {
+                var locationName = ""
+                
+                if let subLocality = validPlacemark.subLocality {
+                    locationName += " in \(subLocality)"
+                } else if let locality = validPlacemark.locality {
+                    locationName += " in \(locality)"
+                }
+                self.title = "List of Reps\(locationName)"
+            }
+        }
     }
     
     func getReps(from zip: String) {
@@ -51,6 +67,7 @@ class RepresentativeTableViewController: UITableViewController {
                 }
             }
         }
+        getLocationName(from: zip)
     }
     
     // MARK: - Table view data source

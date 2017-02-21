@@ -13,6 +13,8 @@ import AudioToolbox
 
 class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MFMailComposeViewControllerDelegate {
     
+    @IBOutlet weak var emailView: UIView!
+    @IBOutlet weak var phoneView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var repImageView: UIImageView!
@@ -52,7 +54,8 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
             }
         }
         
-        title = official.name
+        
+        title = office.name
         
         collectionView.register(HeadlinesCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.delegate = self
@@ -62,16 +65,18 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
         //self.view.addSubview(newsCollectionLabel)
         
-//        newsCollectionLabel.snp.makeConstraints { (view) in
-//            view.bottom.equalTo(collectionView.snp.top)
-//            view.leading.equalTo(collectionView)
-//        }
+        //        newsCollectionLabel.snp.makeConstraints { (view) in
+        //            view.bottom.equalTo(collectionView.snp.top)
+        //            view.leading.equalTo(collectionView)
+        //        }
         
-//        newsCollectionLabel.textColor = UIColor.hackathonCream
-//        newsCollectionLabel.font = UIFont(name: "GillSans-Bold", size: 16)
+        //        newsCollectionLabel.textColor = UIColor.hackathonCream
+        //        newsCollectionLabel.font = UIFont(name: "GillSans-Bold", size: 16)
         instructionLabel.text = "Click to contact \(official.name)!"
         instructionLabel.textColor = UIColor.hackathonCream
         instructionLabel.font = UIFont(name: "GillSans-Italic", size: 16)
+        
+        configureConstraintsForContainerView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -165,12 +170,12 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
     }
     
-//    var newsCollectionLabel: UIOutlinedLabel! = {
-//        let label = UIOutlinedLabel()
-//        label.text = "In the news..."
-//        return label
-//    }()
-
+    //    var newsCollectionLabel: UIOutlinedLabel! = {
+    //        let label = UIOutlinedLabel()
+    //        label.text = "In the news..."
+    //        return label
+    //    }()
+    
     //MARK: - Collection View Data Source Methods
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -206,8 +211,8 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(checkTime), userInfo: nil, repeats: true)
         timer.fire()
     }
-
-
+    
+    
     func checkTime () {
         if self.time >= 0.5  {
             let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -217,13 +222,13 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
             navigationController?.pushViewController(wvc, animated: true)
             timer.invalidate()
         }
+        
+        self.time += 1
+    }
     
-    self.time += 1
-}
-
-
+    
     //MARK: - Helper Functions
-
+    
     func callNumber(_ weirdPhoneNumber: String) {
         let numbers = Set<Character>(arrayLiteral: "0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
         let validPhoneNumber = weirdPhoneNumber.characters.filter { numbers.contains($0) }
@@ -272,9 +277,9 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     @IBAction func phoneButtonPressed(_ sender: UIButton) {
         AudioServicesPlaySystemSound(1105)
         if let number = self.official.phone {
-            callNumber(number)
+            self.callNumber(number)
         } else {
-            showAlert("Sorry! We don't have a valid phone number for \(official.name)!", presentOn: self)
+            showAlert("Sorry! We don't have a valid phone number for \(self.official.name)!", presentOn: self)
         }
     }
     
@@ -300,4 +305,60 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.transform = CGAffineTransform.identity
     }
+    
+    //MARK: - Layout Shadows
+    
+    let phoneButtonContainerView: UIView = {
+        let containerView = UIView()
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOpacity = 0.8
+        containerView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        containerView.layer.shadowRadius = 5
+        containerView.layer.cornerRadius = 15
+        return containerView
+    }()
+    
+    let emailButtonContainerView: UIView = {
+        let containerView = UIView()
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOpacity = 0.8
+        containerView.layer.shadowOffset = CGSize(width: 0, height: 5)
+        containerView.layer.shadowRadius = 5
+        containerView.layer.cornerRadius = 15
+        return containerView
+    }()
+    
+    func configureConstraintsForContainerView() {
+        self.phoneView.addSubview(phoneButtonContainerView)
+        self.emailView.addSubview(emailButtonContainerView)
+        
+        phoneNumberButton.snp.removeConstraints()
+        emailButton.snp.removeConstraints()
+        
+        phoneButtonContainerView.snp.makeConstraints { (view) in
+            view.height.equalTo(65)
+            view.width.equalTo(200)
+            view.centerY.centerX.equalToSuperview()
+        }
+        
+        emailButtonContainerView.snp.makeConstraints { (view) in
+            view.height.equalTo(65)
+            view.width.equalTo(200)
+            view.centerY.centerX.equalToSuperview()
+        }
+        
+        phoneButtonContainerView.addSubview(phoneNumberButton)
+        emailButtonContainerView.addSubview(emailButton)
+        
+        phoneNumberButton.snp.remakeConstraints { (view) in
+            view.top.trailing.bottom.leading.equalToSuperview()
+        }
+        
+        emailButton.snp.remakeConstraints { (view) in
+            view.top.trailing.bottom.leading.equalToSuperview()
+        }
+        
+        
+    }
+    
 }

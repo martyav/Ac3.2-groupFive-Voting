@@ -72,8 +72,6 @@ class RepresentativesTableViewCell: UITableViewCell {
             view.bottom.equalToSuperview().inset(4)
             view.height.width.equalTo(40)
         }
-        
-        //loadOfficial()
     }
 
     //MARK: Content Managing
