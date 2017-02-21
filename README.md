@@ -27,7 +27,7 @@ On each rep's page is a collection of articles from the New York Times. Never mi
 In the future, we at Call hope to offer a calendar of upcoming elections, and easy links so you can register to vote straight from your smartphone. 
 We know how hard it is these days to keep engaged, so we're working to make democracy as accessible as possible.
 
-<img width="200" alt="screen shot 2017-02-21 at 1 24 16 pm" src="https://cloud.githubusercontent.com/assets/19174201/23178747/935d39e8-f839-11e6-8922-4ca6fd275d03.png">
+<img width = "200" src = "https://cloud.githubusercontent.com/assets/19174201/23178864/f46677b8-f839-11e6-8c58-b522c3739cfe.png">
 
 The next time you're sitting at home, feeling bummed out about politics, and you want to do something about it, give Call a try. 
 We give you the tools to be educated and informed -- but it's still on you to CALL! 
