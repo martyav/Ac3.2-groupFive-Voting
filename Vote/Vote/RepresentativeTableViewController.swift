@@ -38,8 +38,6 @@ class RepresentativeTableViewController: UITableViewController {
     func getReps(from zip: String) {
         APIRequestManager.manager.getRepInfo(endPoint: "https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBU0xkqxzxgDJfcSabEFYMXD9M-i8ugdGo&address=\(zip)") { (info) in
             if let validInfo = info {
-                dump(validInfo.offices.count)
-                dump(validInfo.officials.count)
                 self.office = validInfo.offices.reversed()
                 self.repDetails = validInfo.officials
                 
@@ -47,8 +45,10 @@ class RepresentativeTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             } else {
-                self.delegate.presentAlert = true
-                _ = self.navigationController?.popViewController(animated: true)
+                DispatchQueue.main.async {
+                    self.delegate.presentAlert = true
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
             }
         }
     }
