@@ -121,13 +121,13 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         if let phone = official.phone {
             self.phoneNumberButton.setTitle("\(phone)", for: .normal)
             //self.phoneIconImageView.image = #imageLiteral(resourceName: "greenPhone")
-            self.phoneNumberButton.layer.borderColor = UIColor(red:0.00, green:0.19, blue:1.00, alpha:1.0).cgColor
+            self.phoneNumberButton.layer.borderColor = UIColor.hackathonBlue.cgColor
         }
         
         if let email = official.email {
             self.emailButton.setTitle("\(email)", for: .normal)
             //self.emailIconImageView.image = #imageLiteral(resourceName: "greenEmail")
-            self.emailButton.layer.borderColor = UIColor(red:0.00, green:0.19, blue:1.00, alpha:1.0).cgColor
+            self.emailButton.layer.borderColor = UIColor.hackathonBlue.cgColor
         }
         
         if let photoURL = official.photoURL {
