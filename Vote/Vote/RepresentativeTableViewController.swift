@@ -21,11 +21,14 @@ class RepresentativeTableViewController: UITableViewController {
     var office = [Office]()
     var repDetails = [GovernmentOfficial]()
     var delegate: ZipAlertDelegate!
+    let storyboardFile = UIStoryboard.init(name: "Main", bundle: nil)
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style: .plain, target:nil, action:nil)
+        //self.navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: nil, action: nil)
+        self.navigationItem.hidesBackButton = true
         self.edgesForExtendedLayout = .bottom
         self.tableView.register(RepresentativesTableViewCell.self, forCellReuseIdentifier: cellID)
         self.tableView.estimatedRowHeight = 100
@@ -33,6 +36,7 @@ class RepresentativeTableViewController: UITableViewController {
         self.tableView.preservesSuperviewLayoutMargins = false
         self.tableView.separatorInset = UIEdgeInsets.zero
         self.tableView.layoutMargins = UIEdgeInsets.zero
+        setupNavigationButton()
     }
     
     func getLocationName(from zip: String) {
@@ -56,6 +60,8 @@ class RepresentativeTableViewController: UITableViewController {
             if let validInfo = info {
                 self.office = validInfo.offices.reversed()
                 self.repDetails = validInfo.officials
+                self.defaults.set(zip, forKey: "zipcode")
+                
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -102,8 +108,7 @@ class RepresentativeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let currentCell = tableView.cellForRow(at: indexPath) as! RepresentativesTableViewCell
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let dvc = storyboard.instantiateViewController(withIdentifier: "rdvc") as! RepDetailsViewController
+        let dvc = storyboardFile.instantiateViewController(withIdentifier: "rdvc") as! RepDetailsViewController
         dvc.official = currentCell.official
         dvc.office = self.office[indexPath.section]
         self.navigationController?.pushViewController(dvc, animated: true)
@@ -130,6 +135,27 @@ class RepresentativeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         AudioServicesPlaySystemSound(1105)
+    }
+    
+    func setupNavigationButton () {
+        
+        let image = UIImage(named: "search")
+        let searchButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(searchButtonPressed))
+        searchButton.tintColor = UIColor.hackathonCream
+        searchButton.imageInsets = UIEdgeInsetsMake(1, 1, 1, <#T##right: CGFloat##CGFloat#>)
+        self.navigationItem.leftBarButtonItem = searchButton
+    }
+    
+    func searchButtonPressed () {
+        self.defaults.set("", forKey: "zipcode")
+        if navigationController?.viewControllers[0] === self {
+            let dvc = storyboardFile.instantiateViewController(withIdentifier: "searchVC") as! RepDetailsViewController
+
+            
+            navigationController?.pushViewController(dvc, animated: true)
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     /*
