@@ -66,17 +66,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let userDefault = UserDefaults.standard
-        if let shown = userDefault.value(forKey: "walkthrough") as? Bool {
-            print("shown: ", shown)
-        } else {
-            let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-            let wtvc = storyBoard.instantiateViewController(withIdentifier: "PageViewController")
-            navigationController?.pushViewController(wtvc, animated: true)
-            
-        }
-        
+        super.viewDidAppear(animated)        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

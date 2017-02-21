@@ -51,9 +51,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("??????????")
             }
             
-            UIView.animate(withDuration: 4, animations: {
+            UIView.animate(withDuration: 4, animations: { 
                 self.starField?.transform = CGAffineTransform(translationX: 375, y: 375)
                 self.coloredField?.alpha = 0
+
+            }, completion: { (bool) in
+                let defaults = UserDefaults.standard
+                if defaults.value(forKey: "walkthrough") as? Bool != true {
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let pvc = storyboard.instantiateViewController(withIdentifier: "Introduction")
+                    if let navVC = window.rootViewController as? UINavigationController {
+                        navVC.pushViewController(pvc, animated: true)
+                    }
+                }
+            })
+            
+            UIView.animate(withDuration: 4, animations: {
 //                self.coloredField?.alpha = 0
 //                self.starField?.alpha = 0
             })
