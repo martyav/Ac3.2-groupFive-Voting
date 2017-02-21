@@ -12,7 +12,7 @@ Worry no more! Call is here to help!
 With Call, you can look up your representatives, from the city council on up. 
 Just enter your zipcode, and you're good to go. 
 
-<img width="376" alt="screen shot 2017-02-21 at 1 24 16 pm" src="https://cloud.githubusercontent.com/assets/19174201/23178747/935d39e8-f839-11e6-8922-4ca6fd275d03.png">
+<img width="300" alt="screen shot 2017-02-21 at 1 24 16 pm" src="https://cloud.githubusercontent.com/assets/19174201/23178747/935d39e8-f839-11e6-8922-4ca6fd275d03.png">
 
 From there, select a rep, and contact them directly using our amazing CELLULAR technology (ok, it's just a regular phone call...). 
 Or email them if your social anxiety's got you dreading talking on the phone!
@@ -22,7 +22,7 @@ Or email them if your social anxiety's got you dreading talking on the phone!
 In addition to quick and easy contact information for all your local reps, Call provides you with the news you need to make informed decisions. 
 On each rep's page is a collection of articles from the New York Times. Never miss a thing!
 
-<img width="373" alt="screen shot 2017-02-21 at 1 26 38 pm" src="https://cloud.githubusercontent.com/assets/19174201/23178734/8a88cac6-f839-11e6-84ef-18f120bd8d0d.png">
+<img width="300" alt="screen shot 2017-02-21 at 1 26 38 pm" src="https://cloud.githubusercontent.com/assets/19174201/23178734/8a88cac6-f839-11e6-84ef-18f120bd8d0d.png">
 
 In the future, we at Call hope to offer a calendar of upcoming elections, and easy links so you can register to vote straight from your smartphone. 
 We know how hard it is these days to keep engaged, so we're working to make democracy as accessible as possible.
