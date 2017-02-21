@@ -13,6 +13,7 @@ import AudioToolbox
 
 class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MFMailComposeViewControllerDelegate {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var instructionLabel: UILabel!
     @IBOutlet weak var repImageView: UIImageView!
     @IBOutlet weak var repNameLabel: UILabel!
@@ -29,6 +30,10 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     var office: Office!
     var articles = [Article]()
     
+    var time = 0.0
+    var timer: Timer!
+    var selection: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +45,9 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
                 self.articles = info
                 DispatchQueue.main.async {
                     self.collectionView?.reloadData()
+                    if self.activityIndicator.isAnimating {
+                        self.activityIndicator.stopAnimating()
+                    }
                 }
             }
         }
@@ -71,10 +79,28 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         self.repImageView.contentMode = .scaleAspectFit
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.time = 0.0
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.stripeView.backgroundColor = UIColor.hackathonBlue
         self.repImageView.backgroundColor = UIColor.hackathonBlue
         self.bottomGradient.apply(gradient: [UIColor.hackathonRed, UIColor.hackathonRed, UIColor.hackathonCream])
+        
+        
+        
+        self.activityIndicator.startAnimating()
+        
+        if collectionView.visibleCells != [] {
+            for cell in collectionView.visibleCells {
+                cell.transform = CGAffineTransform.identity
+                
+                if self.activityIndicator.isAnimating {
+                    self.activityIndicator.stopAnimating()
+                }
+            }
+        }
     }
     
     func inputViewValues () {
@@ -143,16 +169,6 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
 //        return label
 //    }()
 
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
     //MARK: - Collection View Data Source Methods
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -178,16 +194,33 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
         let wvc = storyboard.instantiateViewController(withIdentifier: "wvc") as! WebViewController
-        let selection = articles[indexPath.row].webURL
-        wvc.address = selection
-        print(selection)
-        navigationController?.pushViewController(wvc, animated: true)
+        self.selection = articles[indexPath.row].webURL
+        wvc.address = selection!
+        self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(checkTime), userInfo: nil, repeats: true)
+        timer.fire()
     }
+
+
+    func checkTime () {
+        if self.time >= 0.5  {
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            let wvc = storyboard.instantiateViewController(withIdentifier: "wvc") as! WebViewController
+            wvc.address = self.selection!
+            print(selection)
+            navigationController?.pushViewController(wvc, animated: true)
+            timer.invalidate()
+        }
     
+    self.time += 1
+}
+
+
     //MARK: - Helper Functions
-    
+
     func callNumber(_ weirdPhoneNumber: String) {
         let numbers = Set<Character>(arrayLiteral: "0", "1", "2", "3", "4", "5", "6", "7", "8", "9")
         let validPhoneNumber = weirdPhoneNumber.characters.filter { numbers.contains($0) }
@@ -251,7 +284,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         }
     }
     
-    // MARK: - Noise
+    // MARK: - Noise & Animations
     
     override func viewWillDisappear(_ animated : Bool) {
         super.viewWillDisappear(animated)
@@ -262,6 +295,12 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        AudioServicesPlaySystemSound(1105)
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        cell?.transform = CGAffineTransform.identity
     }
 }

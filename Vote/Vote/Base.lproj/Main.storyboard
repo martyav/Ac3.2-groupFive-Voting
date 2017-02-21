@@ -95,61 +95,74 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdQ-5N-wbV">
                                 <rect key="frame" x="0.0" y="297" width="376" height="370"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="euw-fh-0aQ">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="euw-fh-0aQ">
                                         <rect key="frame" x="0.0" y="124" width="376" height="75"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="0sb-Rp-ASy">
+                                                <rect key="frame" x="88" y="5" width="200" height="65"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="65" id="3re-Ay-qsQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="14"/>
+                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <size key="titleShadowOffset" width="-1" height="1"/>
+                                                <state key="normal" title="EMAIL">
+                                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="emailButtonPressed:" destination="YaJ-b3-0sq" eventType="touchUpInside" id="eTD-Rd-atN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="0sb-Rp-ASy" firstAttribute="centerX" secondItem="euw-fh-0aQ" secondAttribute="centerX" constant="0.5" id="DF6-6T-Gta"/>
+                                            <constraint firstItem="0sb-Rp-ASy" firstAttribute="leading" secondItem="euw-fh-0aQ" secondAttribute="leading" constant="88" id="S9h-ds-NxS"/>
+                                            <constraint firstItem="0sb-Rp-ASy" firstAttribute="centerY" secondItem="euw-fh-0aQ" secondAttribute="centerY" id="WTn-XS-aKa"/>
+                                            <constraint firstItem="0sb-Rp-ASy" firstAttribute="centerX" secondItem="euw-fh-0aQ" secondAttribute="centerX" id="nST-1k-Sjg"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7S-rf-mTO">
                                         <rect key="frame" x="0.0" y="4" width="376" height="75"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekm-YY-YoB">
+                                                <rect key="frame" x="88" y="5" width="200" height="65"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="85y-TZ-Uth"/>
+                                                    <constraint firstAttribute="height" constant="65" id="yim-ev-gPU"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="20"/>
+                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <size key="titleShadowOffset" width="-1" height="1"/>
+                                                <state key="normal" title="PHONE">
+                                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="phoneButtonPressed:" destination="YaJ-b3-0sq" eventType="touchUpInside" id="21v-fD-woU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ekm-YY-YoB" secondAttribute="bottom" constant="5" id="DJl-6g-Zwi"/>
+                                            <constraint firstItem="ekm-YY-YoB" firstAttribute="centerX" secondItem="h7S-rf-mTO" secondAttribute="centerX" constant="-0.5" id="d1n-Wm-Ybx"/>
+                                            <constraint firstAttribute="centerX" secondItem="ekm-YY-YoB" secondAttribute="centerX" id="gM8-Y2-S0n"/>
+                                            <constraint firstAttribute="height" secondItem="ekm-YY-YoB" secondAttribute="height" constant="10" id="iXC-fS-kla"/>
+                                            <constraint firstAttribute="bottom" secondItem="ekm-YY-YoB" secondAttribute="bottom" constant="5" id="qQU-at-biI"/>
+                                        </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ekm-YY-YoB">
-                                        <rect key="frame" x="88" y="4" width="200" height="75"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="85y-TZ-Uth"/>
-                                            <constraint firstAttribute="height" constant="75" id="yim-ev-gPU"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="20"/>
-                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="titleShadowOffset" width="-1" height="1"/>
-                                        <state key="normal" title="PHONE">
-                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="phoneButtonPressed:" destination="YaJ-b3-0sq" eventType="touchUpInside" id="21v-fD-woU"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="0sb-Rp-ASy">
-                                        <rect key="frame" x="88" y="124" width="200" height="75"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="75" id="3re-Ay-qsQ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="14"/>
-                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <size key="titleShadowOffset" width="-1" height="1"/>
-                                        <state key="normal" title="EMAIL">
-                                            <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="emailButtonPressed:" destination="YaJ-b3-0sq" eventType="touchUpInside" id="eTD-Rd-atN"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="0sb-Rp-ASy" firstAttribute="centerX" secondItem="vdQ-5N-wbV" secondAttribute="centerX" id="9eE-mR-Wse"/>
-                                    <constraint firstItem="ekm-YY-YoB" firstAttribute="leading" secondItem="0sb-Rp-ASy" secondAttribute="leading" id="FWk-JS-Rb3"/>
-                                    <constraint firstItem="ekm-YY-YoB" firstAttribute="centerX" secondItem="vdQ-5N-wbV" secondAttribute="centerX" constant="-0.5" id="Ie9-E5-mGS"/>
-                                    <constraint firstItem="h7S-rf-mTO" firstAttribute="centerX" secondItem="ekm-YY-YoB" secondAttribute="centerX" id="VE4-7Q-PY5"/>
-                                    <constraint firstAttribute="bottom" secondItem="ekm-YY-YoB" secondAttribute="bottom" constant="291" id="ar9-A7-ule"/>
-                                    <constraint firstItem="0sb-Rp-ASy" firstAttribute="top" secondItem="ekm-YY-YoB" secondAttribute="bottom" constant="45" id="cPn-5m-VdU"/>
-                                    <constraint firstItem="h7S-rf-mTO" firstAttribute="height" secondItem="ekm-YY-YoB" secondAttribute="height" id="iKx-B0-A6j"/>
-                                    <constraint firstItem="0sb-Rp-ASy" firstAttribute="centerX" secondItem="vdQ-5N-wbV" secondAttribute="centerX" constant="0.5" id="jLU-Tm-A9A"/>
+                                    <constraint firstItem="euw-fh-0aQ" firstAttribute="trailing" secondItem="h7S-rf-mTO" secondAttribute="trailing" id="1QG-MA-OHS"/>
+                                    <constraint firstItem="euw-fh-0aQ" firstAttribute="top" secondItem="h7S-rf-mTO" secondAttribute="bottom" constant="45" id="Dad-2o-sMD"/>
+                                    <constraint firstItem="euw-fh-0aQ" firstAttribute="leading" secondItem="vdQ-5N-wbV" secondAttribute="leading" id="Vkc-U3-Zjl"/>
+                                    <constraint firstItem="euw-fh-0aQ" firstAttribute="leading" secondItem="h7S-rf-mTO" secondAttribute="leading" id="XtJ-LU-e5n"/>
+                                    <constraint firstItem="euw-fh-0aQ" firstAttribute="top" secondItem="vdQ-5N-wbV" secondAttribute="top" constant="124" id="Xvh-GH-vkP"/>
+                                    <constraint firstAttribute="bottom" secondItem="euw-fh-0aQ" secondAttribute="bottom" constant="171" id="lMe-JT-Znf"/>
                                     <constraint firstItem="h7S-rf-mTO" firstAttribute="width" secondItem="vdQ-5N-wbV" secondAttribute="width" id="m9d-au-b57"/>
-                                    <constraint firstItem="h7S-rf-mTO" firstAttribute="bottom" secondItem="ekm-YY-YoB" secondAttribute="bottom" id="yeK-GH-40b"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gni-qk-fw7">
@@ -212,6 +225,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CXh-WP-HsC" userLabel="activityIndicator">
+                                <rect key="frame" x="169" y="565" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.1019607843" green="0.2901960784" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -233,6 +251,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="CXh-WP-HsC" id="IdW-wY-s13"/>
                         <outlet property="bottomGradient" destination="vdQ-5N-wbV" id="m1A-Mc-eQq"/>
                         <outlet property="collectionView" destination="gHr-Og-qib" id="v74-fc-9eS"/>
                         <outlet property="emailButton" destination="0sb-Rp-ASy" id="tPC-iZ-L4m"/>
@@ -264,6 +283,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="sRx-1h-gzB">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.10196078431372549" green="0.29019607843137252" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -275,6 +299,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="sRx-1h-gzB" id="MKc-0r-ozV"/>
                         <outlet property="webView" destination="Rpa-XR-o8x" id="kwP-VY-I5I"/>
                     </connections>
                 </viewController>
