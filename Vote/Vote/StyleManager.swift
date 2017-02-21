@@ -8,10 +8,6 @@
 
 import UIKit
 
-extension UIColor {
-    
-}
-
 class StyleManager {
     static let styler = StyleManager()
     
