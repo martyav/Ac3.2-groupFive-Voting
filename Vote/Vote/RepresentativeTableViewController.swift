@@ -142,7 +142,7 @@ class RepresentativeTableViewController: UITableViewController {
         let image = UIImage(named: "search")
         let searchButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(searchButtonPressed))
         searchButton.tintColor = UIColor.hackathonCream
-        searchButton.imageInsets = UIEdgeInsetsMake(1, 1, 1, <#T##right: CGFloat##CGFloat#>)
+        searchButton.imageInsets = UIEdgeInsetsMake(1, 1, 1, 1)
         self.navigationItem.leftBarButtonItem = searchButton
     }
     
