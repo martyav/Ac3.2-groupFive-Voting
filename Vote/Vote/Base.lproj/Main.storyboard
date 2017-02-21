@@ -33,7 +33,6 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="VWO-tg-gkP" firstAttribute="height" secondItem="eCT-FW-8aD" secondAttribute="height" id="J5i-XU-RKL"/>
                             <constraint firstItem="eCT-FW-8aD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N2F-6B-d5o"/>

@@ -209,7 +209,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
     }
     
     func startTalking() {
-        UIView.animateKeyframes(withDuration: 3, delay: 0, options: [.repeat, .autoreverse], animations: {
+        UIView.animateKeyframes(withDuration: 4, delay: 0, options: [.repeat, .autoreverse], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/4, animations: {
                 self.redBubbleViewRight?.alpha = 1
                 self.blueBubbleViewLeft?.alpha = 0
@@ -252,5 +252,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
     private func removeConstraints() {
         self.phoneView?.snp.removeConstraints()
     }
+    
+    
 }
 
