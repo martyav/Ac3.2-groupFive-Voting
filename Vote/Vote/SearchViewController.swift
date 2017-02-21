@@ -79,4 +79,17 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         AudioServicesPlaySystemSound(1105)
     }
+    
+    //MARK: - Check User Defaults
+    
+    func didDisplayOnboardScreens() {
+        let userDefault = UserDefaults.standard
+        let didDisplayOnboard = userDefault.bool(forKey: "walkthrough")
+        
+        if !didDisplayOnboard {
+            if let pvc = storyboard?.instantiateViewController(withIdentifier: "PageViewController") {
+            self.present(pvc, animated: true, completion: nil)
+            }
+        }
+    }
 }
