@@ -27,6 +27,9 @@
 		819189FF1E58A84F0060CFC9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819189FE1E58A84F0060CFC9 /* Address.swift */; };
 		81918A011E58BB540060CFC9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81918A001E58BB540060CFC9 /* APIManager.swift */; };
 		81AD80F51E58DBED002D45DF /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AD80F41E58DBED002D45DF /* Article.swift */; };
+		D35B2E471E5B669B00AFC932 /* OutlinedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35B2E461E5B669B00AFC932 /* OutlinedText.swift */; };
+		D35B2E491E5B6ACC00AFC932 /* Extension+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35B2E481E5B6ACC00AFC932 /* Extension+NavBar.swift */; };
+		D35B2E4B1E5B75F800AFC932 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35B2E4A1E5B75F800AFC932 /* Extension+UIView.swift */; };
 		D396A79C1E58F146005F14BA /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396A79B1E58F146005F14BA /* StyleManager.swift */; };
 		D396A79E1E58FDD1005F14BA /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396A79D1E58FDD1005F14BA /* Extension+UIColor.swift */; };
 		D396A7A41E59551D005F14BA /* SplashAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D396A7A31E59551D005F14BA /* SplashAnimationViewController.swift */; };
@@ -60,6 +63,9 @@
 		81918A001E58BB540060CFC9 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		81AD80F41E58DBED002D45DF /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		9E8D478BBA950E1869A5C8F0 /* Pods-Vote.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vote.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Vote/Pods-Vote.debug.xcconfig"; sourceTree = "<group>"; };
+		D35B2E461E5B669B00AFC932 /* OutlinedText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutlinedText.swift; sourceTree = "<group>"; };
+		D35B2E481E5B6ACC00AFC932 /* Extension+NavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+NavBar.swift"; sourceTree = "<group>"; };
+		D35B2E4A1E5B75F800AFC932 /* Extension+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
 		D396A79B1E58F146005F14BA /* StyleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
 		D396A79D1E58FDD1005F14BA /* Extension+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 		D396A7A31E59551D005F14BA /* SplashAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashAnimationViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +140,10 @@
 				819189E51E58906F0060CFC9 /* Assets.xcassets */,
 				819189E71E58906F0060CFC9 /* LaunchScreen.storyboard */,
 				819189EA1E58906F0060CFC9 /* Info.plist */,
+				D35B2E461E5B669B00AFC932 /* OutlinedText.swift */,
 				D396A79D1E58FDD1005F14BA /* Extension+UIColor.swift */,
+				D35B2E481E5B6ACC00AFC932 /* Extension+NavBar.swift */,
+				D35B2E4A1E5B75F800AFC932 /* Extension+UIView.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -311,6 +320,7 @@
 			files = (
 				81918A011E58BB540060CFC9 /* APIManager.swift in Sources */,
 				7DFE85D01E58EA82003E3FD3 /* SearchViewController.swift in Sources */,
+				D35B2E4B1E5B75F800AFC932 /* Extension+UIView.swift in Sources */,
 				7DFE85D21E58EAED003E3FD3 /* RepresentativeTableViewController.swift in Sources */,
 				7DFE85D41E58EB35003E3FD3 /* RepresentativesTableViewCell.swift in Sources */,
 				819189DF1E58906F0060CFC9 /* AppDelegate.swift in Sources */,
@@ -326,6 +336,8 @@
 				D396A79E1E58FDD1005F14BA /* Extension+UIColor.swift in Sources */,
 				7D45E2EF1E5C4306008D0BAF /* InitialViewController.swift in Sources */,
 				814CEBD71E58CA5500614741 /* RepInfo.swift in Sources */,
+				D35B2E471E5B669B00AFC932 /* OutlinedText.swift in Sources */,
+				D35B2E491E5B6ACC00AFC932 /* Extension+NavBar.swift in Sources */,
 				819189FF1E58A84F0060CFC9 /* Address.swift in Sources */,
 				7D39AAE81E5A0BE900D8C77C /* Introduction.swift in Sources */,
 				D396A79C1E58F146005F14BA /* StyleManager.swift in Sources */,

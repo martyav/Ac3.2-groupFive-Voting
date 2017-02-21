@@ -51,6 +51,7 @@ class RepresentativesTableViewCell: UITableViewCell {
     private func setupViewHierarchy () {
         self.contentView.addSubview(partyIcon)
         self.contentView.addSubview(nameLabel)
+        self.contentView.addSubview(arrow)
     }
     
     private func configureConstraints() {
@@ -59,12 +60,18 @@ class RepresentativesTableViewCell: UITableViewCell {
             view.bottom.equalToSuperview().inset(4)
             view.height.width.equalTo(40)
         }
+        
         nameLabel.snp.makeConstraints { (view) in
             view.leading.equalTo(partyIcon.snp.trailing).offset(10)
             view.centerY.equalToSuperview()
             view.trailing.equalToSuperview().inset(4)
         }
-        //loadOfficial()
+        
+        arrow.snp.makeConstraints { (view) in
+            view.trailing.equalToSuperview().inset(4)
+            view.bottom.equalToSuperview().inset(4)
+            view.height.width.equalTo(40)
+        }
     }
 
     //MARK: Content Managing
@@ -88,6 +95,13 @@ class RepresentativesTableViewCell: UITableViewCell {
     
     var nameLabel: UILabel = {
         let view = UILabel()
+        return view
+    }()
+    
+    var arrow: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .center
+        view.image = #imageLiteral(resourceName: "blueArrow")
         return view
     }()
 }

@@ -8,10 +8,6 @@
 
 import UIKit
 
-extension UIColor {
-    
-}
-
 class StyleManager {
     static let styler = StyleManager()
     
@@ -33,18 +29,21 @@ class StyleManager {
         let proxyTextField = UITextField.appearance()
         let proxyTextView = UITextView.appearance()
         let proxyPlaceholder = UILabel.appearance(whenContainedInInstancesOf: [UITextField.self])
+        let proxyButtonLabel = UILabel.appearance(whenContainedInInstancesOf: [UIButton.self])
+        let proxyButton = UIButton.appearance()
         
         // generalized info
         let proxyWebView = UIWebView.appearance()
         let proxyTableView = UITableView.appearance()
         let proxySectionHeader = UITableViewHeaderFooterView.appearance()
-        let proxyCell = UITableViewCell.appearance()
+        let proxyCollectionCell = UICollectionViewCell.appearance()
+        let proxyCollectionView = UICollectionView.appearance()
         let proxyScrollView = UIScrollView.appearance()
         
         // top bar styling
-        proxyNavBar.barTintColor = UIColor.hackathonBlue
         proxyNavBar.tintColor = UIColor.hackathonCream
         proxyNavBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.hackathonCream, NSFontAttributeName: UIFont(name: boldFont, size: 21)!]
+        proxyNavBar.apply(gradient: [UIColor.hackathonBlue.withAlphaComponent(0.1), UIColor.hackathonBlue])
         
         // detail & text styling
         proxyLabel.font = UIFont(name: semiboldFont, size: 20)
@@ -53,14 +52,19 @@ class StyleManager {
         proxyTextView.font = UIFont(name: regularFont, size: 16)
         proxyTextView.textColor = UIColor.hackathonBlack
         proxyTextView.backgroundColor = .clear
+        
         proxyTextField.backgroundColor = UIColor.hackathonRed
         proxyTextField.textColor = UIColor.hackathonGrey
         proxyTextField.font = UIFont(name: semiboldFont, size: 20)
         proxyTextField.layer.cornerRadius = 3.0
-        proxyPlaceholder.font = UIFont(name: lightFont, size: 20)
+        proxyTextField.placeholder = "Enter your zipcode"
+        proxyPlaceholder.font = UIFont(name: italicFont, size: 20)
+        proxyPlaceholder.textAlignment = .center
         proxyPlaceholder.backgroundColor = proxyTextField.backgroundColor
         proxyPlaceholder.textColor = UIColor.hackathonCream
-        proxyTextField.placeholder = "Enter your zipcode"
+        
+        proxyButtonLabel.font = UIFont(name: boldFont, size: 20)
+        proxyButton.titleEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
         
         // generalized info styling
         proxyWebView.scalesPageToFit = true
@@ -74,6 +78,8 @@ class StyleManager {
         proxyScrollView.bounces = true
         proxyScrollView.backgroundColor = UIColor.hackathonCream
         proxyScrollView.tintColor = UIColor.hackathonRed
+        
+        proxyCollectionView.backgroundColor = .clear
     }
     
 }
