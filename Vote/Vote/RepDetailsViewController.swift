@@ -154,9 +154,9 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
             self.iconImageView?.backgroundColor = UIColor.hackathonCream
             self.iconImageView?.layer.borderColor = UIColor.hackathonGrey.cgColor
             self.iconImageView.layer.borderWidth = 0.75
-            self.scrollView.backgroundColor = .clear
-            self.scrollView.layer.borderColor = UIColor.hackathonWhite.cgColor
-            self.scrollView.layer.borderWidth = 1
+            self.scrollView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "star"))
+            self.scrollView.layer.borderColor = UIColor.hackathonCream.cgColor
+            self.scrollView.layer.borderWidth = 5
             self.emailButton.layer.cornerRadius = 15
             self.phoneNumberButton.layer.cornerRadius = 15
             
