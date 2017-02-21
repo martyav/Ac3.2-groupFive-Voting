@@ -33,7 +33,6 @@ class HeadlinesCollectionViewCell: UICollectionViewCell {
         self.articleHeadlineLabel.font = UIFont(name: "GillSans-SemiBold", size: 16)
         self.articleHeadlineLabel.backgroundColor = UIColor.hackathonBlack
         self.articleHeadlineLabel.textColor = UIColor.hackathonCream
-        self.articleImageView.image = #imageLiteral(resourceName: "news")
         self.articleImageView.contentMode = .scaleAspectFit
         if let url = self.article.thumbURL {
         APIRequestManager.manager.getImage(APIEndpoint: "https://static01.nyt.com/\(url)") {(data) in
