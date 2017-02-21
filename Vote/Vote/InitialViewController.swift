@@ -26,8 +26,18 @@ class InitialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         populateView()
+        navigationItem.hidesBackButton = true
+    }
+    
+    override func viewDidLayoutSubviews() {
+        buttonOverlay.layer.borderWidth = 1.0
+        buttonOverlay.layer.borderColor = UIColor.hackathonCream.cgColor
+        buttonOverlay.layer.shadowColor = UIColor.black.cgColor
+        buttonOverlay.layer.shadowOpacity = 1
+        buttonOverlay.layer.shadowOffset = CGSize(width: 0, height: 5)
+        buttonOverlay.layer.shadowRadius = 5
+
     }
     
     func populateView() {

@@ -10,9 +10,6 @@ import UIKit
 import SnapKit
 import AudioToolbox
 
-let context = 0
-
-
 class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDelegate {
     
     @IBOutlet weak var zipTextField: UITextField!
@@ -66,6 +63,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
             showAlert("Invalid Zipcode", presentOn: self)
             self.presentAlert = false
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
