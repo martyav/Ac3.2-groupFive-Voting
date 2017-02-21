@@ -12,6 +12,8 @@ import AudioToolbox
 
 class WebViewController: UIViewController, UIWebViewDelegate {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var article: Article? {
         didSet {
             loadArticles()
@@ -40,6 +42,20 @@ class WebViewController: UIViewController, UIWebViewDelegate {
             webView.loadRequest(urlRequest)
         }
         
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        activityIndicator.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        activityIndicator.stopAnimating()
+    }
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        print(error)
+        activityIndicator.stopAnimating()
+        showAlert("We couldn't load this article right now. Check your connectivity settings.", presentOn: self)
     }
     
     // MARK: - Noise

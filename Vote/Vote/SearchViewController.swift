@@ -32,7 +32,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         zipTextField.delegate = self
         
         title = "Find Your Rep"
@@ -44,6 +44,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
         super.viewWillAppear(animated)
         
         createAndConstrainImages()
+        
+        UIView.setAnimationsEnabled(true)
         
         _ = [
             blueBubbleViewLeft,
