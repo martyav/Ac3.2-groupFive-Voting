@@ -8,9 +8,10 @@
 
 import UIKit
 import AudioToolbox
+import CoreLocation
 
 protocol ZipAlertDelegate {
-    var presentAlert: Bool {get set}
+    var presentAlert: Bool { get set }
 }
 
 class RepresentativeTableViewController: UITableViewController {
@@ -24,7 +25,6 @@ class RepresentativeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "List of Reps"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style: .plain, target:nil, action:nil)
         self.edgesForExtendedLayout = .bottom
         self.tableView.register(RepresentativesTableViewCell.self, forCellReuseIdentifier: cellID)
@@ -35,11 +35,25 @@ class RepresentativeTableViewController: UITableViewController {
         self.tableView.layoutMargins = UIEdgeInsets.zero
     }
     
+    func getLocationName(from zip: String) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(zip) { (placemark, error) in
+            if let validPlacemark = placemark?.first {
+                var locationName = ""
+                
+                if let subLocality = validPlacemark.subLocality {
+                    locationName += " in \(subLocality)"
+                } else if let locality = validPlacemark.locality {
+                    locationName += " in \(locality)"
+                }
+                self.title = "List of Reps\(locationName)"
+            }
+        }
+    }
+    
     func getReps(from zip: String) {
         APIRequestManager.manager.getRepInfo(endPoint: "https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBU0xkqxzxgDJfcSabEFYMXD9M-i8ugdGo&address=\(zip)") { (info) in
             if let validInfo = info {
-                dump(validInfo.offices.count)
-                dump(validInfo.officials.count)
                 self.office = validInfo.offices.reversed()
                 self.repDetails = validInfo.officials
                 
@@ -47,10 +61,13 @@ class RepresentativeTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
             } else {
-                self.delegate.presentAlert = true
-                _ = self.navigationController?.popViewController(animated: true)
+                DispatchQueue.main.async {
+                    self.delegate.presentAlert = true
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
             }
         }
+        getLocationName(from: zip)
     }
     
     // MARK: - Table view data source
