@@ -104,8 +104,12 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     func inputViewValues () {
         self.repImageView.image = UIImage(named: "placeholderPic")
         
-        self.emailButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.emailButton.clipsToBounds = true
+        self.phoneNumberButton.clipsToBounds = true
         self.emailButton.layer.borderWidth = 2
+        self.emailButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.emailButton.apply(gradient: [UIColor.gray.withAlphaComponent(0.01), UIColor.hackathonCream, UIColor.gray.withAlphaComponent(0.01)])
+        self.phoneNumberButton.apply(gradient: [UIColor.gray.withAlphaComponent(0.01), UIColor.hackathonCream, UIColor.gray.withAlphaComponent(0.01)])
         self.phoneNumberButton.layer.borderColor = UIColor.lightGray.cgColor
         self.phoneNumberButton.layer.borderWidth = 2
         
