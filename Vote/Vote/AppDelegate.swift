@@ -13,10 +13,57 @@ import SnapKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var starField: UIView?
+    var coloredField: UIView?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.statusBarStyle = .lightContent
         StyleManager.styler.prettify()
+        window?.backgroundColor = UIColor.hackathonCream
+        
+        if let window = self.window {
+            print("!!!!!!!!!!")
+            self.coloredField = UIView(frame: .zero)
+            self.coloredField?.backgroundColor = UIColor.hackathonBlue
+            self.starField = UIView(frame: .zero)
+            self.starField?.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "star"))
+            
+            self.window?.addSubview(self.coloredField!)
+            self.window?.bringSubview(toFront: self.coloredField!)
+            self.window?.addSubview(self.starField!)
+            self.window?.bringSubview(toFront: self.starField!)
+            
+            self.coloredField?.snp.makeConstraints{ (view) in
+                view.size.equalToSuperview()
+                view.bottom.top.leading.bottom.equalToSuperview()
+            }
+            
+            self.starField?.snp.makeConstraints{ (view) in
+                view.size.equalTo(coloredField!).multipliedBy(10)
+                view.bottom.trailing.equalToSuperview()
+            }
+            
+            if self.starField != nil {
+                print(".......")
+            }
+            
+            if self.coloredField != nil {
+                print("??????????")
+            }
+            
+            UIView.animate(withDuration: 4, animations: {
+                self.starField?.transform = CGAffineTransform(translationX: 375, y: 375)
+                self.coloredField?.alpha = 0
+//                self.coloredField?.alpha = 0
+//                self.starField?.alpha = 0
+            })
+            
+//            _ = [
+//                self.coloredField,
+//                self.starField
+//                ].map { $0?.removeFromSuperview() }
+
+        }
         
         return true
     }
