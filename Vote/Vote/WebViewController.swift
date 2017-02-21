@@ -55,7 +55,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         print(error)
         activityIndicator.stopAnimating()
-        showAlert("We couldn't load this article right now. Check your connectivity settings.", presentOn: self)
+        showAlert("We are having trouble loading this article right now.", presentOn: self)
     }
     
     // MARK: - Noise

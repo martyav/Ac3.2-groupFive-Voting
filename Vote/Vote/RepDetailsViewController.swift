@@ -69,7 +69,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
 //        newsCollectionLabel.textColor = UIColor.hackathonCream
 //        newsCollectionLabel.font = UIFont(name: "GillSans-Bold", size: 16)
-        instructionLabel.text = "Click to contact this elected official!"
+        instructionLabel.text = "Click to contact \(official.name)!"
         instructionLabel.textColor = UIColor.hackathonCream
         instructionLabel.font = UIFont(name: "GillSans-Italic", size: 16)
     }
@@ -104,8 +104,12 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
     func inputViewValues () {
         self.repImageView.image = UIImage(named: "placeholderPic")
         
-        self.emailButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.emailButton.clipsToBounds = true
+        self.phoneNumberButton.clipsToBounds = true
         self.emailButton.layer.borderWidth = 2
+        self.emailButton.layer.borderColor = UIColor.lightGray.cgColor
+        self.emailButton.apply(gradient: [UIColor.gray.withAlphaComponent(0.01), UIColor.hackathonCream])
+        self.phoneNumberButton.apply(gradient: [UIColor.gray.withAlphaComponent(0.01), UIColor.hackathonCream])
         self.phoneNumberButton.layer.borderColor = UIColor.lightGray.cgColor
         self.phoneNumberButton.layer.borderWidth = 2
         
@@ -150,9 +154,9 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
             self.iconImageView?.backgroundColor = UIColor.hackathonCream
             self.iconImageView?.layer.borderColor = UIColor.hackathonGrey.cgColor
             self.iconImageView.layer.borderWidth = 0.75
-            self.scrollView.backgroundColor = .clear
-            self.scrollView.layer.borderColor = UIColor.hackathonWhite.cgColor
-            self.scrollView.layer.borderWidth = 1
+            self.scrollView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "star"))
+            self.scrollView.layer.borderColor = UIColor.hackathonCream.cgColor
+            self.scrollView.layer.borderWidth = 5
             self.emailButton.layer.cornerRadius = 15
             self.phoneNumberButton.layer.cornerRadius = 15
             

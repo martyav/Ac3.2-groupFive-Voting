@@ -86,6 +86,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
     func checkTextFieldContent (_ notification: Notification) {
         if let textField = notification.object as? UITextField {
             if textField.text!.characters.count == 1 {
+                phoneView?.stopAnimating()
+                bouncePhone()
                 startTalking()
             }
             
@@ -190,8 +192,24 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
         
     }
     
+    func hoverPhone() {
+        UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .autoreverse], animations: {
+                self.phoneView?.transform = CGAffineTransform(translationX: 0, y: -1)
+            
+        }, completion: { finish in
+            self.phoneView?.transform = CGAffineTransform(translationX: 0, y: 1)
+        })
+    }
+    
+    func bouncePhone() {
+        UIView.animate(withDuration: 0.5, delay: 0, options: [.repeat, .autoreverse], animations: {
+            self.phoneView?.transform = CGAffineTransform(translationX: 0, y: -5)
+            self.phoneView?.transform = CGAffineTransform.identity
+        }, completion: nil)
+    }
+    
     func startTalking() {
-        UIView.animateKeyframes(withDuration: 4, delay: 0, options: .repeat, animations: {
+        UIView.animateKeyframes(withDuration: 3, delay: 0, options: [.repeat, .autoreverse], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1/4, animations: {
                 self.redBubbleViewRight?.alpha = 1
                 self.blueBubbleViewLeft?.alpha = 0
