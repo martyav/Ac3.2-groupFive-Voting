@@ -18,7 +18,8 @@ class Introduction: UIPageViewController, UIPageViewControllerDataSource {
         super.viewDidLoad()
         
         self.dataSource = self
-        
+        navigationItem.hidesBackButton = true
+
         if let startIntro = self.viewControllerAtIndex(0) {
             setViewControllers([startIntro], direction: .forward, animated: true, completion: nil)
         }
