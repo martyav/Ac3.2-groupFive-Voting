@@ -67,7 +67,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                 } else if let zip = defaults.value(forKey: "zipcode") as? String {
                     let dvc = storyboard.instantiateViewController(withIdentifier: "rtvc") as! RepresentativeTableViewController
+                    let delegate = storyboard.instantiateViewController(withIdentifier: "searchVC") as! SearchViewController
                     dvc.getReps(from: zip)
+                    dvc.delegate = delegate
                     if let navVC = window.rootViewController as? UINavigationController {
                         navVC.pushViewController(dvc, animated: true)
                     }

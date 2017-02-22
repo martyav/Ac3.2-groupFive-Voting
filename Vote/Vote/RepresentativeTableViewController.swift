@@ -57,6 +57,7 @@ class RepresentativeTableViewController: UITableViewController {
     
     func getReps(from zip: String) {
         APIRequestManager.manager.getRepInfo(endPoint: "https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBU0xkqxzxgDJfcSabEFYMXD9M-i8ugdGo&address=\(zip)") { (info) in
+            
             if let validInfo = info {
                 self.office = validInfo.offices.reversed()
                 self.repDetails = validInfo.officials
@@ -147,7 +148,6 @@ class RepresentativeTableViewController: UITableViewController {
     }
     
     func searchButtonPressed () {
-        self.defaults.set("", forKey: "zipcode")
         if navigationController?.viewControllers[0] === self {
             let dvc = storyboardFile.instantiateViewController(withIdentifier: "searchVC") as! RepDetailsViewController
 
