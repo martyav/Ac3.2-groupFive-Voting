@@ -12,7 +12,7 @@ class Introduction: UIPageViewController, UIPageViewControllerDataSource {
     
     var prompts = ["Welcome To Call", "How To Connect", "Maximize Your Voice"]
     var pageImages = ["buildingPhone", "redPhone", "defaultParty"]
-    var textDescriptions = ["Are you curious about who your local representatives are? Would you like an easy way to voice your concerns? Use Call to connect with your local representatives effortlessly.", "Using the search field, enter your zip code and select the representative you would like to contact.", "With an easy tap, you can either telephone or email your representative directly from Call.  A green icon means your free to connect."]
+    var textDescriptions = ["Are you curious about who your local representatives are? Would you like an easy way to voice your concerns? Use Call to connect with your local representatives effortlessly.", "Using the search field, enter your zip code and select the representative you would like to contact.", "With an easy tap, you can either telephone or email your representative directly from Call."]
     
     override func viewDidLoad() {
         super.viewDidLoad()

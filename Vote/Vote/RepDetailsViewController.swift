@@ -55,7 +55,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         }
         
         
-        title = office.name
+        title = official.name
         
         collectionView.register(HeadlinesCollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         collectionView.delegate = self
@@ -72,7 +72,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
         //        newsCollectionLabel.textColor = UIColor.hackathonCream
         //        newsCollectionLabel.font = UIFont(name: "GillSans-Bold", size: 16)
-        instructionLabel.text = "Click to contact \(official.name)!"
+        instructionLabel.text = "Click to contact (official.name)!"
         instructionLabel.textColor = UIColor.hackathonCream
         instructionLabel.font = UIFont(name: "GillSans-Italic", size: 16)
         
