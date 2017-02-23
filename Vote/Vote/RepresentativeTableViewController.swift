@@ -27,6 +27,8 @@ class RepresentativeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "List of Reps"
+        
         //self.navigationItem.backBarButtonItem = UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: nil, action: nil)
         self.navigationItem.hidesBackButton = true
         self.edgesForExtendedLayout = .bottom
@@ -42,16 +44,10 @@ class RepresentativeTableViewController: UITableViewController {
     func getLocationName(from zip: String) {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(zip) { (placemark, error) in
-            if let validPlacemark = placemark?.first {
-                var locationName = ""
+
                 
-                if let subLocality = validPlacemark.subLocality {
-                    locationName += " in \(subLocality)"
-                } else if let locality = validPlacemark.locality {
-                    locationName += " in \(locality)"
-                }
-                self.title = "List of Reps\(locationName)"
-            }
+            
+            
         }
     }
     

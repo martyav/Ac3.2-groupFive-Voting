@@ -34,7 +34,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
         
         title = "Find Your Rep"
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(checkTextFieldContent(_:)), name: NSNotification.Name.UITextFieldTextDidChange, object: zipTextField)
+//        NotificationCenter.default.addObserver(self, selector: #selector(checkTextFieldContent(_:)), name: NSNotification.Name.UITextFieldTextDidChange, object: zipTextField)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +74,19 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
         
         self.resetViews()
         self.removeConstraints()
+    }
+    
+    //MARK: - Check User Defaults
+    
+    func didDisplayOnboardScreens() {
+        let userDefault = UserDefaults.standard
+        let didDisplayOnboard = userDefault.bool(forKey: "walkthrough")
+        
+        if !didDisplayOnboard {
+            if let pvc = storyboard?.instantiateViewController(withIdentifier: "PageViewController") {
+                self.present(pvc, animated: true, completion: nil)
+            }
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -183,18 +196,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, ZipAlertDeleg
         blueBubbleViewLeft?.transform = CGAffineTransform(scaleX: -1, y: 1)
     }
     
-    //MARK: - Check User Defaults
-    
-    func didDisplayOnboardScreens() {
-        let userDefault = UserDefaults.standard
-        let didDisplayOnboard = userDefault.bool(forKey: "walkthrough")
-        
-        if !didDisplayOnboard {
-            if let pvc = storyboard?.instantiateViewController(withIdentifier: "PageViewController") {
-            self.present(pvc, animated: true, completion: nil)
-            }
-        }
-    }
     func pickUpPhone() {
         UIView.animate(withDuration: 1.25, animations: {
             self.phoneView?.transform = CGAffineTransform(translationX: 0, y: -15)

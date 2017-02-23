@@ -55,35 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.starField?.transform = CGAffineTransform(translationX: 375, y: 375)
                 self.coloredField?.alpha = 0
 
-            }, completion: { (bool) in
-                
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let defaults = UserDefaults.standard
-                if defaults.value(forKey: "walkthrough") as? Bool != true {
-                    let pvc = storyboard.instantiateViewController(withIdentifier: "Introduction")
-                    if let navVC = window.rootViewController as? UINavigationController {
-                        navVC.pushViewController(pvc, animated: true)
-                    }
-                    
-                } else if let zip = defaults.value(forKey: "zipcode") as? String {
-                    let dvc = storyboard.instantiateViewController(withIdentifier: "rtvc") as! RepresentativeTableViewController
-                    dvc.getReps(from: zip)
-                    if let navVC = window.rootViewController as? UINavigationController {
-                        navVC.pushViewController(dvc, animated: true)
-                    }
-
-                }
-            })
-            
-            UIView.animate(withDuration: 4, animations: {
-//                self.coloredField?.alpha = 0
-//                self.starField?.alpha = 0
-            })
-            
-//            _ = [
-//                self.coloredField,
-//                self.starField
-//                ].map { $0?.removeFromSuperview() }
+            }, completion: { finish in
+                                _ = [
+                                    self.coloredField,
+                                    self.starField
+                                ].map { $0?.removeFromSuperview() }
+                            })
 
         }
         
