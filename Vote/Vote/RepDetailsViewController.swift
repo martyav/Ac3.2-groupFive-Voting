@@ -40,6 +40,9 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         super.viewDidLoad()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        
+        //self.navigationItem.hidesBackButton = true
+        
         inputViewValues()
         
         APIRequestManager.manager.getArticles(searchTerm: official.name.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!) { (info) in
@@ -72,7 +75,7 @@ class RepDetailsViewController: UIViewController, UICollectionViewDelegate, UICo
         
         //        newsCollectionLabel.textColor = UIColor.hackathonCream
         //        newsCollectionLabel.font = UIFont(name: "GillSans-Bold", size: 16)
-        instructionLabel.text = "Click to contact (official.name)!"
+        instructionLabel.text = "Click to contact \(official.name)!"
         instructionLabel.textColor = UIColor.hackathonCream
         instructionLabel.font = UIFont(name: "GillSans-Italic", size: 16)
         
