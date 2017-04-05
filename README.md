@@ -33,3 +33,9 @@ The next time you're sitting at home, feeling bummed out about politics, and you
 We give you the tools to be educated and informed -- but it's still on you to CALL! 
 
 <img width = "200" src = "https://cloud.githubusercontent.com/assets/19174201/23178935/3341c172-f83a-11e6-8738-6b6f856e6b75.png">
+
+---
+
+Check us out on Youtube!
+
+[![Alt text](https://img.youtube.com/vi/3AT4moH0Lgs/0.jpg)](https://www.youtube.com/watch?v=3AT4moH0Lgs)
