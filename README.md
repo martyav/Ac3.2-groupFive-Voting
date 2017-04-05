@@ -38,4 +38,4 @@ We give you the tools to be educated and informed -- but it's still on you to CA
 
 Check us out on Youtube!
 
-[![Alt text](https://img.youtube.com/vi/3AT4moH0Lgs/0.jpg)](https://www.youtube.com/watch?v=3AT4moH0Lgs)
+[![video demo](https://img.youtube.com/vi/3AT4moH0Lgs/0.jpg)](https://www.youtube.com/watch?v=3AT4moH0Lgs)
